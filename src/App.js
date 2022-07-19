@@ -1,9 +1,7 @@
-import { Box } from "@mui/system";                                                                                                                                                         
+import { Box } from "@mui/system";
 
 function App() {
-  return (
-  
-  );
+  return <div> dv </div>;
 }
 
 export default App;
