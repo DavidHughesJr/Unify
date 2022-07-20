@@ -1,10 +1,12 @@
 import { styled, Typography, Box } from "@mui/material";
 import Tab from "@mui/material/Tab";
+import { borderBottom } from "@mui/system";
 
 
 
 // Main Dashboard
 export const Dashboard = styled(Box)(() => ({
+  display: 'flex',
   backgroundColor: "#ffffff",
   width: "90%",
   height: "90vh",
@@ -14,7 +16,8 @@ export const Dashboard = styled(Box)(() => ({
 // Side Nav Bar Tabs
 export const NavTypography = styled(Typography)(() => ({
   color: "#77879e",
-  textAlign: "center",
+  fontWeight: "bold",
+  paddingLeft: "1rem",
 }));
 export const NavTab = styled(Tab)(() => ({
   flexDirection: "row",

@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { NavTypography, NavTab } from "./MaterialStyles";
@@ -19,7 +18,10 @@ import {
   Group,
   Bookmarks,
 } from "@mui/icons-material";
-import Logo from "../imgs/unify-logo-min.png";
+import logo from '../imgs/unify-logo-min.png'; // Tell webpack this JS file uses this image
+
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,13 +70,16 @@ export default function Vertical() {
         bgcolor: "background.paper",
         display: "flex",
         flexDirection: "column",
-        width: "15%",
+        width: "20%",
         height: "100%",
         borderRight: 1,
         borderColor: "divider",
         borderRadius: "1rem 0 0 1rem",
       }}
     >
+      <Box sx={{ margin: "auto", paddingTop: 1 }}>
+        <img style={{ width: "5rem" }} src={logo} alt="logo" />
+      </Box>
       <Tabs
         orientation="vertical"
         variant="scrollable"
@@ -82,13 +87,8 @@ export default function Vertical() {
         onChange={handleChange}
         aria-label="Vertical tabs example"
       >
-        <img src={<Logo />} alt="logo" />
-        <Typography
-          sx={{ textAlign: "center", paddingTop: "1rem", color: "#66666" }}
-          variant="body"
-        >
-          Menu
-        </Typography>
+        <NavTypography> Menu
+        </NavTypography>
         <NavTab icon={<Home />} label="Home" {...a11yProps(0)} />
         <NavTab icon={<Stream />} label="Nextflix" {...a11yProps(1)} />
         <NavTab icon={<OndemandVideo />} label="Hulu" {...a11yProps(2)} />
@@ -96,7 +96,7 @@ export default function Vertical() {
         <NavTab icon={<Airplay />} label="Disney Plus" {...a11yProps(4)} />
         <NavTypography> Library </NavTypography>
         <NavTab icon={<Undo />} label="Recent" {...a11yProps(2)} />
-        <NavTab icon={<Bookmarks />} label="Watch Later" {...a11yProps(3)} />
+        <NavTab icon={<Bookmarks />} label="Bookmarks" {...a11yProps(3)} />
         <NavTypography> Genres </NavTypography>
         <NavTab
           icon={<SentimentVerySatisfied />}
