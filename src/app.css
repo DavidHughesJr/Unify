@@ -1,0 +1,28 @@
+/* body color #e5eaf5 */
+/* PRIMARY COLOR #ffffff
+SECONDARY COLOR #334067
+BUTTON COLOR  #fde8ef
+BUTTON TEXT #ea3974
+TERTIARY COLOR #f1f7ff
+STAR COLOR #fa7c05
+EMPTY STAR COLOR #dae5ff */
+* {
+  margin: 0;
+}
+body {
+  margin: 0;
+  background-color: #e5eaf5;
+}
+.MuiTabs-indicator {
+  background-color: #e71d60 !important;
+}
+.Mui-selected	{
+     color: #e71d60  !important;
+}
+.MuiTab-iconWrapper	{
+    height: 1.2rem !important;
+   
+}
+.MuiButtonBase-root	 {
+    min-height: 3.5rem !important;
+}
