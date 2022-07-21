@@ -1,6 +1,8 @@
-import { styled, Typography, Box } from "@mui/material";
+import { styled, Typography, Box, Button } from "@mui/material";
 import Tab from "@mui/material/Tab";
-import { borderBottom } from "@mui/system";
+import { Link } from "react-router-dom";
+
+
 
 
 
@@ -8,10 +10,23 @@ import { borderBottom } from "@mui/system";
 export const Dashboard = styled(Box)(() => ({
   display: 'flex',
   backgroundColor: "#ffffff",
-  width: "90%",
+  width: "95%",
   height: "90vh",
   margin: " 3rem auto",
   borderRadius: "1rem",
+}));
+export const BoardLeft = styled(Box)(() => ({
+  width: "20%",
+  height: "100%",
+}));
+export const BoardCenter = styled(Box)(() => ({
+  width: "55%",
+  height: "100%",
+}));
+export const BoardRight = styled(Box)(() => ({
+  width: "25%",
+  height: "100%",
+  borderLeft: "1px solid #e0e0e0",
 }));
 // Side Nav Bar Tabs
 export const NavTypography = styled(Typography)(() => ({
@@ -26,6 +41,16 @@ export const NavTab = styled(Tab)(() => ({
   gap: 1,
   color: "#77879e",
   textTransform: "none",
+}));
+export const NavLink = styled(Tab)(() => ({
+  color: 'green'
+}));
+export const DashTypography1 = styled(Typography)(() => ({
+  color: "#77879e",
+}));
+// Buttons 
+export const WatchNowBtn = styled(Button)(() => ({
+  padding: '0 3rem', borderRadius: '0', backgroundColor: '#e71d60', textTransform: 'none'
 }));
 
 

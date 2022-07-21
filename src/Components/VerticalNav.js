@@ -18,9 +18,47 @@ import {
   Group,
   Bookmarks,
 } from "@mui/icons-material";
+import {
+  MemoryRouter,
+  Route,
+  Routes,
+  Link,
+  matchPath,
+  useLocation,
+} from "react-router-dom";
+import { StaticRouter } from "react-router-dom/server";
 import logo from '../imgs/unify-logo-min.png'; // Tell webpack this JS file uses this image
 
+function Router(props) {
+  const { children } = props;
+  if (typeof window === "undefined") {
+    return <StaticRouter location="/drafts">{children}</StaticRouter>;
+  }
 
+  return (
+    <MemoryRouter initialEntries={["/drafts"]} initialIndex={0}>
+      {children}
+    </MemoryRouter>
+  );
+}
+
+Router.propTypes = {
+  children: PropTypes.node,
+};
+
+function useRouteMatch(patterns) {
+  const { pathname } = useLocation();
+
+  for (let i = 0; i < patterns.length; i += 1) {
+    const pattern = patterns[i];
+    const possibleMatch = matchPath(pattern, pathname);
+    if (possibleMatch !== null) {
+      return possibleMatch;
+    }
+  }
+
+  return null;
+}
 
 
 function TabPanel(props) {
@@ -56,8 +94,11 @@ function a11yProps(index) {
   };
 }
 
-export default function Vertical() {
+export default function VerticalNav() {
+    const routeMatch = useRouteMatch(["/", "/netflix", "/hulu"]);
+    const currentTab = routeMatch?.pattern?.path;
   const [value, setValue] = React.useState(0);
+  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -70,7 +111,7 @@ export default function Vertical() {
         bgcolor: "background.paper",
         display: "flex",
         flexDirection: "column",
-        width: "20%",
+        width: "100%",
         height: "100%",
         borderRight: 1,
         borderColor: "divider",
@@ -83,15 +124,15 @@ export default function Vertical() {
       <Tabs
         orientation="vertical"
         variant="scrollable"
-        value={value}
+        value={currentTab}
         onChange={handleChange}
         aria-label="Vertical tabs example"
       >
         <NavTypography> Menu
         </NavTypography>
-        <NavTab icon={<Home />} label="Home" {...a11yProps(0)} />
-        <NavTab icon={<Stream />} label="Nextflix" {...a11yProps(1)} />
-        <NavTab icon={<OndemandVideo />} label="Hulu" {...a11yProps(2)} />
+        <NavTab icon={<Home />} label="Home" value="/" to="/" component={Link} />
+        <NavTab icon={<Stream />} label="Nextflix" value="/netflix" to="/netflix" component={Link}/>
+        <NavTab icon={<OndemandVideo />} label="Hulu" value="/hulu" to="/hulu" component={Link} />
         <NavTab icon={<Movie />} label="Amazon Prime" {...a11yProps(3)} />
         <NavTab icon={<Airplay />} label="Disney Plus" {...a11yProps(4)} />
         <NavTypography> Library </NavTypography>
