@@ -20,7 +20,7 @@ const theme = createTheme({
         },
     },
 });
-export default function HeaderSubcategory() {
+export default function HeaderSubcategory({stream}) {
 
     return (
         <ThemeProvider theme={theme}>

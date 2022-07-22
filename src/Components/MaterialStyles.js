@@ -16,15 +16,15 @@ export const Dashboard = styled(Box)(() => ({
   borderRadius: "1rem",
 }));
 export const BoardLeft = styled(Box)(() => ({
-  width: "20%",
+  width: "15%",
   height: "100%",
 }));
 export const BoardCenter = styled(Box)(() => ({
-  width: "55%",
+  width: "66%",
   height: "100%",
 }));
 export const BoardRight = styled(Box)(() => ({
-  width: "25%",
+  width: "20%",
   height: "100%",
   borderLeft: "1px solid #e0e0e0",
 }));
