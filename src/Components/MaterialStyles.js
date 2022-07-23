@@ -22,6 +22,7 @@ export const BoardLeft = styled(Box)(() => ({
 export const BoardCenter = styled(Box)(() => ({
   width: "66%",
   height: "100%",
+  overflow: 'hidden'
 }));
 export const BoardRight = styled(Box)(() => ({
   width: "20%",
@@ -45,12 +46,33 @@ export const NavTab = styled(Tab)(() => ({
 export const NavLink = styled(Tab)(() => ({
   color: 'green'
 }));
+// Start Dashboard Styles 
 export const DashTypography1 = styled(Typography)(() => ({
   color: "#77879e",
 }));
-// Buttons 
 export const WatchNowBtn = styled(Button)(() => ({
-  padding: '0 3rem', borderRadius: '0', backgroundColor: '#e71d60', textTransform: 'none'
+  minHeight: '3rem !important',
+  height: 0,
+  padding: '0 2rem',
+  borderRadius: '0',
+  backgroundColor: '#e71d60',
+  textTransform: 'none',
+  color: 'white'
 }));
+// Movies Section
+export const MoviesContainer = styled(Box)(() => ({
+  display: 'flex', 
+  width: "100%",
+  gap: '1rem',
+  overflow: 'hidden !IMPORTANT',
 
+}));
+export const MoviesContent = styled(Box)(() => ({
+  backgroundColor:"grey",
+  overflow: 'hidden'
+}));
+export const MoviesBtnContainer = styled(Box)(() => ({
+  position: 'relative',
+  bottom: '40%'
+}));
 

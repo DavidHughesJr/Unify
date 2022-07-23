@@ -1,16 +1,16 @@
 import { Dashboard, BoardCenter, BoardLeft, BoardRight } from "../Components/MaterialStyles";
-import TopCategoryTabs from "../Components/TopCategoryTabs.js";
+import CategoryTabs from "../Components/CategoryTabs.js";
 import VerticalNav from "../Components/VerticalNav";
 
 
-function Homepage() {
+function Homepage({stream, series}) {
   return (
     <Dashboard>
       <BoardLeft>
         <VerticalNav />
       </BoardLeft>
       <BoardCenter>
-       <TopCategoryTabs />
+       <CategoryTabs stream = {stream} series={series}/>
       </BoardCenter>
       <BoardRight>
         

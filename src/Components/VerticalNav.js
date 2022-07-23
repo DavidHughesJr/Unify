@@ -131,7 +131,7 @@ export default function VerticalNav() {
         <NavTypography> Menu
         </NavTypography>
         <NavTab icon={<Home />} label="Home" value="/" to="/" component={Link} />
-        <NavTab icon={<Stream />} label="Nextflix" value="/netflix" to="/netflix" component={Link}/>
+        <NavTab icon={<Stream />} label="Netflix" value="/netflix" to="/netflix" component={Link}/>
         <NavTab icon={<OndemandVideo />} label="Hulu" value="/hulu" to="/hulu" component={Link} />
         <NavTab icon={<Movie />} label="Amazon Prime" {...a11yProps(3)} />
         <NavTab icon={<Airplay />} label="Disney Plus" {...a11yProps(4)} />

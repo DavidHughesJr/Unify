@@ -6,14 +6,14 @@ export default function Bookmarker() {
   const [selected, setSelected] = React.useState(false);
 
   return (
-    <ToggleButton sx={{backgroundColor: 'white', border: 'none', borderRadius: '0'}}
+    <ToggleButton sx={{borderRadius: '0'}}
       value="bookmark"
       selected={selected}
       onChange={() => {
         setSelected(!selected);
       }}
     >
-      <Bookmark sx={{zIndex: 10}} />
+      <Bookmark sx={{zIndex: 10, backgroundColor:""}} />
     </ToggleButton>
     
   );

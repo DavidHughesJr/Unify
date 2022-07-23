@@ -28,11 +28,8 @@ body {
     min-height: 3rem !important;
 }
 .MuiToggleButton-root {
-    min-height: 3rem !important;
-}
-.MuiToggleButton-root {
     background-color: white !important;
 }
 .MuiButton-root:hover {
-  background-color: #77879e !important;
+  background-color: #fa7c05 !important;
 }

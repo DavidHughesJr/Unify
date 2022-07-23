@@ -4,15 +4,11 @@ import Tabs from "@mui/material/Tabs";
 import { NavTab } from "./MaterialStyles";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import HeaderSubcategory from "./HeaderSubcategory";
-import NewestSubcategory from "./NewestSubcategory";
-import TopRatedSubcategory from "./TopRatedSubcategory";
-
+import Subcategory from "./Subcategory";
 
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-
     return (
         <div
             role="tabpanel"
@@ -43,9 +39,8 @@ function a11yProps(index) {
     };
 }
 
-export default function TopCategoryTabs() {
+export default function CategoryTabs({ stream, series }) {
     const [value, setValue] = React.useState(0);
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -64,9 +59,7 @@ export default function TopCategoryTabs() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <HeaderSubcategory />
-                <NewestSubcategory />
-                <TopRatedSubcategory />
+                <Subcategory stream={stream} series = {series}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 Item Two
