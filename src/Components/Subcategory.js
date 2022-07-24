@@ -1,13 +1,35 @@
+import { useEffect, useState } from "react"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Bookmarker from "./Bookmarker"
 import Link from "@mui/material/Link"
-import { MoviesBtnContainer, MoviesContainer, WatchNowBtn } from "./MaterialStyles"
+import { MoviesContainer, WatchNowBtn } from "./MaterialStyles"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import tmdbApi, { tvType } from "../api/tmdbApi"
+import { movieType, category, tvList } from "../api/tmdbApi"
+import { apiConfig } from "../api/apiConfig"
+
 
 
 export default function NewestSubcategory({ stream, series }) {
+
+    const [showItems, setShowItems] = useState([])
+    
+    useEffect(() => {
+        const getMovies = async () => {
+            try {
+                const response = await tmdbApi.getTvList(tvType.popular, 1)
+                const data = await response.json()
+                setShowItems(data.results)
+                
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getMovies()
+    }, [])
+    console.log(showItems)
     return (
 
         <Box>
@@ -26,59 +48,61 @@ export default function NewestSubcategory({ stream, series }) {
                     <Bookmarker />
                 </div>
             </div>
-            <Typography sx={{ margin: '.5rem' }}> Movies </Typography>
+            <Typography sx={{ margin: '.5rem' }}> Now Playing </Typography>
             <MoviesContainer>
-        
-               <Swiper
+                <Swiper
                     spaceBetween={50}
                     slidesPerView={4}
                     onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}> 
-                { 
-                    stream.map((streams) => {
-                        return (
-                            <SwiperSlide>
-                                <div key={streams.id} style={{ width: '100%' }}>
-                                    <img style={{ height: '100% !important', width: '100%' }} src={streams.posterURLs[185]} alt="New movies" />
-                                    {/* <Bookmarker />
+                    onSwiper={(swiper) => console.log(swiper)}>
+                    {
+                        showItems.map((shows) => {
+                            return (
+                                <SwiperSlide>
+
+                                    
+                                    <div key={shows.id} style={{ width: '100%' }}>
+                                        <img style={{ height: '100% !important', width: '100%' }} src={`${apiConfig.w300Image(shows.poster_path)}`} alt="New movies" />
+                                        {/* <Bookmarker />
+                                        
                                     <MoviesBtnContainer>
                                         <Link sx={{ textDecoration: 'none' }} href={streams.streamingInfo.netflix.us.link}>
                                             <WatchNowBtn>  Watch Now </WatchNowBtn>
                                         </Link>
                                     </MoviesBtnContainer> */}
-                                </div>
-                            </SwiperSlide>
-                            
-                        )
-                    })
-                }
-               
+                                    </div>
+                                </SwiperSlide>
+
+                            )
+                        })
+                    }
+
                 </Swiper>
             </MoviesContainer>
             <Box>
                 <Typography sx={{ margin: '.5rem' }}> Top Rated </Typography>
-                <div style={{ display: 'flex', width: "100%", height: "10rem"}} >
+                <div style={{ display: 'flex', width: "100%", height: "10rem" }} >
                     <Swiper
                         spaceBetween={50}
                         slidesPerView={3}
                         onSlideChange={() => console.log('slide change')}
-                        onSwiper={(swiper) => console.log(swiper)}> 
-                    {
-                        series.map((series) => {
-                            return (
-                                <SwiperSlide>
-                                <div style={{ width: '100%' }}>
-                                    <img style={{ objectFit: 'cover', height: '100%', width: '100%' }} src={series.backdropURLs[300]} alt="New movies" />
-                                    <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', bottom: '30%' }}>
-                                        <Link sx={{ textDecoration: 'none' }}>
-                                            <Typography sx={{ color: 'white' }} variant="subtitle"> {series.title}, {series.year} </Typography>
-                                       </Link>
-                                    </div>
-                                </div>
-                                </SwiperSlide>
-                            )
-                        })
-                    }
+                        onSwiper={(swiper) => console.log(swiper)}>
+                        {
+                            series.map((series) => {
+                                return (
+                                    <SwiperSlide>
+                                        <div style={{ width: '100%' }}>
+                                            <img style={{ objectFit: 'cover', height: '100%', width: '100%' }} src={series.backdropURLs[300]} alt="New movies" />
+                                            <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', bottom: '30%' }}>
+                                                <Link sx={{ textDecoration: 'none' }}>
+                                                    <Typography sx={{ color: 'white' }} variant="subtitle"> {series.title}, {series.year} </Typography>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
                     </Swiper>
                 </div>
             </Box>
