@@ -9,10 +9,18 @@ import Tab from "@mui/material/Tab";
 export const Dashboard = styled(Box)(() => ({
   display: 'flex',
   backgroundColor: "#ffffff",
-  width: "95%",
-  height: "90vh",
-  margin: " 3rem auto",
+  width: "100%",
+  height: "100vh",
   borderRadius: "1rem",
+  '*::-webkit-scrollbar': {
+    width: '0.1em',
+  },
+  '*::-webkit-scrollbar-thumb': {
+    backgroundColor: '#e71d60',
+  },
+  '*::-webkit-scrollbar-track:vertical ': {
+    '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
+  },
 }));
 export const BoardLeft = styled(Box)(() => ({
   width: "15%",
@@ -21,7 +29,7 @@ export const BoardLeft = styled(Box)(() => ({
 export const BoardCenter = styled(Box)(() => ({
   width: "66%",
   height: "100%",
-  overflow: 'hidden'
+  overflow: 'scroll'
 }));
 export const BoardRight = styled(Box)(() => ({
   width: "20%",
@@ -62,8 +70,8 @@ export const WatchNowBtn = styled(Button)(() => ({
 export const MoviesContainer = styled(Box)(() => ({
   display: 'flex', 
   width: "100%",
-  gap: '1rem',
   overflow: 'hidden !IMPORTANT',
+  height: '28rem'
 
 }));
 export const MoviesContent = styled(Box)(() => ({
@@ -72,6 +80,6 @@ export const MoviesContent = styled(Box)(() => ({
 }));
 export const MoviesBtnContainer = styled(Box)(() => ({
   position: 'relative',
-  bottom: '40%'
+  bottom: '3.4rem'
 }));
 

@@ -3,73 +3,107 @@ import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Bookmarker from "./Bookmarker"
 import Link from "@mui/material/Link"
-import { MoviesContainer, WatchNowBtn } from "./MaterialStyles"
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { MoviesBtnContainer, MoviesContainer, WatchNowBtn } from "./MaterialStyles"
+import { Swiper, SwiperSlide} from 'swiper/react';
+import { Autoplay } from 'swiper'
 import 'swiper/css';
 import tmdbApi, { tvType } from "../api/tmdbApi"
 import { movieType, category, tvList } from "../api/tmdbApi"
 import { apiConfig } from "../api/apiConfig"
+import 'swiper/css/autoplay'
+
 
 
 
 export default function NewestSubcategory({ stream, series }) {
 
-    const [showItems, setShowItems] = useState([])
-    
+    const [movieItems, setMovieItems] = useState([])
+    const [topRatedMovies, setTopRatedMovies] = useState([])
+
     useEffect(() => {
-        const getMovies = async () => {
+        const getMovies = async (pageNum = 1) => {
             try {
-                const response = await tmdbApi.getTvList(tvType.popular, 1)
+                const response = await tmdbApi.getMoviesList(movieType.popular, pageNum)
                 const data = await response.json()
-                setShowItems(data.results)
-                
+                setMovieItems(data.results)
+
             } catch (error) {
                 console.error(error);
             }
         }
+        const getTopRatedMovies = async (pageNum = 1) => {
+            try {
+                const response = await tmdbApi.getMoviesList(movieType.top_rated, pageNum)
+                const data = await response.json()
+                setTopRatedMovies(data.results)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getTopRatedMovies()
         getMovies()
     }, [])
-    console.log(showItems)
+    console.log(movieItems)
     return (
 
         <Box>
-            <div
-                style={{ width: "100%", height: "18rem", backgroundColor: "black" }}
-            >
-                <img
-                    style={{ width: "100%", height: "100%", objectFit: 'cover' }}
-                    src="https://image.tmdb.org/t/p/w1280/kwUQFeFXOOpgloMgZaadhzkbTI4.jpg"
-                />
-                <div style={{ position: 'relative', bottom: '65%', left: '5%' }}>
-                    <div> <Typography sx={{ background: '-webkit-linear-gradient(#eaecef, #b9c1c9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bolder' }} variant="h3"> Avengers </Typography>  </div>
-                    <div> <Typography sx={{ color: '#eaecef' }} variant="subtitle"> Some assembly required. </Typography>  </div>
-                    <div> <Typography sx={{ color: '#b9c1c9' }} variant="subtitle2"> Thriller 1hr 20mins </Typography>  </div>
-                    <WatchNowBtn> Watch Now </WatchNowBtn>
-                    <Bookmarker />
-                </div>
+            <div>
+                <Swiper
+                    modules={Autoplay}
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    autoplay={true}
+                    navigation
+                    pagination={{ clickable: true }}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}>
+
+                    {
+                        movieItems.map((movie) => {
+                            return (
+                                <SwiperSlide>
+                                    <div
+                                        style={{ width: "100%", height: '35rem'}}
+                                    >
+                                        <img
+                                            style={{ width: "100%", height: "100%", objectFit: 'cover' }}
+                                            src={`${apiConfig.originalImage(movie.backdrop_path)}`} alt="New movies"
+                                        />
+                                        <div style={{ position: 'relative', bottom: '10rem', left: '5%' }}>
+                                            <div> <Typography sx={{ background: '-webkit-linear-gradient(#eaecef, #b9c1c9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bolder' }} variant="h4"> {movie.title} </Typography>  </div>
+                                            <div> <Typography sx={{ color: '#eaecef' }} variant="subtitle"> {movie.release_date} </Typography>  </div>
+                                            <Link sx={{ textDecoration: 'none' }} href={''}>
+                                                <WatchNowBtn> Watch Now </WatchNowBtn>
+                                            </Link>
+                                            <Bookmarker />
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            )
+
+                        })
+                    }
+                </Swiper>
             </div>
             <Typography sx={{ margin: '.5rem' }}> Now Playing </Typography>
             <MoviesContainer>
                 <Swiper
-                    spaceBetween={50}
+                    spaceBetween={10}
                     slidesPerView={4}
                     onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}>
+                    onSwiper={(swiper) => (swiper)}>
                     {
-                        showItems.map((shows) => {
+                        movieItems.map((movie) => {
                             return (
                                 <SwiperSlide>
-
-                                    
-                                    <div key={shows.id} style={{ width: '100%' }}>
-                                        <img style={{ height: '100% !important', width: '100%' }} src={`${apiConfig.w300Image(shows.poster_path)}`} alt="New movies" />
-                                        {/* <Bookmarker />
-                                        
-                                    <MoviesBtnContainer>
-                                        <Link sx={{ textDecoration: 'none' }} href={streams.streamingInfo.netflix.us.link}>
-                                            <WatchNowBtn>  Watch Now </WatchNowBtn>
-                                        </Link>
-                                    </MoviesBtnContainer> */}
+                                    <div key={movie.id} style={{ width: '100%' }}>
+                                        <img style={{ width: '100%' }} src={`${apiConfig.w500Image(movie.poster_path)}`} alt="New movies" />
+                                        <MoviesBtnContainer>
+                                            <Link sx={{ textDecoration: 'none' }} href={''}>
+                                                <WatchNowBtn>  Watch Now </WatchNowBtn>
+                                            </Link>
+                                            <Bookmarker />
+                                        </MoviesBtnContainer>
                                     </div>
                                 </SwiperSlide>
 
@@ -81,21 +115,22 @@ export default function NewestSubcategory({ stream, series }) {
             </MoviesContainer>
             <Box>
                 <Typography sx={{ margin: '.5rem' }}> Top Rated </Typography>
-                <div style={{ display: 'flex', width: "100%", height: "10rem" }} >
+                <div style={{ display: 'flex', width: "100%", height: "100%" }} >
                     <Swiper
-                        spaceBetween={50}
+                        spaceBetween={10}
                         slidesPerView={3}
                         onSlideChange={() => console.log('slide change')}
                         onSwiper={(swiper) => console.log(swiper)}>
                         {
-                            series.map((series) => {
+                            topRatedMovies.map((movie) => {
                                 return (
                                     <SwiperSlide>
                                         <div style={{ width: '100%' }}>
-                                            <img style={{ objectFit: 'cover', height: '100%', width: '100%' }} src={series.backdropURLs[300]} alt="New movies" />
-                                            <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', bottom: '30%' }}>
+                                            <img style={{ objectFit: 'cover', height: '100%', width: '100%' }} src={`${apiConfig.originalImage(movie.backdrop_path)}`} alt="New movies" />
+                                            <div style={{ position:'relative', bottom: '2rem', left: '5%' }}>
                                                 <Link sx={{ textDecoration: 'none' }}>
-                                                    <Typography sx={{ color: 'white' }} variant="subtitle"> {series.title}, {series.year} </Typography>
+                                                    <Typography sx={{ color: 'white', fontWeight: 'bold', textShadow: '0 0 5px black'  }} variant="subtitle"> {movie.title} </Typography>
+                                                    <Typography sx={{color: 'lightgrey'}} variant=""> , {movie.release_date} </Typography>
                                                 </Link>
                                             </div>
                                         </div>

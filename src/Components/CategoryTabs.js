@@ -53,9 +53,8 @@ export default function CategoryTabs({ stream, series }) {
                     onChange={handleChange}
                     aria-label="basic tabs example"
                 >
-                    <NavTab label="Comedy" {...a11yProps(0)} />
-                    <NavTab label="Thriller" {...a11yProps(1)} />
-                    <NavTab label="Romance" {...a11yProps(2)} />
+                    <NavTab label="Movies" {...a11yProps(0)} />
+                    <NavTab label="Series" {...a11yProps(1)} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
