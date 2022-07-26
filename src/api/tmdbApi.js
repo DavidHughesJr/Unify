@@ -22,13 +22,11 @@ export const tvType = {
 
 const tmdbApi = {
     getMoviesList: ((type, pageNum) => {
-        const url = `${apiConfig.baseUrl}movie/${movieType[type]}?api_key=${apiConfig.apiKey}&language=en-US&page=${pageNum}`
-        console.log(url)
+        const url = `${apiConfig.baseUrl}movie/${movieType[type]}?api_key=${apiConfig.apiKey}&language=en-US&page=${pageNum}`   
         return fetch(url)
     }),
     getTvList: ((type, pageNum) => {
         const url = `${apiConfig.baseUrl}tv/${tvType[type]}?api_key=${apiConfig.apiKey}&language=en-US&page=${pageNum}`
-        console.log(url)
         return fetch(url)
     }),
     getWatchProviders: ((tvId) => {

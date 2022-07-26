@@ -54,8 +54,8 @@ export const NavLink = styled(Tab)(() => ({
   color: 'green'
 }));
 // Start Dashboard Styles 
-export const DashTypography1 = styled(Typography)(() => ({
-  color: "#77879e",
+export const CategoryTypography = styled(Typography)(() => ({
+  margin: '.5rem', color: '#37456a'
 }));
 export const WatchNowBtn = styled(Button)(() => ({
   minHeight: '3rem !important',
@@ -71,7 +71,6 @@ export const MoviesContainer = styled(Box)(() => ({
   display: 'flex', 
   width: "100%",
   overflow: 'hidden !IMPORTANT',
-  height: '28rem'
 
 }));
 export const MoviesContent = styled(Box)(() => ({

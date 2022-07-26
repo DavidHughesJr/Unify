@@ -43,7 +43,6 @@ export default function NewestSubcategory({ stream, series }) {
         getTopRatedMovies()
         getMovies()
     }, [])
-    console.log(movieItems)
     return (
 
         <Box>
@@ -85,7 +84,7 @@ export default function NewestSubcategory({ stream, series }) {
                     }
                 </Swiper>
             </div>
-            <Typography sx={{ margin: '.5rem' }}> Now Playing </Typography>
+            <Typography variant="subtitle2" sx={{ margin: '.5rem' }}> Now Playing </Typography>
             <MoviesContainer>
                 <Swiper
                     spaceBetween={10}
@@ -100,13 +99,12 @@ export default function NewestSubcategory({ stream, series }) {
                                         <img style={{ width: '100%' }} src={`${apiConfig.w500Image(movie.poster_path)}`} alt="New movies" />
                                         <MoviesBtnContainer>
                                             <Link sx={{ textDecoration: 'none' }} href={''}>
-                                                <WatchNowBtn>  Watch Now </WatchNowBtn>
+                                                {/* <WatchNowBtn>  Watch Now </WatchNowBtn> */}
                                             </Link>
-                                            <Bookmarker />
+                                            {/* <Bookmarker /> */}
                                         </MoviesBtnContainer>
                                     </div>
                                 </SwiperSlide>
-
                             )
                         })
                     }
@@ -114,7 +112,7 @@ export default function NewestSubcategory({ stream, series }) {
                 </Swiper>
             </MoviesContainer>
             <Box>
-                <Typography sx={{ margin: '.5rem' }}> Top Rated </Typography>
+                <Typography variant="subtitle2" sx={{ margin: '.5rem', color: '#37456a'}}> Top Rated </Typography>
                 <div style={{ display: 'flex', width: "100%", height: "100%" }} >
                     <Swiper
                         spaceBetween={10}
@@ -127,10 +125,10 @@ export default function NewestSubcategory({ stream, series }) {
                                     <SwiperSlide>
                                         <div style={{ width: '100%' }}>
                                             <img style={{ objectFit: 'cover', height: '100%', width: '100%' }} src={`${apiConfig.originalImage(movie.backdrop_path)}`} alt="New movies" />
-                                            <div style={{ position:'relative', bottom: '2rem', left: '5%' }}>
+                                            <div style={{ position:'relative', bottom: '2.5rem', left: '5%' }}>
                                                 <Link sx={{ textDecoration: 'none' }}>
-                                                    <Typography sx={{ color: 'white', fontWeight: 'bold', textShadow: '0 0 5px black'  }} variant="subtitle"> {movie.title} </Typography>
-                                                    <Typography sx={{color: 'lightgrey'}} variant=""> , {movie.release_date} </Typography>
+                                                    <Typography sx={{ color: 'white', fontWeight: 'bold', textShadow: '0 0 5px black'  }} variant="caption"> {movie.title} </Typography>
+                                                    <Typography sx={{color: 'lightgrey'}} variant="caption"> , {movie.release_date} </Typography>
                                                 </Link>
                                             </div>
                                         </div>
