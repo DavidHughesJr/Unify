@@ -37,7 +37,10 @@ const tmdbApi = {
         const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
         return fetch(url).then(res => res.json()).then(data => console.log(data))
     }),
-    
+    getSearchResults: (async (searchQuery, cate, pageNum) => {
+        const url = `${apiConfig.baseUrl}search/${category[cate]}?api_key=${apiConfig.apiKey}&language=en-US&query=${searchQuery}&page=${pageNum}&include_adult=false`
+        return await fetch(url)
+    })
 }
 
 

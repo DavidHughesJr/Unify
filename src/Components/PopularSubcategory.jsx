@@ -3,6 +3,7 @@ import SearchInput from "./SearchInput";
 import { Box, Button, Typography, Rating } from "@mui/material";
 import { apiConfig } from "../api/apiConfig";
 import tmdbApi, {category, movieType}  from "../api/tmdbApi";
+import { CategoryTypography } from "./MaterialStyles";
 
 
 
@@ -13,7 +14,7 @@ export default function PopularCategory() {
 const [popularMovies, setPopularMovies] = useState([])
 
 useEffect(() => {
-    const getPopularMovies = async (pageNum) => {
+    const getPopularMovies = async (pageNum = 1) => {
        try {
            const response = await tmdbApi.getMoviesList(movieType.popular, pageNum)
            const popularMoviesData = await response.json()
@@ -23,14 +24,13 @@ useEffect(() => {
         console.error(error);
        }
     }
-    getPopularMovies()
+    getPopularMovies(1)
     console.log(popularMovies)
 }, [])
 
     return (
-        <Box sx={{marginTop: '3rem', padding: '1rem'}}>
-            <SearchInput />
-            CategoryTypo
+        <Box sx={{padding: '1rem'}}>
+           <CategoryTypography variant="subtitle2"> Popular </CategoryTypography> 
             {
                 popularMovies.slice(0, 2).map((movie) => {
                     return <div style={{marginBottom: '1rem'}}>
@@ -39,7 +39,7 @@ useEffect(() => {
                             <Box sx={{display: 'flex', flexDirection: 'column'}}>
                                 <Typography variant="subtitle2"> {movie.title}  </Typography>
                                 <Typography variant="caption"> {movie.genre_ids}  </Typography>
-                                <Rating name="read-only" value={2} readOnly />
+                                <Rating name="read-only" value={2} readOnly sx={{ color: '#fa7c05'}} />
                             </Box>
                         </Box>
                    

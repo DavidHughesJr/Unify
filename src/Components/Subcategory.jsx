@@ -3,7 +3,7 @@ import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Bookmarker from "./Bookmarker"
 import Link from "@mui/material/Link"
-import { MoviesBtnContainer, MoviesContainer, WatchNowBtn } from "./MaterialStyles"
+import { MoviesBtnContainer, MoviesContainer, WatchNowBtn, CategoryTypography } from "./MaterialStyles"
 import { Swiper, SwiperSlide} from 'swiper/react';
 import { Autoplay } from 'swiper'
 import 'swiper/css';
@@ -15,7 +15,7 @@ import 'swiper/css/autoplay'
 
 
 
-export default function NewestSubcategory({ stream, series }) {
+export default function NewestSubcategory() {
 
     const [movieItems, setMovieItems] = useState([])
     const [topRatedMovies, setTopRatedMovies] = useState([])
@@ -84,7 +84,7 @@ export default function NewestSubcategory({ stream, series }) {
                     }
                 </Swiper>
             </div>
-            <Typography variant="subtitle2" sx={{ margin: '.5rem' }}> Now Playing </Typography>
+            <CategoryTypography variant="subtitle2"> Now Playing </CategoryTypography> 
             <MoviesContainer>
                 <Swiper
                     spaceBetween={10}
@@ -112,7 +112,7 @@ export default function NewestSubcategory({ stream, series }) {
                 </Swiper>
             </MoviesContainer>
             <Box>
-                <Typography variant="subtitle2" sx={{ margin: '.5rem', color: '#37456a'}}> Top Rated </Typography>
+                <CategoryTypography variant="subtitle2"> Top Rated Movies </CategoryTypography> 
                 <div style={{ display: 'flex', width: "100%", height: "100%" }} >
                     <Swiper
                         spaceBetween={10}

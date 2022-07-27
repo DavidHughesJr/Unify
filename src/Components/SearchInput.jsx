@@ -3,7 +3,13 @@ import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import { FormControl } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+
+
+
+ 
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -13,11 +19,11 @@ const Search = styled('div')(({ theme }) => ({
     '&:hover': {
         backgroundColor: '',
     },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
+    marginRight: theme.spacing(0),
+    marginLeft: 1,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
+        marginLeft: theme.spacing(0),
         width: 'auto',
     },
 }));
@@ -30,6 +36,10 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 10,
+    '&:hover': {
+        color: 'green'
+    },
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -46,24 +56,37 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function SearchInput() {
+export default function SearchInput({setHomepageSearch, homepageSearch}) {
+    let navigate = useNavigate();
 
 
+
+    const handleKeyDown = event => {
+        
+
+        if (event.key === 'Enter') {
+            
+            setHomepageSearch(event.target.value)
+            navigate("/search", { replace: true });
+            event.target.value = ''
+              
+        }
+    };
+    console.log(homepageSearch)
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <FormControl>
-
+        <Box sx={{ marginTop: '3rem', padding: '1rem' }}>
+            <Box sx={{ flexGrow: 1, width: '100%'}}>
                 <Search sx={{ backgroundColor: '#e5eaf5' }}>
-                    <SearchIconWrapper>
-                        <SearchIcon sx={{ color: 'black' }} />
+                    <SearchIconWrapper >
+                        <SearchIcon sx={{ color: 'black', zIndex: 10}} />
                     </SearchIconWrapper>
                     <StyledInputBase
                         placeholder="Search…"
                         inputProps={{ 'aria-label': 'search' }}
+                        onKeyDown={handleKeyDown}
                     />
                 </Search>
-
-            </FormControl>
+            </Box>
         </Box>
     );
 }
