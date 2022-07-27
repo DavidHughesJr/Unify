@@ -25,7 +25,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
-import logo from '../../imgs/unify-logo-min.png';
+import logo from '../../Assets/imgs/unify-logo-min.png';
 
 function Router(props) {
   const { children } = props;
