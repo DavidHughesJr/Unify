@@ -3,7 +3,7 @@ import SearchInput from "../common/SearchInput";
 import { Box, Button, Typography, Rating } from "@mui/material";
 import { apiConfig } from "../../api/apiConfig";
 import tmdbApi, {category, movieType}  from "../../api/tmdbApi";
-import { CategoryTypography } from "../muiStyles/MaterialStyles";
+import { CategoryTypography } from "../../Assets/muiStyles/MaterialStyles";
 
 
 

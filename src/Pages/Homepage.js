@@ -1,5 +1,5 @@
 import React from "react";
-import { Dashboard, BoardCenter, BoardLeft, BoardRight } from "../Components/muiStyles/MaterialStyles";
+import { Dashboard, BoardCenter, BoardLeft, BoardRight } from "../Assets/muiStyles/MaterialStyles";
 import CategoryTabs from "../Layout/tabs/HomeTabs";
 import VerticalNav from "../Layout/navigation/VerticalNav";
 import PopularCategory from "../Components/movieCategories/PopularMoviesContent";

@@ -3,7 +3,7 @@ import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Bookmarker from "../common/Bookmarker"
 import Link from "@mui/material/Link"
-import { MoviesBtnContainer, MoviesContainer, WatchNowBtn, CategoryTypography } from "../muiStyles/MaterialStyles"
+import { MoviesBtnContainer, MoviesContainer, WatchNowBtn, CategoryTypography } from "../../Assets/muiStyles/MaterialStyles"
 import { Swiper, SwiperSlide} from 'swiper/react';
 import { Autoplay } from 'swiper'
 import 'swiper/css';
