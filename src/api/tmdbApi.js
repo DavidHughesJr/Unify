@@ -11,7 +11,6 @@ export const movieType = {
     popular: 'popular',
     top_rated: 'top_rated',
     now_playing: 'now_playing',
-    trending: 'trending'
 
 }
 export const tvType = {
@@ -31,11 +30,19 @@ const tmdbApi = {
     }),
     getWatchProviders: ((tvId) => {
         const url = `https://api.themoviedb.org/3/tv/${tvId}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
-        return fetch(url).then(res => res.json()).then(data => console.log(data))
+        return fetch(url)
     }),
     getDetails: ((movieId) => {
         const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
-        return fetch(url).then(res => res.json()).then(data => console.log(data))
+        return fetch(url)
+    }),
+    getReviews: ((movieId) => {
+        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+        return fetch(url)
+    }),
+    getVideos: ((movieId) => {
+        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+        return fetch(url)
     }),
     getSearchResults: (async (searchQuery, cate, pageNum) => {
         const url = `${apiConfig.baseUrl}search/${category[cate]}?api_key=${apiConfig.apiKey}&language=en-US&query=${searchQuery}&page=${pageNum}&include_adult=false`

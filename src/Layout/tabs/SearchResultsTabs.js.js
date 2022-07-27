@@ -1,11 +1,11 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
-import { NavTab } from "./MaterialStyles";
+import { NavTab } from "../../Components/muiStyles/MaterialStyles";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import ResultsContent from "./ResultsContent";
-import {category} from '../api/tmdbApi'
+import ResultsContent from "../../Components/movieCategories/ResultsContent";
+import {category} from '../../api/tmdbApi'
 
 
 function TabPanel(props) {

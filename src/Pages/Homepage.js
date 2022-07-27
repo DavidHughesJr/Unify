@@ -1,10 +1,9 @@
 import React from "react";
-import { Dashboard, BoardCenter, BoardLeft, BoardRight } from "../Components/MaterialStyles";
-import CategoryTabs from "../Components/CategoryTabs.js";
-import VerticalNav from "../Components/VerticalNav";
-import PopularCategory from "../Components/PopularSubcategory";
-import SearchInput from "../Components/SearchInput";
-import { useState } from "react";
+import { Dashboard, BoardCenter, BoardLeft, BoardRight } from "../Components/muiStyles/MaterialStyles";
+import CategoryTabs from "../Layout/tabs/HomeTabs";
+import VerticalNav from "../Layout/navigation/VerticalNav";
+import PopularCategory from "../Components/movieCategories/PopularMoviesContent";
+import SearchInput from "../Components/common/SearchInput";
 
 function Homepage({ setHomepageSearch, homepageSearch }) {
 

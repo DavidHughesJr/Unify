@@ -10,7 +10,7 @@ import NetflixSearch from "./Pages/NetflixSearch"
 
 function App() {
 
-  const [homepageSearch, setHomepageSearch] = useState('hi') 
+  const [homepageSearch, setHomepageSearch] = useState('') 
   return (
     <Routes>
       <Route path="/" element={<Homepage setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />

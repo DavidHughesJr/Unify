@@ -1,8 +1,8 @@
-import { Dashboard, BoardCenter, BoardLeft, BoardRight } from "../Components/MaterialStyles";
-import VerticalNav from "../Components/VerticalNav";
-import PopularCategory from "../Components/PopularSubcategory";
-import SearchInput from "../Components/SearchInput";
-import SearchResultsTabs from "../Components/SearchResultsTabs.js";
+import { Dashboard, BoardCenter, BoardLeft, BoardRight } from "../Components/muiStyles/MaterialStyles";
+import VerticalNav from "../Layout/navigation/VerticalNav";
+import PopularCategory from "../Components/movieCategories/PopularMoviesContent";
+import SearchInput from "../Components/common/SearchInput";
+import SearchResultsTabs from "../Layout/tabs/SearchResultsTabs.js";
 
 function HomepageSearch({ setHomepageSearch, homepageSearch }) {
 

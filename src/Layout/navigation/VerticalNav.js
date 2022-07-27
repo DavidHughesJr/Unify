@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { NavTypography, NavTab } from "./MaterialStyles";
+import { NavTypography, NavTab } from "../../Components/muiStyles/MaterialStyles";
 import {
   Home,
   Stream,
@@ -25,7 +25,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
-import logo from '../imgs/unify-logo-min.png'; // Tell webpack this JS file uses this image
+import logo from '../../imgs/unify-logo-min.png';
 
 function Router(props) {
   const { children } = props;

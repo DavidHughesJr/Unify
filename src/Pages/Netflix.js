@@ -3,8 +3,8 @@ import {
   BoardCenter,
   BoardLeft,
   BoardRight,
-} from "../Components/MaterialStyles";
-import VerticalNav from "../Components/VerticalNav";
+} from "../Components/muiStyles/MaterialStyles";
+import VerticalNav from "../Layout/navigation/VerticalNav";
 
 function Netflix() {
   return (

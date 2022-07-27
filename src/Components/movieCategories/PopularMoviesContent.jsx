@@ -1,9 +1,9 @@
 import { React, useEffect, useState } from "react";
-import SearchInput from "./SearchInput";
+import SearchInput from "../common/SearchInput";
 import { Box, Button, Typography, Rating } from "@mui/material";
-import { apiConfig } from "../api/apiConfig";
-import tmdbApi, {category, movieType}  from "../api/tmdbApi";
-import { CategoryTypography } from "./MaterialStyles";
+import { apiConfig } from "../../api/apiConfig";
+import tmdbApi, {category, movieType}  from "../../api/tmdbApi";
+import { CategoryTypography } from "../muiStyles/MaterialStyles";
 
 
 

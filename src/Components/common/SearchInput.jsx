@@ -6,12 +6,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 
 
-
-
- 
-
-
-
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -65,7 +59,7 @@ export default function SearchInput({setHomepageSearch, homepageSearch}) {
         
 
         if (event.key === 'Enter') {
-            
+
             setHomepageSearch(event.target.value)
             navigate("/search", { replace: true });
             event.target.value = ''

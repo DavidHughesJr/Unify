@@ -1,10 +1,12 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
-import { NavTab } from "./MaterialStyles";
+import { NavTab } from  "../../Components/muiStyles/MaterialStyles"
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Subcategory from "./Subcategory";
+import NowPlayingContent from "../../Components/movieCategories/NowPlayingContent";
+import HeroSlider from "../../Components/hero/HeroSlider"
+import TopRatedMovies from "../../Components/movieCategories/TopRatedMovies"
 
 
 function TabPanel(props) {
@@ -58,7 +60,9 @@ export default function CategoryTabs() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <Subcategory/>
+                <HeroSlider />
+                <NowPlayingContent />
+                <TopRatedMovies /> 
             </TabPanel>
             <TabPanel value={value} index={1}>
                 Item Two
