@@ -66,7 +66,6 @@ export default function SearchInput({setHomepageSearch, homepageSearch}) {
               
         }
     };
-    console.log(homepageSearch)
     return (
         <Box sx={{ marginTop: '3rem', padding: '1rem' }}>
             <Box sx={{ flexGrow: 1, width: '100%'}}>

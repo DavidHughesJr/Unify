@@ -47,6 +47,10 @@ const tmdbApi = {
     getSearchResults: (async (searchQuery, cate, pageNum) => {
         const url = `${apiConfig.baseUrl}search/${category[cate]}?api_key=${apiConfig.apiKey}&language=en-US&query=${searchQuery}&page=${pageNum}&include_adult=false`
         return await fetch(url)
+    }),
+    getGenre: ((cate) => {
+        const url = `${apiConfig.baseUrl}genre/${category[cate]}/list?api_key=${apiConfig.apiKey}&language=en-US`
+        return fetch(url)
     })
 }
 

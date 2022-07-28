@@ -48,9 +48,13 @@ export const NavTab = styled(Tab)(() => ({
 export const NavLink = styled(Tab)(() => ({
   color: 'green'
 }));
-// Start Dashboard Styles 
+// Start Dashboard Styles
+export const HeroTypography = styled(Typography)(() => ({
+  margin: '.5rem', 
+  color: '#37456a', 
+}));
 export const CategoryTypography = styled(Typography)(() => ({
-  margin: '.5rem', color: '#37456a'
+  margin: '1rem 0.5rem', color: '#37456a'
 }));
 export const WatchNowBtn = styled(Button)(() => ({
   minHeight: '3rem !important',

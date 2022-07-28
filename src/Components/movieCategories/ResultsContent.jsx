@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { apiConfig } from "../../api/apiConfig"
 import tmdbApi, { category } from "../../api/tmdbApi"
 import { LinearProgress }from "@mui/material"
-import noImgPoster from '../../imgs/no-img-poster.jpg';
+import noImgPoster from '../../Assets/imgs/no-img-poster.jpg'
 
 const ResultsContent = ({ homepageSearch }) => {
     const [searchResults, setSearchResults] = useState([])
