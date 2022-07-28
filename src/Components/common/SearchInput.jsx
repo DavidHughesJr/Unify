@@ -60,6 +60,7 @@ export default function SearchInput({setHomepageSearch, homepageSearch}) {
 
         if (event.key === 'Enter') {
 
+            if(!event.target.value) return
             setHomepageSearch(event.target.value)
             navigate("/search", { replace: true });
             event.target.value = ''

@@ -4,7 +4,7 @@ import { Box, Button, Typography, Rating } from "@mui/material";
 import { apiConfig } from "../../api/apiConfig";
 import tmdbApi, {category, movieType}  from "../../api/tmdbApi";
 import { CategoryTypography } from "../../Assets/muiStyles/MaterialStyles";
-
+import { formatMergeGenre } from "../../helpers/formatters";
 
 
 
@@ -33,20 +33,14 @@ useEffect(() => {
         <Box sx={{padding: '1rem'}}>
            <CategoryTypography variant="subtitle2"> Popular </CategoryTypography> 
             {
-                popularMovies.map((movie) => {
-                    const formatGenres = movieGenres.filter((genre, i) => {
-                        const [ids] = movie.genre_ids
-                           // if undefined 
-                           
-                        return genre.id === ids
-                    }).map(genre => genre.name)
-
+                popularMovies.slice(0, 4).map((movie) => {
+                    const genre = formatMergeGenre(movie.genre_ids, movieGenres)
                     return <div style={{marginBottom: '1rem'}}>
                         <Box sx={{display: 'flex', gap: 1 }}>
                             <img style={{ width: '30%' }} src={apiConfig.w300Image(movie.poster_path)} alt="popular movies" />
                             <Box sx={{display: 'flex', flexDirection: 'column'}}>
                                 <Typography variant="subtitle2"> {movie.title}  </Typography>
-                                <Typography variant="caption"> {formatGenres} </Typography>
+                                <Typography variant="caption"> {genre.map(genre => genre.name + ' ')} </Typography>
                                 <Rating name="read-only" value={movie.vote_average / 2} readOnly sx={{ color: '#fa7c05'}} />
                             </Box>
                         </Box>

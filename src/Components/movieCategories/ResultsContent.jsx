@@ -17,9 +17,9 @@ const ResultsContent = ({ homepageSearch }) => {
                 const response = await tmdbApi.getSearchResults(homepageSearch, category.movie, pageNum)
                 const searchData = await response.json()
                 setSearchResults(searchData.results)
-                setLoadingProgress()
+                setLoadingProgress(true)
             } catch (error) {
-                console.log(error)
+                alert(error)
             }
         }
         getSearchResults()

@@ -30,7 +30,7 @@ export default function NewestSubcategory() {
                 const response = await tmdbApi.getMoviesList(movieType.upcoming, pageNum)
                 const data = await response.json()
                 setUpcomingMovies(data.results)
-                setLoadingProgress()
+                setLoadingProgress(true)
             } catch (error) {
                 console.error(error);
             }
