@@ -33,3 +33,6 @@ body {
 .MuiButton-root:hover {
   background-color: #e5eaf5 !important;
 }
+.DetailBackground {
+  background: url();
+}

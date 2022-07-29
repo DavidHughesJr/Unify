@@ -80,4 +80,11 @@ export const MoviesBtnContainer = styled(Box)(() => ({
   position: 'relative',
   bottom: '3.4rem'
 }));
+// Details
+export const DetailsContainer = styled(Box)(() => ({
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column'
+}));
+
 

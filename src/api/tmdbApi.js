@@ -28,12 +28,12 @@ const tmdbApi = {
         const url = `${apiConfig.baseUrl}tv/${tvType[type]}?api_key=${apiConfig.apiKey}&language=en-US&page=${pageNum}`
         return fetch(url)
     }),
-    getWatchProviders: ((tvId) => {
-        const url = `https://api.themoviedb.org/3/tv/${tvId}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+    getWatchProviders: ((category, id) => {
+        const url = `https://api.themoviedb.org/3/${category}/${id}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
         return fetch(url)
     }),
-    getDetails: ((movieId) => {
-        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+    getDetails: ((category, id) => {
+        const url = `https://api.themoviedb.org/3/${category}/${id}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
         return fetch(url)
     }),
     getReviews: ((movieId) => {
