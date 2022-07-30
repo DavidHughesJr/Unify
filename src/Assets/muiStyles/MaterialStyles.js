@@ -17,20 +17,42 @@ export const Dashboard = styled(Box)(() => ({
     '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
   },
 }));
+export const Board = styled(Box)(() => ({
+  width: "10%",
+  height: "100%",
+  overflow: 'scroll'
+}));
 export const BoardLeft = styled(Box)(() => ({
   width: "15%",
   height: "100%",
 }));
 export const BoardCenter = styled(Box)(() => ({
-  width: "66%",
+  width: "80%",
   height: "100%",
   overflow: 'scroll'
+}));
+export const BoardHero = styled(Box)(() => ({
+  width: "100%",
+  height: "50%",
 }));
 export const BoardRight = styled(Box)(() => ({
   width: "20%",
   height: "100%",
   borderLeft: "1px solid #e0e0e0",
 }));
+export const BoardBottom = styled(Box)(() => ({
+  width: "100%",
+  height: "50%",
+  overflow: 'scroll',
+  display: 'flex'
+
+}));
+export const DetailsBoard = styled(Box)(() => ({
+  width: '90%',
+  display: 'flex',
+  flexDirection: 'column'
+}));
+
 // Side Nav Bar Tabs
 export const NavTypography = styled(Typography)(() => ({
   color: "#77879e",
@@ -70,7 +92,6 @@ export const MoviesContainer = styled(Box)(() => ({
   display: 'flex', 
   width: "100%",
   overflow: 'hidden !IMPORTANT',
-
 }));
 export const MoviesContent = styled(Box)(() => ({
   backgroundColor:"grey",
@@ -80,11 +101,4 @@ export const MoviesBtnContainer = styled(Box)(() => ({
   position: 'relative',
   bottom: '3.4rem'
 }));
-// Details
-export const DetailsContainer = styled(Box)(() => ({
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column'
-}));
-
 

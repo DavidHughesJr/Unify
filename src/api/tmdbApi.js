@@ -36,12 +36,20 @@ const tmdbApi = {
         const url = `https://api.themoviedb.org/3/${category}/${id}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
         return fetch(url)
     }),
-    getReviews: ((movieId) => {
-        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+    getCredits: ((category, id) => {
+        const url = `https://api.themoviedb.org/3/${category}/${id}/credits?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
         return fetch(url)
     }),
-    getVideos: ((movieId) => {
-        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+    getMoreLikeThis: ((category, id) => {
+        const url = `https://api.themoviedb.org/3/${category}/${id}/similar?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+        return fetch(url)
+    }),
+    getReviews: ((category, id) => {
+        const url = `https://api.themoviedb.org/3/${category}${id}/reviews?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+        return fetch(url)
+    }),
+    getVideos: ((category, id) => {
+        const url = `https://api.themoviedb.org/3/${category}/${id}/videos?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
         return fetch(url)
     }),
     getSearchResults: (async (searchQuery, cate, pageNum) => {

@@ -35,7 +35,7 @@ useEffect(() => {
             {
                 popularMovies.slice(0, 4).map((movie) => {
                     const genre = formatMergeGenre(movie.genre_ids, movieGenres)
-                    return <div style={{marginBottom: '1rem'}}>
+                    return  <div style={{marginBottom: '1rem'}}>
                         <Box sx={{display: 'flex', gap: 1 }}>
                             <img style={{ width: '30%' }} src={apiConfig.w300Image(movie.poster_path)} alt="popular movies" />
                             <Box sx={{display: 'flex', flexDirection: 'column'}}>

@@ -3,15 +3,15 @@ import { useParams } from "react-router-dom";
 import { Box, style } from "@mui/system";
 import tmdbApi  from "../../api/tmdbApi";
 import { apiConfig } from "../../api/apiConfig";
+import { Typography } from "@mui/material";
 
 
 
 
 export default function Details() {
-    const [selectedDetails, setSelectedDetails] = useState([])
+    const [details, setSelectedDetails] = useState([])
     let {category, id} = useParams();
 
-   console.log(category, id)
 
     useEffect(() => {
 
@@ -22,7 +22,7 @@ export default function Details() {
                 const detailsData = await res.json()
                 console.log(detailsData)
                 setSelectedDetails(detailsData)
-
+                console.log(detailsData)
 
             } catch (error) {
                 console.error(error);
@@ -34,19 +34,18 @@ export default function Details() {
 
     const styles = {
         detailsBackground: {
-            backgroundImage: `url(${apiConfig.originalImage(selectedDetails.backdrop_path)})`,
+            backgroundImage: `url(${apiConfig.originalImage(details.backdrop_path)})`,
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
-            backgroundAttachment: 'fixed',
-            height: '100vh',
-            width: '100vw',
+            height: '100%',
+            width: '100%',
         }
     };
     
     return (
         <Box style={styles.detailsBackground}>
-            <Box>
+            <Box sx={{ backgroundColor: 'black', width: '100%', height: '100%', opacity: 0.4 }} >                
             </Box>
         </Box>
     )

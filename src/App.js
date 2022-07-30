@@ -4,7 +4,7 @@ import Homepage from "./Pages/Homepage";
 import Netflix from "./Pages/Netflix";
 import HomepageSearch from "./Pages/HomepageSearch"
 import NetflixSearch from "./Pages/NetflixSearch"
-import Details from "./Pages/Details"
+import Detailspage from "./Pages/Detailspage"
 
 
 
@@ -18,7 +18,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Homepage setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />
       <Route path="/search" element={<HomepageSearch setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />
-      <Route path="search/:category/:id" element={<Details />} />
+      <Route path="search/:category/:id" element={<Detailspage />} />
       <Route path="/netflix" element={<Netflix />} />
       <Route path="/netflix/search" element={<NetflixSearch />} />  
     </Routes>
