@@ -5,7 +5,6 @@ import Bookmarker from "../common/Bookmarker"
 import Link from "@mui/material/Link"
 import { MoviesBtnContainer, MoviesContainer, WatchNowBtn, CategoryTypography } from "../../Assets/muiStyles/MaterialStyles"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper'
 import 'swiper/css';
 import tmdbApi, { tvType } from "../../api/tmdbApi"
 import { movieType, category, tvList } from "../../api/tmdbApi"
@@ -51,7 +50,7 @@ export default function NowPlayingContent() {
                                 <SwiperSlide>
                                     <div style={{ width: '100%' }}>
                                         <img style={{ objectFit: 'cover', height: '100%', width: '100%' }} src={`${apiConfig.originalImage(movie.backdrop_path)}`} alt="New movies" />
-                                        <div style={{ position: 'relative', bottom: '3.2rem', left: '5%' }}>
+                                        <div style={{ position: 'relative', bottom: '4.4rem', left: '5%' }}>
                                             <Link sx={{ textDecoration: 'none' }}>
                                                 <Typography sx={{ color: 'white', fontWeight: 'bold', textShadow: '0 0 5px black' }} variant="subtitle2"> {movie.title} </Typography>
                                                 <Typography sx={{ color: '#e71d60', fontWeight: 'bold' }} variant="subtitle2"> <Moment date={movieDate} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /> </Typography>

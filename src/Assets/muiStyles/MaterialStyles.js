@@ -43,14 +43,13 @@ export const BoardRight = styled(Box)(() => ({
 export const BoardBottom = styled(Box)(() => ({
   width: "100%",
   height: "50%",
-  overflow: 'scroll',
-  display: 'flex'
 
 }));
 export const DetailsBoard = styled(Box)(() => ({
-  width: '90%',
+  width: '87%',
   display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  overflow: 'scroll'
 }));
 
 // Side Nav Bar Tabs

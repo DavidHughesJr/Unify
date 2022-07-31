@@ -29,7 +29,7 @@ const tmdbApi = {
         return fetch(url)
     }),
     getWatchProviders: ((category, id) => {
-        const url = `https://api.themoviedb.org/3/${category}/${id}?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+        const url = `https://api.themoviedb.org/3/${category}/${id}/watch/providers?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644`
         return fetch(url)
     }),
     getDetails: ((category, id) => {
@@ -41,7 +41,7 @@ const tmdbApi = {
         return fetch(url)
     }),
     getMoreLikeThis: ((category, id) => {
-        const url = `https://api.themoviedb.org/3/${category}/${id}/similar?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+        const url = `https://api.themoviedb.org/3/${category}/${id}/similar?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&page=1`
         return fetch(url)
     }),
     getReviews: ((category, id) => {

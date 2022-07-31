@@ -8,9 +8,10 @@ import { Typography } from "@mui/material";
 
 
 
-export default function Details() {
+export default function DetailsInfoHero() {
     const [details, setSelectedDetails] = useState([])
     let {category, id} = useParams();
+    
 
 
     useEffect(() => {
@@ -20,9 +21,9 @@ export default function Details() {
                 
                 const res = await tmdbApi.getDetails(category, id)
                 const detailsData = await res.json()
-                console.log(detailsData)
+        
                 setSelectedDetails(detailsData)
-                console.log(detailsData)
+               
 
             } catch (error) {
                 console.error(error);
@@ -40,12 +41,13 @@ export default function Details() {
             backgroundSize: 'cover',
             height: '100%',
             width: '100%',
+            borderRadius: '0 0 0 3rem'
         }
     };
     
     return (
         <Box style={styles.detailsBackground}>
-            <Box sx={{ backgroundColor: 'black', width: '100%', height: '100%', opacity: 0.4 }} >                
+            <Box sx={{ backgroundColor: 'black', width: '100%', height: '100%', opacity: 0.4, borderRadius: '0 0 0 3rem'}} >                
             </Box>
         </Box>
     )

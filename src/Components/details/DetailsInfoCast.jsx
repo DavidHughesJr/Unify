@@ -8,12 +8,14 @@ import { Box, CardActionArea } from '@mui/material';
 import { apiConfig } from '../../api/apiConfig';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import Paper from '@mui/material/Paper';
+import { margin } from '@mui/system';
 export default function CastInfoCard({ cast }) {
 
 
     return (
 
-        <Box sx={{ display: "flex", width: "100%", minHeight: '20rem' }}>
+        <Box sx={{ display: "flex", width: "100%", minHeight: '22rem' }}>
             <Swiper
                 spaceBetween={10}
                 slidesPerView={6}
@@ -22,24 +24,25 @@ export default function CastInfoCard({ cast }) {
                     cast.map((cast) => {
                         return (
                             <SwiperSlide>
-                                <Card key={cast.cast_id} sx={{ maxWidth: 200, }}>
+                                <Box key={cast.cast_id} sx={{ maxWidth: 200 }}>
                                     <CardActionArea>
                                         <CardMedia
                                             component="img"
                                             height="200"
                                             image={apiConfig.w300Image(cast.profile_path)}
-                                            alt=''
+                                            alt={cast.name}
+                                           
                                         />
-                                        <CardContent sx={{ minHeight: '5rem' }}>
+                                        <Box sx={{ minHeight: '6rem', marginTop: '1rem' }}>
                                             <Typography gutterBottom variant="body" component="div">
                                                 {cast.name}
                                             </Typography>
                                             <Typography variant="caption" color="text.secondary">
                                                 {cast.character}
                                             </Typography>
-                                        </CardContent>
+                                        </Box>
                                     </CardActionArea>
-                                </Card>
+                                </Box>
                             </SwiperSlide>
                         )
                     })

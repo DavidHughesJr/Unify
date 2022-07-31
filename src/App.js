@@ -19,6 +19,7 @@ function App() {
       <Route path="/" element={<Homepage setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />
       <Route path="/search" element={<HomepageSearch setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />
       <Route path="search/:category/:id" element={<Detailspage />} />
+      <Route path="/:category/:id" element={<Detailspage />} />
       <Route path="/netflix" element={<Netflix />} />
       <Route path="/netflix/search" element={<NetflixSearch />} />  
     </Routes>
