@@ -35,7 +35,7 @@ const ResultsContent = ({ homepageSearch }) => {
                     {searchResults.map((results) => (
                         
                         <Grid item xs={6} sm={2} md={3} key={results.id}>
-                            <Link to={`${category.movie}/${results.id}`}> 
+                            <Link to={`../${category.movie}/${results.id}`}> 
                             <div style={{ width: '100%', height: '100%', }}>
                                 <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={results.poster_path ? apiConfig.w300Image(results.poster_path) : noImgPoster } alt="searched movies" />
                             </div>

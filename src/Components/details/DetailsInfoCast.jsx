@@ -10,8 +10,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Paper from '@mui/material/Paper';
 import { margin } from '@mui/system';
-export default function CastInfoCard({ cast }) {
+import { Link } from 'react-router-dom';
+import { person } from "../../api/tmdbApi"
 
+
+
+export default function CastInfoCard({ cast }) {
 
     return (
 
@@ -24,6 +28,7 @@ export default function CastInfoCard({ cast }) {
                     cast.map((cast) => {
                         return (
                             <SwiperSlide>
+                                <Link to={`../${person}/${cast.id}`} style={{textDecoration: 'none', color: "black"}}> 
                                 <Box key={cast.cast_id} sx={{ maxWidth: 200 }}>
                                     <CardActionArea>
                                         <CardMedia
@@ -43,6 +48,7 @@ export default function CastInfoCard({ cast }) {
                                         </Box>
                                     </CardActionArea>
                                 </Box>
+                                </Link>
                             </SwiperSlide>
                         )
                     })

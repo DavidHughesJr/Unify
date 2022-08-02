@@ -36,3 +36,6 @@ body {
 .DetailBackground {
   background: url();
 }
+.swiper-pagination-bullet-active {
+ background-color: #e71d60; 
+}

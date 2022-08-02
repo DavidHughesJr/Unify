@@ -4,8 +4,10 @@ import { apiConfig } from "./apiConfig";
 
 export const category = {
     movie: 'movie',
-    tv: 'tv'
+    tv: 'tv',
 }
+export const person = 'person'
+
 export const movieType = {
     upcoming: 'upcoming',
     popular: 'popular',
@@ -40,12 +42,12 @@ const tmdbApi = {
         const url = `https://api.themoviedb.org/3/${category}/${id}/credits?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
         return fetch(url)
     }),
-    getMoreLikeThis: ((category, id) => {
-        const url = `https://api.themoviedb.org/3/${category}/${id}/similar?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&page=1`
+    getPeopleInfo: ((id) => {
+        const url = `https://api.themoviedb.org/3/person/${id}?api_key=${apiConfig.apiKey}&language=en-US&append_to_response=movie_credits,tv_credits,images`
         return fetch(url)
     }),
-    getReviews: ((category, id) => {
-        const url = `https://api.themoviedb.org/3/${category}${id}/reviews?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+    getMoreLikeThis: ((category, id) => {
+        const url = `https://api.themoviedb.org/3/${category}/${id}/similar?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&page=1`
         return fetch(url)
     }),
     getVideos: ((category, id) => {
@@ -59,7 +61,11 @@ const tmdbApi = {
     getGenre: ((cate) => {
         const url = `${apiConfig.baseUrl}genre/${category[cate]}/list?api_key=${apiConfig.apiKey}&language=en-US`
         return fetch(url)
-    })
+    }),
+    getReviews: ((category, id) => {
+        const url = `https://api.themoviedb.org/3/${category}${id}/reviews?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+        return fetch(url)
+    }),
 }
 
 
