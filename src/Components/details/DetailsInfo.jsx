@@ -72,11 +72,13 @@ export default function DetailsInfo() {
 
 
     // Convert mins to hours & mins
-    const detailsReleaseDate = formatDataDate(details.release_date)
+    const detailsReleaseDate = formatDataDate(details.release_date ? details.release_date : details.first_air_date)
+    const detailsLastAir = formatDataDate(details.last_air_date)
+    console.log(detailsLastAir)
     const detailHrs = Math.floor(details.runtime / 60)
     const detailMins = details.runtime % 60
 
-
+    console.log(details)
 
     return (
         <Box>
@@ -86,16 +88,19 @@ export default function DetailsInfo() {
                         <img style={{ width: '100%' }} src={apiConfig.w300Image(details.poster_path)} alt="poster img" />
                     </Box>
                     <Typography variant="subtitle2"> <Moment date={detailsReleaseDate} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /> </Typography>
-                    <Typography variant="subtitle2"> {detailHrs === 0 ? '' : detailHrs} Hour {detailMins} Min  </Typography>
+                  {
+                        details.runtime ? <Typography variant="subtitle2"> {detailHrs === 0 ? '' : detailHrs} Hour {detailMins} Min  </Typography> : <Typography variant="subtitle2"> Last Air <Moment date={detailsLastAir} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /></Typography> 
+                  }
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography variant="h2">  {details.title}</Typography>
                     <Typography variant="body">  </Typography>
                     <Box sx={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
-                        <Link sx={{ textDecoration: 'none' }} target="_blank" href={`https://www.youtube.com/watch?v=${videos.key}`}>
-                            <Button sx={{ backgroundColor: Colors.primaryBtn }} variant="contained"> Watch Trailer </Button>
-                        </Link>
-
+                        {
+                            videos ? <Link sx={{ textDecoration: 'none' }} target="_blank" href={`https://www.youtube.com/watch?v=${videos.key}`}>
+                                <Button sx={{ backgroundColor: Colors.primaryBtn }} variant="contained"> Watch Trailer </Button>
+                            </Link> : ''
+                        }
                         <Bookmarker />
                         <Button sx={{ color: Colors.primaryBtn, border: `1px solid ${Colors.primaryBtn}` }} variant="outlined"> <ShareIcon /> </Button>
                     </Box>
@@ -116,10 +121,10 @@ export default function DetailsInfo() {
                                 {companyDetails.name}
                             </Typography>
                             <Typography>
-                                Budget: {moneyFormatter.format(details.budget)}
+                                {details.budget ? `Budget: ${moneyFormatter.format(details.budget)}` : `Seasons: ${details.number_of_seasons}`}
                             </Typography>
                             <Typography>
-                                Revenue: {moneyFormatter.format(details.revenue)}
+                                {details.revenue ? `Revenue: ${moneyFormatter.format(details.revenue) }` : `Number of Episodes: ${details.number_of_episodes}`}
                             </Typography>
                         </Box>
                     </Box>

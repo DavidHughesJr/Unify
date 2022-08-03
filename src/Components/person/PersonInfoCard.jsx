@@ -11,7 +11,7 @@ import Moment from "react-moment"
 
 export default function PersonInfoCard({ info }) {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, maxHeight: '60%' }}>
             <CardMedia
                 component="img"
                 height="300"
@@ -37,9 +37,8 @@ export default function PersonInfoCard({ info }) {
             </CardContent>
             <CardActions>
                 {
-                    
+                    info.imdb_id ? <Link style={{ textDecoration: 'none' }} href={`https://www.imdb.com/name/${info.imdb_id}`} target="_blank">   <Button size="small">imdb</Button> </Link> : ''
                 }
-                <Link style={{ textDecoration: 'none' }} href={`https://www.imdb.com/name/${info.imdb_id}`} target="_blank">   <Button size="small">imdb</Button> </Link>
             </CardActions>
         </Card>
     );

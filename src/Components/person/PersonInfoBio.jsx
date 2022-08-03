@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 
 export default function PersonInfoBio({ info }) {
-    console.log(info)
+
     return (    
         <Box sx={{padding: '2rem'}}>
             <Typography variant='subtitle2'>

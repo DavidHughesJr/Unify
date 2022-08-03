@@ -11,8 +11,6 @@ import "swiper/css/pagination";
 
 export default function PersonInfoGallery({ images }) {
 
-console.log(images)
-
     return (
         <Box sx={{padding: "2rem"}}>
             <Swiper
