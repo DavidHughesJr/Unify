@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import tmdbApi from "../../api/tmdbApi";
 import PersonInfoCard from "./PersonInfoCard"
+import PersonInfoCardExtra from "./PersonInfoCardExtra"
 import PersonInfoBio from "./PersonInfoBio"
 import PersonInfoGallery from "./PersonInfoGallery"
 import { Box, Paper, Typography } from "@mui/material";
@@ -47,7 +48,10 @@ export default function PersonInfo() {
             {
                 isLoading ? <LinearProgress sx={{ width: '100%', marginTop: '4rem',color: "#e71d60"}} color="inherit"/> :
                     <Box sx={{display: 'flex', width: '100%', padding: '2rem', gap: '1rem', overflow: 'hidden' }}>
-                        <PersonInfoCard info={personInfo} />
+                       <Box>
+                            <PersonInfoCard info={personInfo} />
+                            <PersonInfoCardExtra info={personInfo} />
+                       </Box>
                         <Paper elevation={2} variant="outlined" sx={{ width: '80%', overflow: 'scroll'}}>
                             <PersonInfoGallery images={personImages} />
                             <PersonInfoBio info={personInfo} />

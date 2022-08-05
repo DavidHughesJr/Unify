@@ -2,7 +2,7 @@ import { Dashboard, BoardCenter, BoardLeft, BoardRight } from "../Assets/muiStyl
 import VerticalNav from "../Layout/navigation/VerticalNav";
 import PopularCategory from "../Components/popular/PopularInfoRightRow";
 import SearchInput from "../Components/common/SearchInput";
-import SearchResultsTabs from "../Layout/tabs/SearchResultsTabs.js";
+import PopularTabs from "../Layout/tabs/PopularTabs.js";
 
 function HomepageSearch({ setHomepageSearch, homepageSearch }) {
 
@@ -12,11 +12,10 @@ function HomepageSearch({ setHomepageSearch, homepageSearch }) {
                 <VerticalNav />
             </BoardLeft>
             <BoardCenter>
-                <SearchResultsTabs homepageSearch={homepageSearch} />
+                <PopularTabs /> 
             </BoardCenter>
             <BoardRight>
                 <SearchInput setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />
-                <PopularCategory />
             </BoardRight>
         </Dashboard>
     );

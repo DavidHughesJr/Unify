@@ -4,9 +4,8 @@ import Tabs from "@mui/material/Tabs";
 import { NavTab } from  "../../Assets/muiStyles/MaterialStyles"
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import NowPlayingContent from "../../Components/movieCategories/NowPlayingContent";
-import HeroSlider from "../../Components/hero/HeroSlider"
-import TopRatedMovies from "../../Components/movieCategories/TopRatedMovies"
+import HomeMovieInfo from "../../Components/home/HomeMovieInfo";
+import HomeTvShowInfo from "../../Components/home/HomeTvShowInfo";
 
 
 function TabPanel(props) {
@@ -41,7 +40,7 @@ function a11yProps(index) {
     };
 }
 
-export default function CategoryTabs() {
+export default function HomepageTabs() {
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -60,12 +59,10 @@ export default function CategoryTabs() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <HeroSlider />
-                <NowPlayingContent />
-                <TopRatedMovies /> 
+                <HomeMovieInfo /> 
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
+            <HomeTvShowInfo /> 
             </TabPanel>
         </Box>
     );

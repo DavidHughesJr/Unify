@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import { margin } from '@mui/system';
 import { Link } from 'react-router-dom';
 import { person } from "../../api/tmdbApi"
+import noImgPoster from '../../Assets/imgs/no-img-poster.jpg'
 
 
 
@@ -28,26 +29,25 @@ export default function CastInfoCard({ cast }) {
                     cast.map((cast) => {
                         return (
                             <SwiperSlide>
-                                <Link to={`../${person}/${cast.id}`} style={{textDecoration: 'none', color: "black"}}> 
-                                <Box key={cast.cast_id} sx={{ maxWidth: 200 }}>
-                                    <CardActionArea>
-                                        <CardMedia
-                                            component="img"
-                                            height="200"
-                                            image={apiConfig.w300Image(cast.profile_path)}
-                                            alt={cast.name}
-                                           
-                                        />
-                                        <Box sx={{ minHeight: '6rem', marginTop: '1rem' }}>
-                                            <Typography gutterBottom variant="body" component="div">
-                                                {cast.name}
-                                            </Typography>
-                                            <Typography variant="caption" color="text.secondary">
-                                                {cast.character}
-                                            </Typography>
-                                        </Box>
-                                    </CardActionArea>
-                                </Box>
+                                <Link to={`../${person}/${cast.id}`} style={{ textDecoration: 'none', color: "black" }}>
+                                    <Box key={cast.cast_id} sx={{ maxWidth: 200 }}>
+                                        <CardActionArea>
+                                            <CardMedia
+                                                component="img"
+                                                height="200"
+                                                image={cast.profile_path ? apiConfig.w500Image(cast.profile_path) : noImgPoster}
+                                                alt={cast.name}
+                                            />
+                                            <Box sx={{ minHeight: '6rem', marginTop: '1rem' }}>
+                                                <Typography gutterBottom variant="body" component="div">
+                                                    {cast.name}
+                                                </Typography>
+                                                <Typography variant="caption" color="text.secondary">
+                                                    {cast.character}
+                                                </Typography>
+                                            </Box>
+                                        </CardActionArea>
+                                    </Box>
                                 </Link>
                             </SwiperSlide>
                         )

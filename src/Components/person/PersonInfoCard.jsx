@@ -23,7 +23,7 @@ export default function PersonInfoCard({ info }) {
                     {info.name}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary">
-                    Birthplace: {info.place_of_birth}
+                    {info.place_of_birth ? `Birthplace : ${info.place_of_birth}` : ''}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary">
                     Birthday: <Moment date={info.birthday} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle />
@@ -34,8 +34,8 @@ export default function PersonInfoCard({ info }) {
                 <Typography variant="subtitle2" color="text.secondary">
                     Known For:  {info.known_for_department}
                 </Typography>
-            </CardContent>
-            <CardActions>
+                </CardContent>
+                <CardActions>
                 {
                     info.imdb_id ? <Link style={{ textDecoration: 'none' }} href={`https://www.imdb.com/name/${info.imdb_id}`} target="_blank">   <Button size="small">imdb</Button> </Link> : ''
                 }

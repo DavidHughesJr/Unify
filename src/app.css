@@ -39,3 +39,6 @@ body {
 .swiper-pagination-bullet-active {
  background-color: #e71d60; 
 }
+.swiper-wrapper {
+  min-width: 110rem;
+}

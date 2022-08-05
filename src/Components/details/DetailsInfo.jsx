@@ -36,6 +36,8 @@ export default function DetailsInfo() {
                 const detailsData = await resDetails.json()
                 setSelectedDetails(detailsData)
 
+                
+
                 // get cast members
                 const resCast = await tmdbApi.getCredits(category, id)
                 const creditsData = await resCast.json()
@@ -74,11 +76,8 @@ export default function DetailsInfo() {
     // Convert mins to hours & mins
     const detailsReleaseDate = formatDataDate(details.release_date ? details.release_date : details.first_air_date)
     const detailsLastAir = formatDataDate(details.last_air_date)
-    console.log(detailsLastAir)
     const detailHrs = Math.floor(details.runtime / 60)
     const detailMins = details.runtime % 60
-
-    console.log(details)
 
     return (
         <Box>
@@ -132,13 +131,14 @@ export default function DetailsInfo() {
             </Box>
             <Box sx={{ margin: '4rem' }}>
                 <Typography variant="subtitle2"> More Like This  </Typography>
-                <DetailsMoreLikeThis />
+                {/* <DetailsMoreLikeThis /> */}
             </Box>
             <Box sx={{ margin: '4rem', overflow: 'hidden', minHeight: '20rem', }}>
                 <Typography variant="subtitle2"> Cast </Typography>
                 <CastInfoCard cast={cast} />
             </Box>
         </Box>
+        
 
     )
 }
