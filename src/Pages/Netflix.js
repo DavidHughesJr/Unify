@@ -5,6 +5,7 @@ import {
   BoardRight,
 } from "../Assets/muiStyles/MaterialStyles";
 import VerticalNav from "../Layout/navigation/VerticalNav";
+import StreamingService from "../Components/stream/StreamingService"
 
 function Netflix() {
   return (
@@ -12,7 +13,9 @@ function Netflix() {
       <BoardLeft>
         <VerticalNav />
       </BoardLeft>
-      <BoardCenter> <div> netflix </div></BoardCenter>
+      <BoardCenter>
+        <StreamingService />
+      </BoardCenter>
       <BoardRight></BoardRight>
     </Dashboard>
   );

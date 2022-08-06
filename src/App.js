@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,  } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
 import Netflix from "./Pages/Netflix";
 import HomepageSearch from "./Pages/HomepageSearch"
@@ -19,7 +19,7 @@ function App() {
       <Route path="/popular" element={<Popularpage setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />
       <Route path="/:category/:id" element={<Detailspage />} />
       <Route path="/person/:id" element={<Personpage />} />
-      <Route path="/netflix" element={<Netflix />} />
+      <Route path="/:navItems2/:navItems2*" element={<Netflix />} />
     </Routes>
   );
 }

@@ -26,6 +26,9 @@ import {
 } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
 import logo from '../../Assets/imgs/unify-logo-min.png';
+import { navItem } from "../../helpers/navItems";
+import { navItems2 } from "../../helpers/navItems";
+
 
 function Router(props) {
   const { children } = props;
@@ -93,14 +96,16 @@ function a11yProps(index) {
 }
 
 export default function VerticalNav() {
-    const routeMatch = useRouteMatch(["/", "/netflix", "/hulu"]);
-    const currentTab = routeMatch?.pattern?.path;
+  const routeMatch = useRouteMatch(["/", `${navItem.netflix}`, `${navItem.hulu}`, `${navItem.amazonPrime}`, `${navItem.disneyPlus}`]);
+  const currentTab = routeMatch?.pattern?.path;
   const [value, setValue] = React.useState(0);
-  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    console.log(newValue)
   };
+
+
 
   return (
     <Box
@@ -124,15 +129,15 @@ export default function VerticalNav() {
         variant="scrollable"
         value={currentTab}
         onChange={handleChange}
-        aria-label="Vertical tabs example"
+        aria-label="Vertical tabs"
       >
         <NavTypography> Menu
         </NavTypography>
         <NavTab icon={<Home />} label="Home" value="/" to="/" component={Link} />
-        <NavTab icon={<Stream />} label="Netflix" value="/netflix" to="/netflix" component={Link}/>
-        <NavTab icon={<OndemandVideo />} label="Hulu" value="/hulu" to="/hulu" component={Link} />
-        <NavTab icon={<Movie />} label="Amazon Prime" {...a11yProps(3)} />
-        <NavTab icon={<Airplay />} label="Disney Plus" {...a11yProps(4)} />
+        <NavTab icon={<Stream />} label="Netflix " value={`${navItem.netflix}`} to={`../${navItems2[0].name}/${navItems2[0].id}`} component={Link} />
+        <NavTab icon={<OndemandVideo />} label="Hulu" value={`${navItem.hulu}`} to={`../${navItem.hulu}`} component={Link} />
+        <NavTab icon={<Movie />} label="Amazon Prime" value={`${navItem.amazonPrime}`} to={`../${navItem.amazonPrime}`} component={Link} />
+        <NavTab icon={<Airplay />} label="Disney Plus" value={`${navItem.disneyPlus}`} to={`../${navItem.disneyPlus}`} component={Link} />
         <NavTypography> Library </NavTypography>
         <NavTab icon={<Undo />} label="Recent" {...a11yProps(2)} />
         <NavTab icon={<Bookmarks />} label="Bookmarks" {...a11yProps(3)} />

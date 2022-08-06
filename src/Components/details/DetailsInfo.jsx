@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { style } from "@mui/system";
 import tmdbApi from "../../api/tmdbApi";
 import { apiConfig } from "../../api/apiConfig";
 import { Box, Paper, Typography } from "@mui/material";
@@ -78,7 +77,7 @@ export default function DetailsInfo() {
     const detailsLastAir = formatDataDate(details.last_air_date)
     const detailHrs = Math.floor(details.runtime / 60)
     const detailMins = details.runtime % 60
-
+    console.log(category)
     return (
         <Box>
             <Box sx={{ margin: '4rem', display: 'flex' }}>
@@ -120,10 +119,13 @@ export default function DetailsInfo() {
                                 {companyDetails.name}
                             </Typography>
                             <Typography>
-                                {details.budget ? `Budget: ${moneyFormatter.format(details.budget)}` : `Seasons: ${details.number_of_seasons}`}
+                                {category === 'movie'? `Budget: ${moneyFormatter.format(details.budget)}` : `Seasons: ${details.number_of_seasons}`}
                             </Typography>
                             <Typography>
-                                {details.revenue ? `Revenue: ${moneyFormatter.format(details.revenue) }` : `Number of Episodes: ${details.number_of_episodes}`}
+                                {category === 'movie' ? `Revenue: ${moneyFormatter.format(details.revenue) }` : `Number of Episodes: ${details.number_of_episodes}`}
+                            </Typography>
+                            <Typography variant="caption">
+                                {details.revenue === 0 ? 'Revenue Not Yet Available' : ''}
                             </Typography>
                         </Box>
                     </Box>

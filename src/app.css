@@ -42,3 +42,11 @@ body {
 .swiper-wrapper {
   min-width: 110rem;
 }
+.see-more {
+  opacity: 0;
+}
+.swiper-scrollbar {
+  background-color:  #e5eaf5;
+  position: absolute;
+  height: 2px !important;
+}
