@@ -42,7 +42,7 @@ export default function StreamingServiceTvShows() {
             <CategoryTypography variant="subtitle2"> Popular </CategoryTypography>
             <InfoGrid data={streamInfoByPopular} />
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}>
-                <Pagination onChange={handleChangePage} count={100} />
+                <Pagination onChange={handleChangePage} count={50} />
             </Box>
         </Box>
     )

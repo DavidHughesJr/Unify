@@ -31,7 +31,7 @@ export default function BackDropSlider({ data, title }) {
                             return (
                                 <SwiperSlide>
                                     <Link to={`../${data.first_air_date ? category.tv : category.movie}/${data.id}`} style={{ textDecoration: 'none' }}>
-                                        <div style={{ width: '100%' }}>
+                                        <div style={{ width: '100%', height: '100%' }}>
                                             <img style={{ objectFit: 'cover', height: '100%', width: '100%' }} src={data.backdrop_path ? apiConfig.originalImage(data.backdrop_path) : noImgPoster} alt="movies and tv show images" /> 
                                             <div style={{ position: 'relative', bottom: '4.4rem', left: '5%' }}>
                                                 <Typography sx={{ color: 'white', fontWeight: 'bold', textShadow: '0 0 5px black' }} variant="subtitle2"> {data.title ? data.title : data.name} </Typography>

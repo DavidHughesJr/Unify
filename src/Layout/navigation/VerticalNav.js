@@ -140,11 +140,7 @@ export default function VerticalNav() {
         <NavTab icon={<Undo />} label="Recent" {...a11yProps(2)} />
         <NavTab icon={<Bookmarks />} label="Bookmarks" {...a11yProps(3)} />
         <NavTypography> Genres </NavTypography>
-        <NavTab
-          icon={<SentimentVerySatisfied />}
-          label="Comedy"
-          {...a11yProps(4)}
-        />
+        <NavTab icon={<SentimentVerySatisfied />} label="Comedy" value={`genre/comedy`} to={`../genre/comedy`} component={Link} />
         <NavTab icon={<FormatSize />} label="Thriller" {...a11yProps(4)} />
         <NavTab icon={<Favorite />} label="Romance" {...a11yProps(4)} />
         <NavTab icon={<Chair />} label="Reality Tv" {...a11yProps(4)} />

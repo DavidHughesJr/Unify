@@ -62,6 +62,10 @@ const tmdbApi = {
         const url = `${apiConfig.baseUrl}search/${category[cate]}?api_key=${apiConfig.apiKey}&language=en-US&query=${searchQuery}&page=${pageNum}&include_adult=false`
         return await fetch(url)
     }),
+    getSearchFilter: ((category, id, pageNum) => {
+        const url = `https://api.themoviedb.org/3/discover/tv?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&sort_by=${category}&page=${pageNum}&timezone=America%2FNew_York&&with_genres=${id}`
+        return fetch(url)
+    }),
     getGenre: ((cate) => {
         const url = `${apiConfig.baseUrl}genre/${category[cate]}/list?api_key=${apiConfig.apiKey}&language=en-US`
         return fetch(url)
@@ -76,6 +80,14 @@ const tmdbApi = {
     }),
     getStreamingTvShows: ((category, id, id2, pageNum) => {
         const url = `https://api.themoviedb.org/3/discover/tv?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&sort_by=${category}&page=${pageNum}&timezone=America%2FNew_York&with_networks=${id}&with_watch_providers=${id2}`
+        return fetch(url)
+    }),
+    getMoviesGenres: ((category, pageNum, id, date) => {
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&sort_by=${category}&page=${pageNum}&timezone=America%2FNew_York&&with_genres=${id}&primary_release_date.lte=${date}`
+        return fetch(url)
+    }),
+    getTvShowGenres: ((category, pageNum, id) => {
+        const url = `https://api.themoviedb.org/3/discover/tv?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&sort_by=${category}&page=${pageNum}&timezone=America%2FNew_York&with_genres=${id}`
         return fetch(url)
     }),
 }
