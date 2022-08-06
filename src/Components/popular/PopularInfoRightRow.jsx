@@ -44,19 +44,26 @@ export default function PopularCategory() {
             {
                 popularMovies.slice(0, 4).map((movie) => {
                     const genre = formatMergeGenre(movie.genre_ids, movieGenres)
-                    return <div style={{ marginBottom: '1rem' }}>
-                        <Box sx={{ display: 'flex', gap: 1 }}>
-                            <img style={{ width: '30%' }} src={apiConfig.w300Image(movie.poster_path)} alt="popular movies" />
-                            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                <Typography variant="subtitle2"> {movie.title}  </Typography>
-                                <Typography variant="caption"> {genre.map(genre => genre.name + ' ')} </Typography>
-                                <Rating name="read-only" value={movie.vote_average / 2} readOnly sx={{ color: '#fa7c05' }} />
-                            </Box>
-                        </Box>
-                    </div>
+                    return (
+                            <div style={{ marginBottom: '1rem' }}>
+                            <Link to={`../${movie.first_air_date ? category.tv : category.movie}/${movie.id}`} style={{ textDecoration: 'none', color: 'black'}}>
+                                <Box sx={{ display: 'flex', gap: 1 }}>
+                            
+                                    <img style={{ width: '30%' }} src={apiConfig.w300Image(movie.poster_path)} alt="popular movies" />
+                              
+                                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                        
+                                        <Typography variant="subtitle2"> {movie.title}  </Typography>
+                                        <Typography variant="caption"> {genre.map(genre => genre.name + ' ')} </Typography>
+                                        <Rating name="read-only" value={movie.vote_average / 2} readOnly sx={{ color: '#fa7c05' }} />
+                                    </Box>
+                                </Box>
+                            </Link>
+                            </div>
+                    )
                 })
             }
-            <Button onClick={() => goToPopularPage()}   size="medium" sx={{ backgroundColor: '#fde8ef', color: '#e71d60', width: '100%', textTransform: 'none' }} variant="text"> See More </Button>
+            <Button onClick={() => goToPopularPage()} size="medium" sx={{ backgroundColor: '#fde8ef', color: '#e71d60', width: '100%', textTransform: 'none' }} variant="text"> See More </Button>
 
         </Box>
     )

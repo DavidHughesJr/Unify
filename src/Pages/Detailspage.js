@@ -4,7 +4,7 @@ import VerticalNav from "../Layout/navigation/VerticalNav";
 import DetailsInfoHero from "../Components/details/DetailsInfoHero";
 import DetailsInfo from "../Components/details/DetailsInfo";
 
-function Detailspage({ setHomepageSearch, homepageSearch }) {
+function DetailsPage({ setHomepageSearch, homepageSearch }) {
 
 
 
@@ -23,4 +23,4 @@ function Detailspage({ setHomepageSearch, homepageSearch }) {
     );
 }
 
-export default Detailspage;
+export default DetailsPage;

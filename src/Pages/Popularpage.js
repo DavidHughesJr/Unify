@@ -4,7 +4,7 @@ import PopularCategory from "../Components/popular/PopularInfoRightRow";
 import SearchInput from "../Components/common/SearchInput";
 import PopularTabs from "../Layout/tabs/PopularTabs.js";
 
-function HomepageSearch({ setHomepageSearch, homepageSearch }) {
+function PopularPage({ setHomepageSearch, homepageSearch }) {
 
     return (
         <Dashboard>
@@ -21,4 +21,4 @@ function HomepageSearch({ setHomepageSearch, homepageSearch }) {
     );
 }
 
-export default HomepageSearch;
+export default PopularPage;

@@ -40,7 +40,7 @@ const PopularMovies = () => {
             {
                 isLoading ? < LinearProgress sx={{ color: "#e71d60" }} color="inherit" /> :
                     <Box>
-                        <InfoGrid info={popularMovies} />
+                        <InfoGrid data={popularMovies} />
                         <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}>
                             <Pagination onChange={handleChangePage} count={100}  />
                         </Box>

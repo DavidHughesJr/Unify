@@ -43,7 +43,7 @@ export default function NewestSubcategory({ data, title }) {
                                                 style={{ width: "100%", height: "100%", objectFit: 'cover' }}
                                                 src={data.backdrop_path ? apiConfig.originalImage(data.backdrop_path) : noImgPoster} alt="images upcoming"
                                             />
-                                            <Box sx={{ position: 'relative', bottom: '12rem', left: '2%' }}>
+                                            <Box sx={{ position: 'relative', bottom: '14rem', left: '2%' }}>
                                                 <Box> <Typography sx={{ background: '-webkit-linear-gradient(white, #b9c1c9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bold', }} variant="h3">  {data.title ? data.title : data.name} </Typography>  </Box>
                                                 <Box> <Typography sx={{ color: '#eaecef', textShadow: '0 0 5px black' }} variant="h6">  <Moment date={movieDate} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /> </Typography>  </Box>
                                                 <Link sx={{ textDecoration: 'none' }} href={''}>

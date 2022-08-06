@@ -5,6 +5,9 @@ import { apiConfig } from "./apiConfig";
 export const category = {
     movie: 'movie',
     tv: 'tv',
+    popular: 'popularity.desc',
+    releaseTv: 'first_air_date.desc',
+    releaseMovie: 'release_date.desc'
 }
 export const person = 'person'
 
@@ -65,6 +68,14 @@ const tmdbApi = {
     }),
     getReviews: ((category, id) => {
         const url = `https://api.themoviedb.org/3/${category}${id}/reviews?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`
+        return fetch(url)
+    }),
+    getStreamingMovies: ((category, id, pageNum) => {
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&sort_by=${category}&include_adult=false&include_video=true&page=${pageNum}&with_watch_providers=${id}&watch_region=US`
+        return fetch(url)
+    }),
+    getStreamingTvShows: ((category, id, id2, pageNum) => {
+        const url = `https://api.themoviedb.org/3/discover/tv?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&sort_by=${category}&page=${pageNum}&timezone=America%2FNew_York&with_networks=${id}&with_watch_providers=${id2}`
         return fetch(url)
     }),
 }

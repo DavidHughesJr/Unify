@@ -77,7 +77,6 @@ export default function DetailsInfo() {
     const detailsLastAir = formatDataDate(details.last_air_date)
     const detailHrs = Math.floor(details.runtime / 60)
     const detailMins = details.runtime % 60
-    console.log(category)
     return (
         <Box>
             <Box sx={{ margin: '4rem', display: 'flex' }}>

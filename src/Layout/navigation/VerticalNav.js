@@ -26,8 +26,7 @@ import {
 } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
 import logo from '../../Assets/imgs/unify-logo-min.png';
-import { navItem } from "../../helpers/navItems";
-import { navItems2 } from "../../helpers/navItems";
+import { navItems } from "../../helpers/navItems";
 
 
 function Router(props) {
@@ -96,13 +95,12 @@ function a11yProps(index) {
 }
 
 export default function VerticalNav() {
-  const routeMatch = useRouteMatch(["/", `${navItem.netflix}`, `${navItem.hulu}`, `${navItem.amazonPrime}`, `${navItem.disneyPlus}`]);
+  const routeMatch = useRouteMatch(["/", `streaming/${navItems[0].name}/${navItems[0].id}`, `streaming/${navItems[1].name}/${navItems[1].id}`, `streaming/${navItems[2].name}/${navItems[2].id}`, `streaming/${navItems[3].name}/${navItems[3].id}`]);
   const currentTab = routeMatch?.pattern?.path;
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(newValue)
   };
 
 
@@ -134,10 +132,10 @@ export default function VerticalNav() {
         <NavTypography> Menu
         </NavTypography>
         <NavTab icon={<Home />} label="Home" value="/" to="/" component={Link} />
-        <NavTab icon={<Stream />} label="Netflix " value={`${navItem.netflix}`} to={`../${navItems2[0].name}/${navItems2[0].id}`} component={Link} />
-        <NavTab icon={<OndemandVideo />} label="Hulu" value={`${navItem.hulu}`} to={`../${navItem.hulu}`} component={Link} />
-        <NavTab icon={<Movie />} label="Amazon Prime" value={`${navItem.amazonPrime}`} to={`../${navItem.amazonPrime}`} component={Link} />
-        <NavTab icon={<Airplay />} label="Disney Plus" value={`${navItem.disneyPlus}`} to={`../${navItem.disneyPlus}`} component={Link} />
+        <NavTab icon={<Stream />} label="Netflix " value={`streaming/${navItems[0].name}/${navItems[0].id}`} to={`../streaming/${navItems[0].name}/${navItems[0].id}`} component={Link} />
+        <NavTab icon={<OndemandVideo />} label="Hulu" value={`streaming/${navItems[1].name}/${navItems[1].id}`} to={`../streaming/${navItems[1].name}/${navItems[1].id}`} component={Link} />
+        <NavTab icon={<Movie />} label="Amazon Prime" value={`streaming/${navItems[2].name}/${navItems[2].id}`} to={`../streaming/${navItems[2].name}/${navItems[2].id}`} component={Link} />
+        <NavTab icon={<Airplay />} label="Disney Plus" value={`streaming/${navItems[3].name}/${navItems[3].id}`} to={`../streaming/${navItems[3].name}/${navItems[3].id}`} component={Link} />
         <NavTypography> Library </NavTypography>
         <NavTab icon={<Undo />} label="Recent" {...a11yProps(2)} />
         <NavTab icon={<Bookmarks />} label="Bookmarks" {...a11yProps(3)} />

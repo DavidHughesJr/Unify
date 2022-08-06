@@ -5,20 +5,20 @@ import {
   BoardRight,
 } from "../Assets/muiStyles/MaterialStyles";
 import VerticalNav from "../Layout/navigation/VerticalNav";
-import StreamingService from "../Components/stream/StreamingService"
+import StreamTabs from "../Layout/tabs/StreamTabs"
 
-function Netflix() {
+function StreamPage() {
   return (
     <Dashboard>
       <BoardLeft>
         <VerticalNav />
       </BoardLeft>
       <BoardCenter>
-        <StreamingService />
+        <StreamTabs />
       </BoardCenter>
       <BoardRight></BoardRight>
     </Dashboard>
   );
 }
 
-export default Netflix;
+export default StreamPage;

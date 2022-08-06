@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import PersonInfo from '../Components/person/PersonInfo'
 
 
-function Personpage({ setHomepageSearch, homepageSearch }) {
+function PersonPage({ setHomepageSearch, homepageSearch }) {
 
 
 
@@ -22,4 +22,4 @@ function Personpage({ setHomepageSearch, homepageSearch }) {
     );
 }
 
-export default Personpage;
+export default PersonPage;
