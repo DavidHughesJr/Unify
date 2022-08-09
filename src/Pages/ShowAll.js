@@ -5,18 +5,18 @@ import {
     BoardRight,
 } from "../Assets/muiStyles/MaterialStyles";
 import VerticalNav from "../Layout/navigation/VerticalNav";
-import Genres from "../Components/genres/Genres";
+import ShowAllGenres from "../Components/genres/ShowAllGenres";
 import TrendingCategory from "../Components/common/Trending";
 
 
-function GenresPage() {
+function ShowAllPage() {
     return (
         <Dashboard>
             <BoardLeft>
                 <VerticalNav />
             </BoardLeft>
             <BoardCenter>
-                <Genres />
+                <ShowAllGenres />
             </BoardCenter>
             <BoardRight>
                 <TrendingCategory />
@@ -25,4 +25,4 @@ function GenresPage() {
     );
 }
 
-export default GenresPage;
+export default ShowAllPage;

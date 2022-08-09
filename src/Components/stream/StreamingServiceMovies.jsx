@@ -27,7 +27,7 @@ export default function StreamingServiceMovies() {
             const streamInfo2 = await res2.json()
             getStreamingInfoByRelease(streamInfo1.results)
             getStreamingInfoByPopular(streamInfo2.results)
-            console.log(streamInfoByPopular)
+    
         }
         getStreamingInfo()
     }, [navItems, pageNum])

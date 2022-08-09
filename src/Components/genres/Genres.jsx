@@ -19,8 +19,8 @@ export default function Genres() {
     const [genreInfoByPopularTvShow, setGenreInfoByPopularTvShow] = useState([])
     const [pageNumTv, setPageNumTv] = useState(1)
 
-    let { genreItem } = useParams()
-    console.log(genreItem)
+    let {  genreName, genreId } = useParams()
+
 
     const handleChangePageMovie = (e, value) => {
         setPageNumMovie(value)
@@ -36,40 +36,32 @@ export default function Genres() {
 
         const getGenreInfo = async () => {
             // movies info
-            const [resMovieRelease, resMoviePopular] = await Promise.all([tmdbApi.getMoviesGenres(category.releaseMovie, 1, 28, date), tmdbApi.getMoviesGenres(category.popular, pageNumMovie, 28, date)])
+            const [resMovieRelease, resMoviePopular] = await Promise.all([tmdbApi.getMoviesGenres(category.releaseMovie, pageNumMovie, genreId, date), tmdbApi.getMoviesGenres(category.popular, pageNumMovie, genreId, date)])
             const movieDataByRelease = await resMovieRelease.json()
             const movieDataByPopular = await resMoviePopular.json()
             setGenreInfoByReleaseMovie(movieDataByRelease.results)
             setGenreInfoByPopularMovie(movieDataByPopular.results)
             // tv info
-            const [resTvRelease, resTvPopular] = await Promise.all([tmdbApi.getTvShowGenres(category.releaseMovie, 1, 10759, date), tmdbApi.getTvShowGenres(category.popular, pageNumTv, 10759, date)])
+            const [resTvRelease, resTvPopular] = await Promise.all([tmdbApi.getTvShowGenres(category.releaseMovie, pageNumTv, genreId, date), tmdbApi.getTvShowGenres(category.popular, pageNumTv, genreId, date)])
             const tvDataByRelease = await resTvRelease.json()
             const tvDataByPopular = await resTvPopular.json()
             setGenreInfoByReleaseTvShow(tvDataByRelease.results)
             setGenreInfoByPopularTvShow(tvDataByPopular.results)
 
-            const res1 = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`)
-            const data1 = await res1.json()
-            console.log(data1)
-            const res2 = await fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`)
-            const data2 = await res2.json()
-            console.log(data2)
-
-
-            console.log(movieDataByPopular)
-            console.log(tvDataByPopular)
         }
         getGenreInfo()
-    }, [genreItem, pageNumTv, pageNumMovie])
+    }, [genreId, pageNumTv, pageNumMovie])
 
-    console.log(genreInfoByPopularMovie)
     return (
         <Box sx={{ padding: "1rem" }}>
+            <Typography>
+                {genreName.toUpperCase().slice(0, 1) + genreName.slice(1)}
+            </Typography>
             {
                 genreInfoByReleaseMovie.length == 0 ? '' :
                     <Box>
-                        <BackdropSlider data={genreInfoByReleaseMovie} title={'New Release Movies'} />
-                        <PosterSlider data={genreInfoByPopularMovie} title={'Popular Movies'} />
+                        <BackdropSlider data={genreInfoByReleaseMovie} title={'Movies'} />
+                        <PosterSlider data={genreInfoByPopularMovie} />
                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}>
                             <Pagination onChange={handleChangePageMovie} count={10} />
                         </Box>
@@ -78,8 +70,8 @@ export default function Genres() {
             {
                 genreInfoByReleaseTvShow.length == 0 ? '' :
                     <Box>
-                        <BackdropSlider data={genreInfoByReleaseTvShow} title={'New Release Tv Shows'} />
-                        <PosterSlider data={genreInfoByPopularTvShow} title={'Popular Tv Shows'} />
+                        <BackdropSlider data={genreInfoByReleaseTvShow} title={'Tv Shows'} />
+                        <PosterSlider data={genreInfoByPopularTvShow}  />
                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}>
                             <Pagination onChange={handleChangePageTv} count={10} />
                         </Box>

@@ -1,14 +1,16 @@
 import { apiConfig } from "../../api/apiConfig"
 import { category } from "../../api/tmdbApi"
-import { Grid, Box, Pagination } from "@mui/material"
+import { Grid, Box, Pagination, Typography } from "@mui/material"
 import { Link } from "react-router-dom";
 import noImgPoster from '../../Assets/imgs/no-img-poster.jpg'
+import { CategoryTypography } from "../../Assets/muiStyles/MaterialStyles"
 
-export default function infoGrid({ data }) {
+export default function infoGrid({ data, title }) {
 
 
     return (
         <Box>
+            <CategoryTypography variant="subtitle2"> {title} </CategoryTypography>
             <Grid container spacing={{ xs: 2, md: 1 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {data.map((data) => (
                     <Grid item xs={6} sm={2} md={3} key={data.id}>

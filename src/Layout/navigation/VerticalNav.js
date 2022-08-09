@@ -14,9 +14,9 @@ import {
   Favorite,
   Chair,
   SentimentVerySatisfied,
-  FormatSize,
   Group,
   Bookmarks,
+  Abc
 } from "@mui/icons-material";
 import {
   MemoryRouter,
@@ -27,6 +27,9 @@ import {
 import { StaticRouter } from "react-router-dom/server";
 import logo from '../../Assets/imgs/unify-logo-min.png';
 import { navItems } from "../../helpers/navItems";
+import { useEffect, useState } from 'react'
+import { formatMergeGenre } from "../../helpers/formatters"
+
 
 
 function Router(props) {
@@ -95,14 +98,46 @@ function a11yProps(index) {
 }
 
 export default function VerticalNav() {
-  const routeMatch = useRouteMatch(["/", `streaming/${navItems[0].name}/${navItems[0].id}`, `streaming/${navItems[1].name}/${navItems[1].id}`, `streaming/${navItems[2].name}/${navItems[2].id}`, `streaming/${navItems[3].name}/${navItems[3].id}`]);
+  const [genres, setGenres] = useState([])
+
+
+  const routeMatch = useRouteMatch(["/", `streaming/${navItems[0].name}/${navItems[0].id}`, `streaming/${navItems[1].name}/${navItems[1].id}`, `streaming/${navItems[2].name}/${navItems[2].id}`, `streaming/${navItems[3].name}/${navItems[3].id}`, 
+  '/saves', 'genre/comedy/35', 'genre/family/10751', 'genre/mystery/9648', '/showall'
+  ]);
+
+
   const currentTab = routeMatch?.pattern?.path;
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+ 
 
+
+
+  useEffect(() => {
+    const getGenres = async () => {
+      const res1 = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`)
+      const data1 = await res1.json()
+      const res2 = await fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US`)
+      const data2 = await res2.json()
+
+      
+      const mergeGenres = data1.genres.filter(item => {
+        // filter if names don't match return the items that do not match
+        if (!data2.genres.some(item2 => item.name == item2.name)) {
+          return item
+        }
+      }).concat(data2.genres) // add item that do not match to tv genres array
+      setGenres(mergeGenres)
+
+
+
+    }
+    getGenres()
+  }, [])
 
 
   return (
@@ -128,6 +163,7 @@ export default function VerticalNav() {
         value={currentTab}
         onChange={handleChange}
         aria-label="Vertical tabs"
+        
       >
         <NavTypography> Menu
         </NavTypography>
@@ -138,13 +174,30 @@ export default function VerticalNav() {
         <NavTab icon={<Airplay />} label="Disney Plus" value={`streaming/${navItems[3].name}/${navItems[3].id}`} to={`../streaming/${navItems[3].name}/${navItems[3].id}`} component={Link} />
         <NavTypography> Library </NavTypography>
         <NavTab icon={<Undo />} label="Recent" {...a11yProps(2)} />
-        <NavTab icon={<Bookmarks />} label="Bookmarks" {...a11yProps(3)} />
+        <NavTab icon={<Favorite />} value="/saves" label="Saves" to={`/saves`} component={Link} />
         <NavTypography> Genres </NavTypography>
-        <NavTab icon={<SentimentVerySatisfied />} label="Comedy" value={`genre/comedy`} to={`../genre/comedy`} component={Link} />
-        <NavTab icon={<FormatSize />} label="Thriller" {...a11yProps(4)} />
-        <NavTab icon={<Favorite />} label="Romance" {...a11yProps(4)} />
-        <NavTab icon={<Chair />} label="Reality Tv" {...a11yProps(4)} />
-        <NavTab icon={<Group />} label="Show All" {...a11yProps(4)} />
+        {
+          genres.slice(13, 14).map((genre, i) => {
+            return (
+              <NavTab icon={<SentimentVerySatisfied />} label={genre.name} value='genre/comedy/35' to={`../genre/${genre.name.toLowerCase().replace(/\s+/g, '')}/${genre.id}`} component={Link} />
+            )
+          })
+        }
+        {
+          genres.slice(17, 18).map((genre, i) => {
+            return (
+              <NavTab icon={<Group />} label={genre.name} value='genre/family/10751' to={`../genre/${genre.name.toLowerCase().replace(/\s+/g, '')}/${genre.id}`} component={Link} />
+            )
+          })
+        }
+        {
+          genres.slice(19, 20).map((genre, i) => {
+            return (
+              <NavTab icon={<Chair />} label={genre.name} value='genre/mystery/9648' to={`../genre/${genre.name.toLowerCase().replace(/\s+/g, '')}/${genre.id}`} component={Link} />
+            )
+          })
+        }
+        <NavTab icon={<Abc />} label="Show All" value={`/showall`} to={`/showall`} component={Link} />
       </Tabs>
     </Box>
   );

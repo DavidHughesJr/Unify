@@ -4,7 +4,7 @@ import VerticalNav from "../Layout/navigation/VerticalNav";
 import DetailsInfoHero from "../Components/details/DetailsInfoHero";
 import DetailsInfo from "../Components/details/DetailsInfo";
 
-function DetailsPage({ setHomepageSearch, homepageSearch }) {
+function DetailsPage({ saves, setSaves }) {
 
 
 
@@ -16,7 +16,7 @@ function DetailsPage({ setHomepageSearch, homepageSearch }) {
             <DetailsBoard>
                 <BoardBottom>
                     <DetailsInfoHero />
-                    <DetailsInfo />
+                    <DetailsInfo saves={saves} setSaves={setSaves} />
                 </BoardBottom>
             </DetailsBoard>
         </Dashboard>

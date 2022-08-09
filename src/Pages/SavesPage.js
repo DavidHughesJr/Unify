@@ -5,18 +5,17 @@ import {
     BoardRight,
 } from "../Assets/muiStyles/MaterialStyles";
 import VerticalNav from "../Layout/navigation/VerticalNav";
-import Genres from "../Components/genres/Genres";
 import TrendingCategory from "../Components/common/Trending";
+import SavesList from "../Components/saves/SavesList"
 
-
-function GenresPage() {
+function SavesPage({saves}) {
     return (
         <Dashboard>
             <BoardLeft>
                 <VerticalNav />
             </BoardLeft>
             <BoardCenter>
-                <Genres />
+                <SavesList saves={saves} />
             </BoardCenter>
             <BoardRight>
                 <TrendingCategory />
@@ -25,4 +24,4 @@ function GenresPage() {
     );
 }
 
-export default GenresPage;
+export default SavesPage;

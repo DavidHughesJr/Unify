@@ -50,3 +50,6 @@ body {
   position: absolute;
   height: 2px !important;
 }
+.swiper-slide {
+  margin-bottom: 1rem;
+}

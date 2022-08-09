@@ -4,6 +4,8 @@ import tmdbApi, { movieType, category, tvList } from "../../api/tmdbApi"
 import HeroSlider from '../common/HeroSlider'
 import PosterSlider from '../common/PosterSlider'
 import BackdropSlider from '../common/BackdropSlider'
+import InfoGrid from "../common/InfoGrid"
+import { Pagination } from "@mui/material"
 
 
 export default function HomeMovieInfo() {
@@ -11,10 +13,13 @@ export default function HomeMovieInfo() {
     const [upcomingMovies, setUpcomingMovies] = useState([])
     const [nowPlayingMovies, setNowPlayingMovies] = useState([])
     const [topRatedMovies, setTopRatedMovies] = useState([])
+    const [popularMovies, setPopularMovies] = useState([])
+    const [pageNum, setPageNum] = useState(1)
+
     const [isLoading, setLoadingProgress] = useState(true)
 
     useEffect(() => {
-        const getTmdbData = async (pageNum = 1) => {
+        const getTmdbData = async () => {
             try {
                 const response1 = await tmdbApi.getMoviesList(movieType.upcoming, pageNum)
                 const heroData = await response1.json()
@@ -28,6 +33,9 @@ export default function HomeMovieInfo() {
                 const data3 = await response3.json()
                 setTopRatedMovies(data3.results)
 
+                const response4 = await tmdbApi.getMoviesList(movieType.popular, pageNum)
+                const data4 = await response4.json()
+                setPopularMovies(data4.results)
 
                 setLoadingProgress()
             } catch (error) {
@@ -35,13 +43,21 @@ export default function HomeMovieInfo() {
             }
         }
         getTmdbData()
-    }, [])
+    }, [pageNum])
+
+    const handleChangePage = (e, value) => {
+        setPageNum(value)
+    }
     return (
 
         <Box>
             <HeroSlider data={upcomingMovies} title={'Upcoming Movies'}/>
             <PosterSlider data={nowPlayingMovies} title={'Now Playing'} /> 
-            <BackdropSlider data={topRatedMovies} title={'Top Rated'} /> 
+            <BackdropSlider data={topRatedMovies} title={'Top Rated'} />
+            <InfoGrid data={popularMovies} title={'Popular'}/>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}>
+                <Pagination onChange={handleChangePage} count={100} />
+            </Box>
         </Box>
 
     )

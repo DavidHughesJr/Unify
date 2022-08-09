@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import Bookmarker from "./Bookmarker"
+import Bookmarker from "../saves/SaveBtn"
 import Link from "@mui/material/Link"
 import { WatchNowBtn } from "../../Assets/muiStyles/MaterialStyles"
 import { Swiper, SwiperSlide } from 'swiper/react';

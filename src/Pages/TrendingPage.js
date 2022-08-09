@@ -14,7 +14,7 @@ function PopularPage({ setHomepageSearch, homepageSearch }) {
                 <VerticalNav />
             </BoardLeft>
             <BoardCenter>
-                <PopularTabs /> 
+                <PopularTabs />
             </BoardCenter>
             <BoardRight>
                 <SearchInput setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />

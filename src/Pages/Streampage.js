@@ -6,6 +6,8 @@ import {
 } from "../Assets/muiStyles/MaterialStyles";
 import VerticalNav from "../Layout/navigation/VerticalNav";
 import StreamTabs from "../Layout/tabs/StreamTabs"
+import TrendingCategory from "../Components/common/Trending";
+
 
 function StreamPage() {
   return (
@@ -16,7 +18,9 @@ function StreamPage() {
       <BoardCenter>
         <StreamTabs />
       </BoardCenter>
-      <BoardRight></BoardRight>
+      <BoardRight>
+        <TrendingCategory />
+      </BoardRight>
     </Dashboard>
   );
 }

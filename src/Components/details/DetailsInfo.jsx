@@ -6,14 +6,14 @@ import { Box, Paper, Typography } from "@mui/material";
 import Button from '@mui/material/Button';
 import { Colors } from '../../Assets/colors/colors'
 import CastInfoCard from './DetailsInfoCast'
-import Bookmarker from "../common/Bookmarker"
+import Bookmarker from "../saves/SaveBtn"
 import ShareIcon from '@mui/icons-material/Share';
 import Moment from "react-moment"
 import { formatDataDate, moneyFormatter } from "../../helpers/formatters";
 import DetailsMoreLikeThis from "./DetailsInfoMoreLikeThis";
 import Link from "@mui/material/Link";
 
-export default function DetailsInfo() {
+export default function DetailsInfo({saves, setSaves}) {
     const [details, setSelectedDetails] = useState([])
     const [companyDetails, setCompanyDetails] = useState([])
     const [genreNames, setGenreName] = useState([])
@@ -55,6 +55,8 @@ export default function DetailsInfo() {
                 setVideos(videoData.results[0])
 
 
+
+
                 // const resProviderBackup = await tmdbApi.getWatchProviderBackup(category, id)
                 // const providerBackupData = await resProviderBackup.json()
                 // const providerData = await resProvider.json()
@@ -77,6 +79,15 @@ export default function DetailsInfo() {
     const detailsLastAir = formatDataDate(details.last_air_date)
     const detailHrs = Math.floor(details.runtime / 60)
     const detailMins = details.runtime % 60
+
+    let saveData = {
+        id: details.id,
+        title: details.title ? details.title : details.name,
+        first_air_date: details.first_air_date? details.first_air_date : '',
+        poster_path: details.poster_path,
+        
+    }
+
     return (
         <Box>
             <Box sx={{ margin: '4rem', display: 'flex' }}>
@@ -90,7 +101,7 @@ export default function DetailsInfo() {
                   }
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <Typography variant="h2">  {details.title}</Typography>
+                    <Typography variant="h2">  {details.title? details.title : details.name}</Typography>
                     <Typography variant="body">  </Typography>
                     <Box sx={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
                         {
@@ -98,7 +109,7 @@ export default function DetailsInfo() {
                                 <Button sx={{ backgroundColor: Colors.primaryBtn }} variant="contained"> Watch Trailer </Button>
                             </Link> : ''
                         }
-                        <Bookmarker />
+                        <Bookmarker saves={saves} details={details} setSaves={setSaves} saveData={saveData} />
                         <Button sx={{ color: Colors.primaryBtn, border: `1px solid ${Colors.primaryBtn}` }} variant="outlined"> <ShareIcon /> </Button>
                     </Box>
                     <Box>
@@ -132,7 +143,7 @@ export default function DetailsInfo() {
             </Box>
             <Box sx={{ margin: '4rem' }}>
                 <Typography variant="subtitle2"> More Like This  </Typography>
-                {/* <DetailsMoreLikeThis /> */}
+                <DetailsMoreLikeThis />
             </Box>
             <Box sx={{ margin: '4rem', overflow: 'hidden', minHeight: '20rem', }}>
                 <Typography variant="subtitle2"> Cast </Typography>
