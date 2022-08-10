@@ -4,11 +4,11 @@ import Genres from "../Components/genres/Genres";
 import TrendingCategory from "../Components/common/Trending";
 import ResponsiveAppBar from "../Layout/navigation/AppBar";
 
-function GenresPage() {
+function GenresPage({setSearch}) {
     return (
         <Board>
             <MobileBoard>
-                <ResponsiveAppBar />
+                <ResponsiveAppBar setSearch={setSearch} />
             </MobileBoard>
             <Dashboard>
                 <BoardLeft>

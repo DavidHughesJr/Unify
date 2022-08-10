@@ -1,5 +1,5 @@
 import React from "react";
-import { Dashboard, BoardLeft, BoardHero, BoardBottom, DetailsBoard, BoardCenter, BoardRight, Board, MobileBoard } from "../Components/muiStyles/PageStyles";
+import { Dashboard, BoardLeft, BoardCenter, BoardRight, Board, MobileBoard } from "../Components/muiStyles/PageStyles";
 import HomepageTabs from "../Layout/tabs/HomeTabs";
 import VerticalNav from "../Layout/navigation/VerticalNav";
 import TrendingCategory from "../Components/common/Trending";
@@ -13,7 +13,7 @@ function Homepage({ setSearch, search }) {
   return (
     <Board>
       <MobileBoard>
-        <ResponsiveAppBar setSearch={setSearch} search={search} />
+        <ResponsiveAppBar setSearch={setSearch} />
       </MobileBoard>
       <Dashboard>
         <BoardLeft>

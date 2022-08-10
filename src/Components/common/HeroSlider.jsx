@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper'
 import { apiConfig } from "../../api/apiConfig"
 import { LinearProgress } from "@mui/material"
-import noImgPoster from '../../Assets/imgs/no-img-wide.jpg'
+import noImgPoster from '../../Assets/imgs/no-img-hero.jpg'
 // css 
 import 'swiper/css/autoplay'
 import 'swiper/css';
