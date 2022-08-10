@@ -34,16 +34,18 @@ export default function Bookmarker({ saves, setSaves, saveData }) {
 
     const savedItems = JSON.parse(localStorage.getItem('savedItems'))
 
-    if (saves)
+    if (savedItems) {
       for (let i = 0; i < savedItems.length; i++) {
-        if(savedItems[i].id === saveData.id){
+        if (savedItems[i].id === saveData.id) {
           setSelected(true)
           // break to stop statement from throwing false 
-          break 
-        } else if (savedItems[i].id !== saveData.id){
-           setSelected(false)
+          break
+        } else if (savedItems[i].id !== saveData.id) {
+          setSelected(false)
         }
       } 
+    }
+ 
   }, [saveData?.id])
 
 

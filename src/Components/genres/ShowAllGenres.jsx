@@ -27,8 +27,6 @@ export default function ShowAllGenres() {
     }, [])
 
 
-console.log(genres)
-
     return (
         <Box>
            {

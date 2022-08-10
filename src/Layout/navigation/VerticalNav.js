@@ -23,12 +23,13 @@ import {
   Link,
   matchPath,
   useLocation,
+  useNavigate
 } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
 import logo from '../../Assets/imgs/unify-logo-min.png';
 import { navItems } from "../../helpers/navItems";
 import { useEffect, useState } from 'react'
-import { formatMergeGenre } from "../../helpers/formatters"
+
 
 
 
@@ -114,7 +115,7 @@ export default function VerticalNav() {
     setValue(newValue);
   };
  
-
+  let navigate = useNavigate()
 
 
   useEffect(() => {
@@ -173,7 +174,7 @@ export default function VerticalNav() {
         <NavTab icon={<Movie />} label="Amazon Prime" value={`streaming/${navItems[2].name}/${navItems[2].id}`} to={`../streaming/${navItems[2].name}/${navItems[2].id}`} component={Link} />
         <NavTab icon={<Airplay />} label="Disney Plus" value={`streaming/${navItems[3].name}/${navItems[3].id}`} to={`../streaming/${navItems[3].name}/${navItems[3].id}`} component={Link} />
         <NavTypography> Library </NavTypography>
-        <NavTab icon={<Undo />} label="Recent" {...a11yProps(2)} />
+        <NavTab icon={<Undo />} label="Recent" onClick={() => navigate(-1)} />
         <NavTab icon={<Favorite />} value="/saves" label="Saves" to={`/saves`} component={Link} />
         <NavTypography> Genres </NavTypography>
         {

@@ -18,6 +18,10 @@ import { formatDataDate } from '../../helpers/formatters'
 
 
 export default function NewestSubcategory({ data, title }) {
+
+    
+
+
     return (
         <Box>
             <Box>

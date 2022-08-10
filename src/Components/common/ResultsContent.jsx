@@ -30,7 +30,6 @@ const ResultsContent = ({ homepageSearch }) => {
     }, [homepageSearch])
 
 
-    console.log(homepageSearch)
 
     return (
         <Box>
