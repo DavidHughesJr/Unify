@@ -1,12 +1,11 @@
 import { Box, Button, Typography, Rating } from "@mui/material";
 import { Link } from 'react-router-dom';
-import { MoviesContainer, CategoryTypography } from "../../Assets/muiStyles/MaterialStyles"
+import { CategoryTypography, MoviesContainer } from "../../Components/muiStyles/CommonStyles";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { apiConfig } from "../../api/apiConfig"
 import noImgPoster from '../../Assets/imgs/no-img-poster.jpg'
 import { category } from "../../api/tmdbApi";
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import CircularRating from "../common/CircularRating"
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -28,6 +27,32 @@ export default function PosterSlider({ data, title }) {
                         spaceBetween={10}
                         slidesPerView={5}
                         scrollbar={{ draggable: true }}
+                        breakpoints={{
+                            1920: {
+                                width: 1920,
+                                slidesPerView: 5
+                            },
+                            1280: {
+                                width: 1280,
+                                slidesPerView: 4
+                            },
+                            1020: {
+                                width: 1020,
+                                slidesPerView: 3
+                            },
+                            640: {
+                                width: 640,
+                                slidesPerView: 2
+                            },
+                            320: {
+                                width: 220,
+                                slidesPerView: 1
+                            },
+                            100: {
+                                width: 100,
+                                slidesPerView: 1
+                            }
+                        }}
 
                     >
                         {

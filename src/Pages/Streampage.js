@@ -1,9 +1,4 @@
-import {
-  Dashboard,
-  BoardCenter,
-  BoardLeft,
-  BoardRight,
-} from "../Assets/muiStyles/MaterialStyles";
+import { Dashboard, BoardLeft, BoardHero, BoardBottom, DetailsBoard, BoardCenter, BoardRight, Board } from "../Components/muiStyles/PageStyles";
 import VerticalNav from "../Layout/navigation/VerticalNav";
 import StreamTabs from "../Layout/tabs/StreamTabs"
 import TrendingCategory from "../Components/common/Trending";

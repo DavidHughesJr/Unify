@@ -3,7 +3,7 @@ import SearchInput from "../common/SearchInput";
 import { Box, Button, Typography, Rating } from "@mui/material";
 import { apiConfig } from "../../api/apiConfig";
 import tmdbApi, { category, movieType } from "../../api/tmdbApi";
-import { CategoryTypography } from "../../Assets/muiStyles/MaterialStyles";
+import { CategoryTypography } from "../../Components/muiStyles/CommonStyles";
 import { formatMergeGenre } from "../../helpers/formatters";
 import { Link, useNavigate } from "react-router-dom";
 

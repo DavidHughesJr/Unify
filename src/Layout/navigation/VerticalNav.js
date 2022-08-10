@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { NavTypography, NavTab } from "../../Assets/muiStyles/MaterialStyles";
+import { NavTypography, NavTab } from "../../Components/muiStyles/LayoutStyles";
 import {
   Home,
   Stream,

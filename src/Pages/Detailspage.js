@@ -1,5 +1,5 @@
 import React from "react";
-import { Dashboard, BoardLeft, BoardHero, BoardBottom, DetailsBoard, BoardCenter, BoardRight, Board } from "../Assets/muiStyles/MaterialStyles";
+import { Dashboard, BoardLeft, BoardHero, BoardBottom, DetailsBoard, BoardCenter, BoardRight, Board } from "../Components/muiStyles/PageStyles";
 import VerticalNav from "../Layout/navigation/VerticalNav";
 import DetailsInfoHero from "../Components/details/DetailsInfoHero";
 import DetailsInfo from "../Components/details/DetailsInfo";

@@ -3,7 +3,7 @@ import { category } from "../../api/tmdbApi"
 import { Grid, Box, Pagination, Typography } from "@mui/material"
 import { Link } from "react-router-dom";
 import noImgPoster from '../../Assets/imgs/no-img-poster.jpg'
-import { CategoryTypography } from "../../Assets/muiStyles/MaterialStyles"
+import { CategoryTypography } from "../../Components/muiStyles/CommonStyles";
 
 export default function Saves({ saves }) {
 

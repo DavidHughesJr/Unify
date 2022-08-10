@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Bookmarker from "../saves/SaveBtn"
-import { MoviesBtnContainer, MoviesContainer, WatchNowBtn, CategoryTypography } from "../../Assets/muiStyles/MaterialStyles"
+import { MoviesBtnContainer, MoviesContainer, WatchNowBtn, CategoryTypography } from "../../Components/muiStyles/CommonStyles";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import tmdbApi, { tvType } from "../../api/tmdbApi"
@@ -24,6 +24,32 @@ export default function BackDropSlider({ data, title }) {
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={3}
+                    breakpoints={{
+                        1920: {
+                            width: 1920,
+                            slidesPerView: 4
+                        },
+                        1280: {
+                            width: 1280,
+                            slidesPerView: 4
+                        },
+                        1020: {
+                            width: 1020,
+                            slidesPerView: 3
+                        },
+                        640: {
+                            width: 640,
+                            slidesPerView: 2
+                        },
+                        320: {
+                            width: 220,
+                            slidesPerView: 1
+                        },
+                        100: {
+                            width: 100,
+                            slidesPerView: 1
+                        }
+                    }}
                 >
                     {
                         data.map((data) => {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
-import { NavTab } from "../../Assets/muiStyles/MaterialStyles";
+import { NavTab } from "../../Components/muiStyles/LayoutStyles"
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ResultsContent from "../../Components/common/ResultsContent";

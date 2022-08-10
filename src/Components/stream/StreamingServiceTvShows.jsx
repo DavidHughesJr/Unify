@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Typography, Pagination } from "@mui/material";
 import InfoGrid from "../common/InfoGrid";
-import { CategoryTypography } from "../../Assets/muiStyles/MaterialStyles";
+import { CategoryTypography } from "../../Components/muiStyles/CommonStyles";
 import HeroSlider from "../../Components/common/HeroSlider"
 import tmdbApi, { category } from "../../api/tmdbApi";
 import { getNetworkId } from "../../helpers/navItems";

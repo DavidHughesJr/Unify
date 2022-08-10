@@ -1,4 +1,4 @@
-import { Dashboard, BoardCenter, BoardLeft, BoardRight } from "../Assets/muiStyles/MaterialStyles";
+import { Dashboard, BoardLeft, BoardHero, BoardBottom, DetailsBoard, BoardCenter, BoardRight, Board } from "../Components/muiStyles/PageStyles";
 import VerticalNav from "../Layout/navigation/VerticalNav";
 import PopularCategory from "../Components/popular/PopularInfoRightRow";
 import SearchInput from "../Components/common/SearchInput";
