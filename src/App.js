@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Routes, Route,  } from "react-router-dom";
+import { Routes, Route, } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
-import HomepageSearch from "./Pages/HomepageSearch"
+import Search from "./Pages/Search"
 import StreamPage from "./Pages/StreamPage";
 import DetailsPage from "./Pages/DetailsPage"
 import PersonPage from "./Pages/PersonPage"
@@ -27,31 +27,31 @@ const theme = createTheme({
 
 function App() {
 
-  const [homepageSearch, setHomepageSearch] = useState(['_'])
+  const [search, setSearch] = useState(['_'])
   const [saves, setSaves] = useState([])
   const getSavedItems = JSON.parse(localStorage.getItem('savedItems'))
 
 
   useEffect(() => {
-    if(getSavedItems){
+    if (getSavedItems) {
       setSaves([...getSavedItems])
     }
   }, [])
 
   return (
     <ThemeProvider theme={theme}>
-    <Routes>
-      <Route path="/" element={<Homepage setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />
-      <Route path="/search" element={<HomepageSearch setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />
-      <Route path="/popular" element={<PopularPage setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />
-      <Route path="/:category/:id" element={<DetailsPage saves={saves} setSaves={setSaves} />} />
-      <Route path="/person/:id" element={<PersonPage />} />
-      <Route path="/streaming/:navItems/:navItems" element={<StreamPage />} />
-      <Route path="/genre/:genreName/:genreId" element={<GenresPage />} />
-      <Route path="/showall" element={<ShowAllPage />} />
-      <Route path="/trending" element={<TrendingPage setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />
-      <Route path="/saves" element={<SavesPage saves={saves} setSaves={setSaves} setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />} />      
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Homepage setSearch={setSearch} search={search} />} />
+        <Route path="/search" element={<Search setSearch={setSearch} search={search} />} />
+        <Route path="/popular" element={<PopularPage setSearch={setSearch}/>} />
+        <Route path="/:category/:id" element={<DetailsPage saves={saves} setSaves={setSaves} setSearch={setSearch} />} />
+        <Route path="/person/:id" element={<PersonPage setSearch={setSearch} />} />
+        <Route path="/streaming/:navItems/:navItems" element={<StreamPage setSearch={setSearch} />} />
+        <Route path="/genre/:genreName/:genreId" element={<GenresPage setSearch={setSearch} />} />
+        <Route path="/showall" element={<ShowAllPage setSearch={setSearch} />} />
+        <Route path="/trending" element={<TrendingPage setSearch={setSearch} />} />
+        <Route path="/saves" element={<SavesPage saves={saves} setSaves={setSaves} setSearch={setSearch} />} />
+      </Routes>
     </ThemeProvider>
   );
 }

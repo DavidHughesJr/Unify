@@ -1,24 +1,26 @@
 import React from "react";
-import { Dashboard, BoardLeft, BoardHero, BoardBottom, DetailsBoard, BoardCenter, BoardRight, Board } from "../Components/muiStyles/PageStyles";
+import { Dashboard, BoardLeft, Board, MobileBoard } from "../Components/muiStyles/PageStyles";
 import VerticalNav from "../Layout/navigation/VerticalNav";
-import DetailsInfoHero from "../Components/details/DetailsInfoHero";
-import DetailsInfo from "../Components/details/DetailsInfo";
-import DetailsMoreLikeThis from "../Components/details/DetailsInfoMoreLikeThis";
-import { useParams } from "react-router-dom";
 import PersonInfo from '../Components/person/PersonInfo'
+import ResponsiveAppBar from "../Layout/navigation/AppBar";
 
-
-function PersonPage({ setHomepageSearch, homepageSearch }) {
+function PersonPage({ setSearch}) {
 
 
 
     return (
-        <Dashboard>
-            <BoardLeft>
-                <VerticalNav />
-            </BoardLeft>
-            <PersonInfo /> 
-        </Dashboard>
+        <Board>
+            <MobileBoard>
+                <ResponsiveAppBar setSearch={setSearch} />
+            </MobileBoard>
+            <Dashboard>
+                <BoardLeft>
+                    <VerticalNav />
+                </BoardLeft>
+                <PersonInfo />
+            </Dashboard>
+        </Board>
+      
     );
 }
 

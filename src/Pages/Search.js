@@ -2,9 +2,9 @@ import { Dashboard, BoardLeft, BoardHero, BoardBottom, DetailsBoard, BoardCenter
 import VerticalNav from "../Layout/navigation/VerticalNav";
 import PopularCategory from "../Components/popular/PopularInfoRightRow";
 import SearchInput from "../Components/common/SearchInput";
-import SearchResultsTabs from "../Layout/tabs/SearchResultsTabs.js";
+import SearchResultsTabs from "../Layout/tabs/SearchResultsTabs.js.js";
 
-function HomepageSearch({ setHomepageSearch, homepageSearch }) {
+function Search({ setSearch, search}) {
 
     return (
         <Dashboard>
@@ -12,14 +12,14 @@ function HomepageSearch({ setHomepageSearch, homepageSearch }) {
                 <VerticalNav />
             </BoardLeft>
             <BoardCenter>
-                <SearchResultsTabs homepageSearch={homepageSearch} />
+                <SearchResultsTabs search={search} />
             </BoardCenter>
             <BoardRight>
-                <SearchInput setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />
+                <SearchInput setSearch={setSearch} />
                 <PopularCategory />
             </BoardRight>
         </Dashboard>
     );
 }
 
-export default HomepageSearch;
+export default Search;

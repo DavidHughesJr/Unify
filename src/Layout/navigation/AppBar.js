@@ -15,7 +15,9 @@ import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-
+import { Link, useNavigate } from 'react-router-dom'
+import { navItems } from '../../helpers/navItems';
+import logo from '../../Assets/imgs/unify-logo-min.png';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -26,7 +28,11 @@ const Search = styled('div')(({ theme }) => ({
         backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
-    width: '100%',
+    width: '50%',
+    [theme.breakpoints.down('sm')]: {
+        marginLeft: theme.spacing(1),
+        width: '50%',
+    },
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
         width: 'auto',
@@ -59,11 +65,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+// loop through both arrays and match them up to keep the correct link
+const pages = ['Home', 'Netflix', 'Hulu', 'Amazon Prime', 'Disney Plus', 'Genres','Saves'];
+const links = ['/', `../streaming/${navItems[0].name}/${navItems[0].id}`, `../streaming/${navItems[1].name}/${navItems[1].id}`,
+    `../streaming/${navItems[2].name}/${navItems[2].id}`, `../streaming/${navItems[3].name}/${navItems[3].id}`, `/showall`, `/saves`
+]
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({setSearch}) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -82,12 +90,21 @@ const ResponsiveAppBar = () => {
         setAnchorElUser(null);
     };
 
+    let navigate = useNavigate()
+    const handleKeyDown = (event) => {
+
+        if(event.key === 'Enter'){
+            if(!event.target.value) return 
+            setSearch(event.target.value)
+            navigate("/search", {replace: true})
+            event.target.value = ''
+        }
+    }
     return (
         <Box sx={{width: '100%'}}> 
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -103,7 +120,7 @@ const ResponsiveAppBar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                            UNIFY
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -137,12 +154,14 @@ const ResponsiveAppBar = () => {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                    <Typography textAlign="center"> {page} </Typography>
+                                  
                                 </MenuItem>
                             ))}
+                         
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    
                     <Typography
                         variant="h5"
                         noWrap
@@ -159,18 +178,23 @@ const ResponsiveAppBar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        UNIFY
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
+                        {
+                            pages.map((page, i) => {
+                                const pageLinks = links[i]
+                                return (
+                                    <Link style={{textDecoration: 'none'}} to={`${pageLinks}`}> <Button
+                                        key={page}
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        {page}
+                                    </Button> </Link> 
+                                )
+                            })
+                        }
                     </Box>
 
                     <Search>
@@ -180,6 +204,7 @@ const ResponsiveAppBar = () => {
                         <StyledInputBase
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
+                            onKeyDown={handleKeyDown}
                         />
                     </Search>
                 </Toolbar>

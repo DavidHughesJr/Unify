@@ -49,30 +49,35 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         },
     },
 }));
+const SearchBox = styled(Box)(({ theme }) => ({
+    [theme.breakpoints.down('lg')]: {
+        display: 'none'
+    },
+}));
 
-export default function SearchInput({setHomepageSearch, homepageSearch}) {
+export default function SearchInput({ setSearch}) {
     let navigate = useNavigate();
 
 
 
     const handleKeyDown = event => {
-        
+
 
         if (event.key === 'Enter') {
 
-            if(!event.target.value) return
-            setHomepageSearch(event.target.value)
+            if (!event.target.value) return
+            setSearch(event.target.value)
             navigate("/search", { replace: true });
             event.target.value = ''
-              
+
         }
     };
     return (
-        <Box sx={{ marginTop: '3rem', padding: '1rem' }}>
-            <Box sx={{ flexGrow: 1, width: '100%'}}>
+        <SearchBox sx={{ marginTop: '3rem', padding: '1rem' }}>
+            <Box sx={{ flexGrow: 1, width: '100%' }}>
                 <Search sx={{ backgroundColor: '#e5eaf5' }}>
                     <SearchIconWrapper >
-                        <SearchIcon sx={{ color: 'black', zIndex: 10}} />
+                        <SearchIcon sx={{ color: 'black', zIndex: 10 }} />
                     </SearchIconWrapper>
                     <StyledInputBase
                         placeholder="Search…"
@@ -81,6 +86,6 @@ export default function SearchInput({setHomepageSearch, homepageSearch}) {
                     />
                 </Search>
             </Box>
-        </Box>
+        </SearchBox>
     );
 }

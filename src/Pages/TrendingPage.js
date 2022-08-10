@@ -6,7 +6,7 @@ import PopularTabs from "../Layout/tabs/PopularTabs.js";
 import TrendingCategory from "../Components/common/Trending";
 
 
-function PopularPage({ setHomepageSearch, homepageSearch }) {
+function PopularPage({ setSearch, search }) {
 
     return (
         <Dashboard>
@@ -17,7 +17,7 @@ function PopularPage({ setHomepageSearch, homepageSearch }) {
                 <PopularTabs />
             </BoardCenter>
             <BoardRight>
-                <SearchInput setHomepageSearch={setHomepageSearch} homepageSearch={homepageSearch} />
+                <SearchInput setSearch={setSearch} search={search} />
                 <TrendingCategory />
             </BoardRight>
         </Dashboard>

@@ -5,7 +5,7 @@ import { NavTab } from "../../Components/muiStyles/LayoutStyles"
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ResultsContent from "../../Components/common/ResultsContent";
-import {category} from '../../api/tmdbApi'
+import { category } from '../../api/tmdbApi'
 
 
 function TabPanel(props) {
@@ -40,9 +40,9 @@ function a11yProps(index) {
     };
 }
 
-export default function SearchResultsTabs({homepageSearch}) {
+export default function SearchResultsTabs({ search }) {
 
-    
+
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -55,16 +55,16 @@ export default function SearchResultsTabs({homepageSearch}) {
                     value={value}
                     onChange={handleChange}
                     aria-label="basic tabs example"
-                > 
+                >
                     <NavTab label={category.movie.charAt(0).toUpperCase() + category.movie.slice(1) + 's'} {...a11yProps(0)} />
                     <NavTab label={category.tv.charAt(0).toUpperCase() + category.tv.slice(1) + ' Shows'} {...a11yProps(0)} {...a11yProps(1)} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <ResultsContent homepageSearch={homepageSearch}/> 
+                <ResultsContent search={search} />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <ResultsContent homepageSearch={homepageSearch} /> 
+                <ResultsContent search={search} />
             </TabPanel>
         </Box>
     );

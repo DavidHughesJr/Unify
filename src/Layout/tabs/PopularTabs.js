@@ -41,7 +41,7 @@ function a11yProps(index) {
     };
 }
 
-export default function SearchResultsTabs({ homepageSearch }) {
+export default function SearchResultsTabs({ search }) {
 
 
     const [value, setValue] = React.useState(0);
@@ -62,10 +62,10 @@ export default function SearchResultsTabs({ homepageSearch }) {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <PopularMovies /> 
+                <PopularMovies />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <PopularTvShows /> 
+                <PopularTvShows />
             </TabPanel>
         </Box>
     );

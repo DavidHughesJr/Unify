@@ -28,29 +28,25 @@ export default function PosterSlider({ data, title }) {
                         slidesPerView={5}
                         scrollbar={{ draggable: true }}
                         breakpoints={{
-                            1920: {
-                                width: 1920,
+                            1536: {
+                                width: 1400,
                                 slidesPerView: 5
                             },
-                            1280: {
-                                width: 1280,
+                            1200: {
+                                width: 1000,
                                 slidesPerView: 4
                             },
-                            1020: {
-                                width: 1020,
+                            600: {
+                                width: 500,
                                 slidesPerView: 3
                             },
-                            640: {
-                                width: 640,
+                            320: {
+                                width: 300,
                                 slidesPerView: 2
                             },
-                            320: {
-                                width: 220,
-                                slidesPerView: 1
-                            },
-                            100: {
-                                width: 100,
-                                slidesPerView: 1
+                            0: {
+                                width: 300,
+                                slidesPerView: 2
                             }
                         }}
 
