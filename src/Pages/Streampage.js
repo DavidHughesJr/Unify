@@ -5,10 +5,10 @@ import TrendingCategory from "../Components/common/Trending";
 import ResponsiveAppBar from "../Layout/navigation/AppBar";
 
 
-function StreamPage() {
+function StreamPage({setSearch}) {
   return (
     <Board>
-      <MobileBoard>
+      <MobileBoard setSearch={setSearch}>
         <ResponsiveAppBar /> 
       </MobileBoard>
       <Dashboard>

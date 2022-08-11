@@ -11,7 +11,7 @@ function PopularPage({ setSearch, search }) {
     return (
         <Board>
             <MobileBoard>
-                <ResponsiveAppBar /> 
+                <ResponsiveAppBar setSearch={setSearch} /> 
             </MobileBoard>
             <Dashboard>
                 <BoardLeft>

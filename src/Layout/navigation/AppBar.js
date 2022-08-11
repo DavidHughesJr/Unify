@@ -102,7 +102,7 @@ const ResponsiveAppBar = ({setSearch}) => {
     }
     return (
         <Box sx={{width: '100%'}}> 
-        <AppBar position="static">
+            <AppBar position="static" sx={{ backgroundColor: '#e71d60'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
