@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
 import Search from "./Pages/Search"
-import StreamPage from "./Pages/StreamPage";
+import StreamPage from "./Pages/StreamPage"
 import DetailsPage from "./Pages/DetailsPage"
 import PersonPage from "./Pages/PersonPage"
 import PopularPage from "./Pages/PopularPage"
@@ -11,17 +11,6 @@ import ShowAllPage from "./Pages/ShowAll";
 import TrendingPage from "./Pages/TrendingPage";
 import SavesPage from "./Pages/SavesPage";
 import * as React from 'react';
-import { red } from '@mui/material/colors';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#e71d60',
-    },
-  },
-});
-
 
 
 
@@ -39,7 +28,6 @@ function App() {
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={<Homepage setSearch={setSearch} search={search} />} />
         <Route path="/search" element={<Search setSearch={setSearch} search={search} />} />
@@ -52,7 +40,6 @@ function App() {
         <Route path="/trending" element={<TrendingPage setSearch={setSearch} />} />
         <Route path="/saves" element={<SavesPage saves={saves} setSaves={setSaves} setSearch={setSearch} />} />
       </Routes>
-    </ThemeProvider>
   );
 }
 
