@@ -16,15 +16,6 @@ export const HeroTypography = styled(Typography)(() => ({
 export const CategoryTypography = styled(Typography)(() => ({
     margin: '1rem 0.5rem', color: '#37456a'
 }));
-export const WatchNowBtn = styled(Button)(() => ({
-    minHeight: '3rem !important',
-    height: 0,
-    padding: '0 2rem',
-    borderRadius: '0',
-    backgroundColor: '#e71d60',
-    textTransform: 'none',
-    color: 'white'
-}));
 // Movies Section
 export const MoviesContainer = styled(Box)(() => ({
     display: 'flex',

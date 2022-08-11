@@ -64,16 +64,21 @@ export const BoardHero = styled(Box)(() => ({
   width: "100%",
   height: "50%",
 }));
-export const BoardBottom = styled(Box)(() => ({
+export const BoardBottom = styled(Box)(({theme}) => ({
   width: "100%",
   height: "50%",
-
+  [theme.breakpoints.down("lg")]: {
+    width: '100%'
+  },
 }));
-export const DetailsBoard = styled(Box)(() => ({
+export const DetailsBoard = styled(Box)(({theme}) => ({
   width: '87%',
   display: 'flex',
   flexDirection: 'column',
-  overflow: 'scroll'
+  overflow: 'scroll',
+  [theme.breakpoints.down("lg")]: {
+    width: '100%'
+  },
 }));
 export const MobileBoard = styled(Box)(({ theme }) => ({
   width: "100%",

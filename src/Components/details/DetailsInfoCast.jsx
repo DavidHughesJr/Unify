@@ -24,6 +24,28 @@ export default function CastInfoCard({ cast }) {
             <Swiper
                 spaceBetween={10}
                 slidesPerView={6}
+                breakpoints={{
+                    1536: {
+                        width: 1400,
+                        slidesPerView: 7
+                    },
+                    1200: {
+                        width: 1000,
+                        slidesPerView: 6
+                    },
+                    600: {
+                        width: 500,
+                        slidesPerView: 3
+                    },
+                    320: {
+                        width: 300,
+                        slidesPerView: 2
+                    },
+                    0: {
+                        width: 300,
+                        slidesPerView: 2
+                    }
+                }}
             >
                 {
                     cast.map((cast) => {

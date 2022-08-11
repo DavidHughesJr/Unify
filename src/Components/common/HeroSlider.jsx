@@ -1,12 +1,8 @@
-import { HeroTypography, WatchNowBtn } from "../../Components/muiStyles/CommonStyles";
-import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
-import Bookmarker from "../saves/SaveBtn"
-import Link from "@mui/material/Link"
+import { HeroTypography} from "../../Components/muiStyles/CommonStyles";
+import { styled, Typography, Box, Button, Tab, Link } from "@mui/material";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper'
 import { apiConfig } from "../../api/apiConfig"
-import { LinearProgress } from "@mui/material"
 import noImgPoster from '../../Assets/imgs/no-img-hero.jpg'
 // css 
 import 'swiper/css/autoplay'
@@ -18,6 +14,54 @@ import { formatDataDate } from '../../helpers/formatters'
 
 export default function NewestSubcategory({ data, title }) {
 
+    const HeroTextContainer = styled(Typography)(({ theme }) => ({
+        position: 'relative', 
+        bottom: '12rem', 
+        left: '2%', 
+        height: 0,
+        [theme.breakpoints.down("lg")]: {
+           bottom: '11rem'
+        },
+        [theme.breakpoints.down("md")]: {
+            bottom: '8rem'
+        },
+        [theme.breakpoints.down("sm")]: {
+            bottom: '8rem'
+        },
+        [theme.breakpoints.between('xs', 'sm')]: {
+            bottom: '6rem'
+        },
+    }));
+
+    const HeroHeadingText = styled(Typography)(({ theme }) => ({
+        background: '-webkit-linear-gradient(white, #b9c1c9)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        fontWeight: 'bold',
+        [theme.breakpoints.down("lg")]: {
+          fontSize: '3em'
+        },
+        [theme.breakpoints.down("md")]: {
+            fontSize: '2em'
+        },
+        [theme.breakpoints.down("sm")]: {
+            fontSize: '1.8em'
+        },
+        [theme.breakpoints.between('xs', 'sm')]: {
+            fontSize: '1.5em'
+        },
+    }));
+
+    const HeroDateText = styled(Typography)(({ theme }) => ({
+        color: '#eaecef', 
+        textShadow: '0 0 5px black',
+        [theme.breakpoints.down("lg")]: {
+            fontSize: '1.2em'
+        },
+        [theme.breakpoints.down("sm")]: {
+          fontSize: '0.8rem'
+        },
+    }));
 
 
 
@@ -43,14 +87,12 @@ export default function NewestSubcategory({ data, title }) {
                                             style={{ width: "100%", height: "100%", }}
                                             src={data.backdrop_path ? apiConfig.originalImage(data.backdrop_path) : noImgPoster} alt="images upcoming"
                                         />
-                                        <Box sx={{ position: 'relative', bottom: '14rem', left: '2%', height: 0 }}>
-                                            <Box> <Typography sx={{ background: '-webkit-linear-gradient(white, #b9c1c9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 'bold', }} variant="h3">  {data.title ? data.title : data.name} </Typography>  </Box>
-                                            <Box> <Typography sx={{ color: '#eaecef', textShadow: '0 0 5px black' }} variant="h6">  <Moment date={movieDate} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /> </Typography>  </Box>
+                                        <HeroTextContainer>
+                                            <Box> <HeroHeadingText variant="h3">  {data.title ? data.title : data.name} </HeroHeadingText>  </Box>
+                                            <Box> <HeroDateText variant="h6">  <Moment date={movieDate} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /> </HeroDateText>  </Box>
                                             <Link sx={{ textDecoration: 'none' }} href={''}>
-                                                <WatchNowBtn> More Info </WatchNowBtn>
                                             </Link>
-                                            <Bookmarker />
-                                        </Box>
+                                        </HeroTextContainer>
                                     </SwiperSlide>
                                 )
                             })

@@ -5,14 +5,14 @@ import SearchInput from "../Components/common/SearchInput";
 import SearchResultsTabs from "../Layout/tabs/SearchResultsTabs.js.js";
 import ResponsiveAppBar from "../Layout/navigation/AppBar";
 
-function Search({ setSearch, search}) {
+function Search({ setSearch, search }) {
 
     return (
         <Board>
+            <MobileBoard>
+                <ResponsiveAppBar setSearch={setSearch} />
+            </MobileBoard>
             <Dashboard>
-                    <MobileBoard>
-                        <ResponsiveAppBar setSearch={search} /> 
-                    </MobileBoard>
                 <BoardLeft>
                     <VerticalNav />
                 </BoardLeft>
@@ -25,7 +25,7 @@ function Search({ setSearch, search}) {
                 </BoardRight>
             </Dashboard>
         </Board>
-       
+
     );
 }
 

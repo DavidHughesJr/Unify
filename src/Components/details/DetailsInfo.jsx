@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import tmdbApi from "../../api/tmdbApi";
 import { apiConfig } from "../../api/apiConfig";
-import { Box, Paper, Typography } from "@mui/material";
-import Button from '@mui/material/Button';
+import { Box, Paper, Typography, styled, Button } from "@mui/material";
 import { Colors } from '../../Assets/colors/colors'
 import CastInfoCard from './DetailsInfoCast'
 import Bookmarker from "../saves/SaveBtn"
 import ShareIcon from '@mui/icons-material/Share';
-import Moment from "react-moment"
 import { formatDataDate, moneyFormatter } from "../../helpers/formatters";
-import DetailsMoreLikeThis from "./DetailsInfoMoreLikeThis";
 import Link from "@mui/material/Link";
+import DetailsMoreLikeThis from "./DetailsInfoMoreLikeThis";
+import DetailsInfoPoster from "./DetailsInfoPoster";
 
-export default function DetailsInfo({saves, setSaves}) {
+
+export default function DetailsInfo({ saves, setSaves }) {
     const [details, setSelectedDetails] = useState([])
     const [companyDetails, setCompanyDetails] = useState([])
     const [genreNames, setGenreName] = useState([])
@@ -35,8 +35,6 @@ export default function DetailsInfo({saves, setSaves}) {
                 const detailsData = await resDetails.json()
                 setSelectedDetails(detailsData)
 
-                
-
                 // get cast members
                 const resCast = await tmdbApi.getCredits(category, id)
                 const creditsData = await resCast.json()
@@ -45,7 +43,7 @@ export default function DetailsInfo({saves, setSaves}) {
 
                 // set company details // clause for those with unavailable info 
                 setCompanyDetails(detailsData.production_companies[0] ? detailsData.production_companies[0] : '')
-            
+
                 const genreNames = detailsData.genres.map(genre => genre.name)
                 setGenreName(genreNames)
 
@@ -53,9 +51,6 @@ export default function DetailsInfo({saves, setSaves}) {
                 const resVid = await tmdbApi.getVideos(category, id)
                 const videoData = await resVid.json()
                 setVideos(videoData.results[0])
-
-
-
 
                 // const resProviderBackup = await tmdbApi.getWatchProviderBackup(category, id)
                 // const providerBackupData = await resProviderBackup.json()
@@ -74,73 +69,141 @@ export default function DetailsInfo({saves, setSaves}) {
     }, [category, id])
 
 
-    // Convert mins to hours & mins
-    const detailsReleaseDate = formatDataDate(details.release_date ? details.release_date : details.first_air_date)
-    const detailsLastAir = formatDataDate(details.last_air_date)
-    const detailHrs = Math.floor(details.runtime / 60)
-    const detailMins = details.runtime % 60
-
     let saveData = {
         id: details.id,
         title: details.title ? details.title : details.name,
-        first_air_date: details.first_air_date? details.first_air_date : '',
+        first_air_date: details.first_air_date ? details.first_air_date : '',
         poster_path: details.poster_path,
-        
+
     }
+    const DetailsInfoContainer = styled(Box)(({ theme }) => ({
+        margin: '4rem',
+        display: 'flex',
+        [theme.breakpoints.down("lg")]: {
+            margin: '3rem'
+        },
+        [theme.breakpoints.down("md")]: {
+            margin: '2rem'
+        },
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContents: 'center',
+            margin: '1rem',
+            textAlign: 'center',
+        },
+        [theme.breakpoints.between('xs', 'sm')]: {
+
+        },
+    }));
+    const ButtonsContainer = styled(Box)(({ theme }) => ({
+        marginTop: '1rem',
+        display: 'flex',
+        gap: '1rem',
+        [theme.breakpoints.down("lg")]: {
+            margin: '3rem'
+        },
+        [theme.breakpoints.down("md")]: {
+            margin: '2rem'
+        },
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContents: 'center',
+            margin: '2rem',
+            textAlign: 'center'
+        },
+        [theme.breakpoints.between('xs', 'sm')]: {
+            margin: '1rem'
+        },
+    }));
+    const TextBox = styled(Box)(({ theme }) => ({
+        marginTop: '1rem',
+        display: 'flex',
+        width: '100%',
+        [theme.breakpoints.down("md")]: {
+            fontSize: '1.8em',
+            flexDirection: 'column',
+            gap: 5,
+            paddingRight: 0,
+        },
+        [theme.breakpoints.down("sm")]: {
+            fontSize: '1.8em',
+        },
+        [theme.breakpoints.between('xs', 'sm')]: {
+            fontSize: '1.5em',
+        },
+    }));
+    const StorylineBox = styled(Box)(({ theme }) => ({
+        width: '85%',
+        [theme.breakpoints.down("md")]: {
+            width: '100%'
+        },
+    }));
+    const CompanyBox = styled(Box)(({ theme }) => ({
+        width: '35%',
+        [theme.breakpoints.down("md")]: {
+            width: '100%'
+        },
+    }));
+    const BodyText = styled(Typography)(({ theme }) => ({
+        paddingRight: '5rem',
+        [theme.breakpoints.down("md")]: {
+            flexDirection: 'column',
+            gap: 5,
+            paddingRight: 0,
+            padding: '1rem'
+        },
+    }));
+
+
 
     return (
         <Box>
-            <Box sx={{ margin: '4rem', display: 'flex' }}>
-                <Box sx={{ flexDirection: 'column', width: '10rem', marginRight: '1rem' }}>
-                    <Box sx={{ width: '10rem' }}>
-                        <img style={{ width: '100%' }} src={apiConfig.w300Image(details.poster_path)} alt="poster img" />
-                    </Box>
-                    <Typography variant="subtitle2"> <Moment date={detailsReleaseDate} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /> </Typography>
-                  {
-                        details.runtime ? <Typography variant="subtitle2"> {detailHrs === 0 ? '' : detailHrs} Hour {detailMins} Min  </Typography> : <Typography variant="subtitle2"> Last Air <Moment date={detailsLastAir} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /></Typography> 
-                  }
-                </Box>
+            <DetailsInfoContainer>
+                <DetailsInfoPoster details={details} />
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <Typography variant="h2">  {details.title? details.title : details.name}</Typography>
-                    <Typography variant="body">  </Typography>
-                    <Box sx={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
-                        {
-                            videos ? <Link sx={{ textDecoration: 'none' }} target="_blank" href={`https://www.youtube.com/watch?v=${videos.key}`}>
-                                <Button sx={{ backgroundColor: Colors.primaryBtn }} variant="contained"> Watch Trailer </Button>
-                            </Link> : ''
-                        }
-                        <Bookmarker saves={saves} details={details} setSaves={setSaves} saveData={saveData} />
-                        <Button sx={{ color: Colors.primaryBtn, border: `1px solid ${Colors.primaryBtn}` }} variant="outlined"> <ShareIcon /> </Button>
-                    </Box>
+                    <Typography variant="h2">  {details.title ? details.title : details.name}</Typography>
+                    <ButtonsContainer>
+                        <Box sx={{ marginTop: '1rem', display: 'flex', gap: '1rem', }}>
+                            {
+                                videos ? <Link sx={{ textDecoration: 'none' }} target="_blank" href={`https://www.youtube.com/watch?v=${videos.key}`}>
+                                    <Button sx={{ backgroundColor: Colors.primaryBtn }} variant="contained"> Watch Trailer </Button>
+                                </Link> : ''
+                            }
+                            <Bookmarker saves={saves} details={details} setSaves={setSaves} saveData={saveData} />
+                            <Button sx={{ color: Colors.primaryBtn, border: `1px solid ${Colors.primaryBtn}` }} variant="outlined"> <ShareIcon /> </Button>
+                        </Box>
+                    </ButtonsContainer>
                     <Box>
-                        <Box sx={{ display: 'flex', marginTop: '1rem' }}>
+                        <Box sx={{ display: 'flex', marginTop: '1rem', alignItems: 'center' }}>
                             {genreNames.map(names => <Box sx={{ border: `1px solid ${Colors.outlineBtn}`, borderRadius: '1rem', marginRight: '1rem', padding: '.5rem', color: Colors.primaryText }}> <Typography variant="subtitle2" > {names} </Typography> </Box>)}
                         </Box>
                     </Box>
-                    <Box sx={{ marginTop: '1rem', display: 'flex', width: '100%' }}>
-                        <Box sx={{ width: '85%' }}>
+                    <TextBox>
+                        <StorylineBox>
                             <Typography variant="h6">  Storyline </Typography>
-                            <Typography sx={{ paddingRight: '5rem' }}>
+                            <BodyText>
                                 {details.overview}
-                            </Typography>
-                        </Box>
-                        <Box sx={{ width: '30%' }}>
+                            </BodyText>
+                        </StorylineBox>
+                        <CompanyBox sx={{ width: '30%' }}>
                             <Typography variant="h6">
                                 {companyDetails.name}
                             </Typography>
                             <Typography>
-                                {category === 'movie'? `Budget: ${moneyFormatter.format(details.budget)}` : `Seasons: ${details.number_of_seasons}`}
+                                {category === 'movie' ? `Budget: ${moneyFormatter.format(details.budget)}` : `Seasons: ${details.number_of_seasons}`}
                             </Typography>
                             <Typography>
-                                {category === 'movie' ? `Revenue: ${moneyFormatter.format(details.revenue) }` : `Number of Episodes: ${details.number_of_episodes}`}
+                                {category === 'movie' ? `Revenue: ${moneyFormatter.format(details.revenue)}` : `Number of Episodes: ${details.number_of_episodes}`}
                             </Typography>
                             <Typography variant="caption">
                                 {details.revenue === 0 ? 'Revenue Not Yet Available' : ''}
                             </Typography>
-                        </Box>
-                    </Box>
+                        </CompanyBox>
+                    </TextBox>
                 </Box>
-            </Box>
+            </DetailsInfoContainer>
             <Box sx={{ margin: '4rem' }}>
                 <Typography variant="subtitle2"> More Like This  </Typography>
                 <DetailsMoreLikeThis />
@@ -150,7 +213,7 @@ export default function DetailsInfo({saves, setSaves}) {
                 <CastInfoCard cast={cast} />
             </Box>
         </Box>
-        
+
 
     )
 }

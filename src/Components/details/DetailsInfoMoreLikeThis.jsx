@@ -40,6 +40,32 @@ export default function DetailsMoreLikeThis() {
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={3}
+                    breakpoints={{
+                        1920: {
+                            width: 1920,
+                            slidesPerView: 4
+                        },
+                        1280: {
+                            width: 1280,
+                            slidesPerView: 4
+                        },
+                        1020: {
+                            width: 1020,
+                            slidesPerView: 3
+                        },
+                        640: {
+                            width: 640,
+                            slidesPerView: 2
+                        },
+                        320: {
+                            width: 300,
+                            slidesPerView: 1
+                        },
+                        100: {
+                            width: 300,
+                            slidesPerView: 1
+                        }
+                    }}
                 >
                     {
                         moreLikeThis.map((details) => {
