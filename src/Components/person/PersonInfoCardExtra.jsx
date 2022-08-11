@@ -32,7 +32,7 @@ export default function PersonInfoCardExtra({ info }) {
 
 
     return (
-        <Card sx={{ maxWidth: 345, maxHeight: '60%', marginTop: '2rem'}}>
+        <Card sx={{ maxWidth: 345, maxHeight: '60%', margin: '1rem 0'}}>
             <Box sx={{padding: '1rem'}}>
                 <Typography variant='subtitle2'>
                     {info.gender === 1 ? 'Female' : 'Male'}

@@ -5,6 +5,7 @@ import { NavTab } from "../../Components/muiStyles/LayoutStyles"
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ResultsContent from "../../Components/common/ResultsContent";
+import ResultsContentTv from "../../Components/common/ResultsContentTv";
 import { category } from '../../api/tmdbApi'
 
 
@@ -64,7 +65,7 @@ export default function SearchResultsTabs({ search }) {
                 <ResultsContent search={search} />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <ResultsContent search={search} />
+                <ResultsContentTv search={search} />
             </TabPanel>
         </Box>
     );

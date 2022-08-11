@@ -5,7 +5,7 @@ import PersonInfoCard from "./PersonInfoCard"
 import PersonInfoCardExtra from "./PersonInfoCardExtra"
 import PersonInfoBio from "./PersonInfoBio"
 import PersonInfoGallery from "./PersonInfoGallery"
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography, styled} from "@mui/material";
 import LinearProgress from '@mui/material/LinearProgress';
 import PosterSlider from "../common/PosterSlider";
 import BackDropSlider from "../common/BackdropSlider";
@@ -42,27 +42,83 @@ export default function PersonInfo() {
     }, [])
 
 
+    const PersonInfoContainer = styled(Box)(({ theme }) => ({
+        backgroundColor: '#e5eaf5;', 
+        display: 'flex', 
+        width: '100%', 
+        overflow: 'hidden',
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContents: 'center',
+            margin: '1rem',
+            textAlign: 'center',
+            backgroundColor: 'white',
+            overflowY: 'scroll'
+        },
+    }));
+    const PersonInfoBox = styled(Box)(({ theme }) => ({
+        display: 'flex', 
+        width: '100%', 
+        padding: '2rem', 
+        gap: '1rem', 
+    
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContents: 'center',
+            margin: '1rem',
+            textAlign: 'center',
+            gap: 0,
+            padding: 0,        
+        },
+    }));
+    const GalleryPaper = styled(Box)(({ theme }) => ({
+        width: '80%',
+        overflow: 'scroll',
+        backgroundColor: 'white',
+        marginRight: '3rem',
+        [theme.breakpoints.down("sm")]: {
+            width: '100%',
+            height: '100%',
+            overflow : 'none',
+            margin: 0
+        },
+    }));
+    const SliderBox = styled(Box)(({ theme }) => ({
+        padding: '2rem', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: "2rem",
+        [theme.breakpoints.down("sm")]: {
+            gap: 0,
+            padding: 0
+        },
+    }));
+
+
 
     return (
-        <Box sx={{ backgroundColor: '#e5eaf5;', display: 'flex', width: '100%', overflow: 'hidden' }}>
+        <PersonInfoContainer>
             {
                 isLoading ? <LinearProgress sx={{ width: '100%', marginTop: '4rem',color: "#e71d60"}} color="inherit"/> :
-                    <Box sx={{display: 'flex', width: '100%', padding: '2rem', gap: '1rem', overflow: 'hidden' }}>
+                    <PersonInfoBox>
                        <Box>
                             <PersonInfoCard info={personInfo} />
                             <PersonInfoCardExtra info={personInfo} />
                        </Box>
-                        <Paper elevation={2} variant="outlined" sx={{ width: '80%', overflow: 'scroll'}}>
+                        <GalleryPaper elevation={2} variant="outlined">
                             <PersonInfoGallery images={personImages} />
                             <PersonInfoBio info={personInfo} />
-                            <Box sx={{padding: '2rem', display: 'flex', flexDirection: 'column', gap:"2rem"}}>
+                            <SliderBox>
                                 <PosterSlider data={personMovies} title={'Movies'} />
                                 <BackDropSlider data={personTvShows} title={'Tv Shows'} /> 
-                            </Box>
-                        </Paper>
-                    </Box>
+                            </SliderBox>
+                        </GalleryPaper>
+                    </PersonInfoBox>
+                    
             }
-        </Box>
+        </PersonInfoContainer>
     )
 
 }

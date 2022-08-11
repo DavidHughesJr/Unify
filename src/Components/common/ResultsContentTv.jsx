@@ -15,7 +15,7 @@ const ResultsContent = ({ search }) => {
     useEffect(() => {
         const getSearchResults = async (pageNum = 1) => {
             try {
-                const response = await tmdbApi.getSearchResults(search, category.movie, pageNum)
+                const response = await tmdbApi.getSearchResults(search, category.tv, pageNum)
                 const searchData = await response.json()
                 setSearchResults(searchData.results)
                 setLoadingProgress()
@@ -40,7 +40,7 @@ const ResultsContent = ({ search }) => {
                         {searchResults.map((results) => (
 
                             <Grid item xs={2} sm={4} md={3} key={results.id}>
-                                <Link to={`../${category.movie}/${results.id}`}>
+                                <Link to={`../${category.tv}/${results.id}`}>
                                     <div style={{ width: '100%', height: '100%', }}>
                                         <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={results.poster_path ? apiConfig.w300Image(results.poster_path) : noImgPoster} alt="searched movies" />
                                     </div>

@@ -11,7 +11,7 @@ import Moment from "react-moment"
 
 export default function PersonInfoCard({ info }) {
     return (
-        <Card sx={{ maxWidth: 345, maxHeight: '60%' }}>
+        <Card sx={{ maxWidth: 345}}>
             <CardMedia
                 component="img"
                 height="300"

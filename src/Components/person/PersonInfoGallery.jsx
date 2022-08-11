@@ -15,11 +15,32 @@ export default function PersonInfoGallery({ images }) {
         <Box sx={{padding: "2rem"}}>
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
-                spaceBetween={10}
-                slidesPerView={4}
-                pagination={{ clickable: true }}
+                spaceBetween={100}
+                slidesPerView={4}         
                 scrollbar={{ draggable: true }}
                 style={{borderRadius: '1rem'}}
+                breakpoints={{
+                    1536: {
+                        width: 900,
+                        slidesPerView: 5
+                    },
+                    1200: {
+                        width: 1000,
+                        slidesPerView: 4
+                    },
+                    600: {
+                        width: 700,
+                        slidesPerView: 3
+                    },
+                    320: {
+                        width: 400,
+                        slidesPerView: 2
+                    },
+                    0: {
+                        width: 300,
+                        slidesPerView: 1
+                    }
+                }}
             >
         {
          images.map((imgs) => {

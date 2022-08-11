@@ -45,8 +45,8 @@ export default function BackDropSlider({ data, title }) {
                             width: 220,
                             slidesPerView: 1
                         },
-                        100: {
-                            width: 100,
+                        0: {
+                            width: 200,
                             slidesPerView: 1
                         }
                     }}

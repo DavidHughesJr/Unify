@@ -11,7 +11,7 @@ export default function infoGrid({ data, title }) {
     return (
         <Box>
             <CategoryTypography variant="subtitle2"> {title} </CategoryTypography>
-            <Grid container spacing={{ xs: 2, md: 1 }} columns={{ xs: 8, sm: 8, md: 12 }}>
+            <Grid container spacing={{ xs: 2, md: 1 }} columns={{ xs: 8, sm: 8, md: 12, lg: 15 }}>
                 {data.map((data) => (
                     <Grid item xs={4} sm={4} md={3} key={data.id}>
                         <Link to={`../${data.first_air_date ? category.tv : category.movie}/${data.id}`} style={{ textDecoration: 'none' }}>

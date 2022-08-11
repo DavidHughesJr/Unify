@@ -92,8 +92,20 @@ export default function DetailsInfo({ saves, setSaves }) {
             margin: '1rem',
             textAlign: 'center',
         },
+    }));
+    const SliderBox = styled(Box)(({ theme }) => ({
+        margin: '4rem',
+        [theme.breakpoints.down("lg")]: {
+            margin: '3rem'
+        },
+        [theme.breakpoints.down("md")]: {
+            margin: '2rem'
+        },
+        [theme.breakpoints.down("sm")]: {
+            margin: '2rem'
+        },
         [theme.breakpoints.between('xs', 'sm')]: {
-
+            margin: '1rem'
         },
     }));
     const ButtonsContainer = styled(Box)(({ theme }) => ({
@@ -204,14 +216,14 @@ export default function DetailsInfo({ saves, setSaves }) {
                     </TextBox>
                 </Box>
             </DetailsInfoContainer>
-            <Box sx={{ margin: '4rem' }}>
+            <SliderBox sx={{ margin: '4rem' }}>
                 <Typography variant="subtitle2"> More Like This  </Typography>
                 <DetailsMoreLikeThis />
-            </Box>
-            <Box sx={{ margin: '4rem', overflow: 'hidden', minHeight: '20rem', }}>
+            </SliderBox>
+            <SliderBox sx={{ margin: '4rem', overflow: 'hidden', minHeight: '20rem', }}>
                 <Typography variant="subtitle2"> Cast </Typography>
                 <CastInfoCard cast={cast} />
-            </Box>
+            </SliderBox>
         </Box>
 
 

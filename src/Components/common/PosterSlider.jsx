@@ -45,8 +45,8 @@ export default function PosterSlider({ data, title }) {
                                 slidesPerView: 2
                             },
                             0: {
-                                width: 300,
-                                slidesPerView: 2
+                                width: 200,
+                                slidesPerView: 1
                             }
                         }}
 
