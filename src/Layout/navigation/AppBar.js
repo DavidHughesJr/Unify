@@ -152,12 +152,20 @@ const ResponsiveAppBar = ({setSearch}) => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center"> {page} </Typography>
-                                  
-                                </MenuItem>
-                            ))}
+                                {
+                                    pages.map((page, i) => {
+                                        const pageLinks = links[i]
+                                        return (
+                                            <Link style={{ textDecoration: 'none' }} to={`${pageLinks}`}> <Button
+                                                key={page}
+                                                onClick={handleCloseNavMenu}
+                                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                            >
+                                                {page}
+                                            </Button> </Link>
+                                        )
+                                    })
+                                }
                          
                         </Menu>
                     </Box>
