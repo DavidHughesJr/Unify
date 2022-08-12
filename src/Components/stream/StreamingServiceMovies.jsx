@@ -11,7 +11,7 @@ export default function StreamingServiceMovies() {
     const [streamInfoByRelease, getStreamingInfoByRelease] = useState([])
     const [pageNum, setPageNum] = useState(1)
 
-    let { navItems } = useParams()
+    let { navItems, navId } = useParams()
 
     const handleChangePage = (e, value) => {
         setPageNum(value)
@@ -20,8 +20,8 @@ export default function StreamingServiceMovies() {
     useEffect(() => {
 
         const getStreamingInfo = async () => {
-            const res1 = await tmdbApi.getStreamingMovies(category.releaseMovie, navItems)
-            const res2 = await tmdbApi.getStreamingMovies(category.popular, navItems, pageNum)
+            const res1 = await tmdbApi.getStreamingMovies(category.releaseMovie, navId)
+            const res2 = await tmdbApi.getStreamingMovies(category.popular, navId, pageNum)
       
             const streamInfo1 = await res1.json()
             const streamInfo2 = await res2.json()
@@ -30,9 +30,11 @@ export default function StreamingServiceMovies() {
     
         }
         getStreamingInfo()
-    }, [navItems, pageNum])
+    }, [navId, pageNum])
 
+    console.log(navId)
 
+console.log(navItems)
     return (
         <Box>
             <HeroSlider data={streamInfoByRelease} title={'New Releases'}/> 

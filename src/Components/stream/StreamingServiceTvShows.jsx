@@ -14,9 +14,9 @@ export default function StreamingServiceTvShows() {
     const [streamInfoByRelease, getStreamingInfoByRelease] = useState([])
     const [pageNum, setPageNum] = useState(1)
 
-    let { navItems } = useParams()
+    let { navItems, navId } = useParams()
     // provides more accuracy to the api for tv shows
-    let networkId = getNetworkId(navItems)
+    let networkId = getNetworkId(navId)
     
     const handleChangePage = (e, value) => {
         setPageNum(value)
@@ -26,8 +26,8 @@ export default function StreamingServiceTvShows() {
     useEffect(() => {
 
         const getStreamingInfo = async () => {
-            const res1 = await tmdbApi.getStreamingTvShows(category.releaseTv, networkId, navItems)
-            const res2 = await tmdbApi.getStreamingTvShows(category.popular, networkId, navItems, pageNum)
+            const res1 = await tmdbApi.getStreamingTvShows(category.releaseTv, networkId, navId)
+            const res2 = await tmdbApi.getStreamingTvShows(category.popular, networkId, navId, pageNum)
             const streamInfo1 = await res1.json()
             const streamInfo2 = await res2.json()
             getStreamingInfoByRelease(streamInfo1.results)
