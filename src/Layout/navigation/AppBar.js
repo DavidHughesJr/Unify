@@ -131,10 +131,12 @@ const ResponsiveAppBar = ({setSearch}) => {
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
                             color="inherit"
+                          
                         >
                             <MenuIcon />
                         </IconButton>
                         <Menu
+                            
                             id="menu-appbar"
                             anchorEl={anchorElNav}
                             anchorOrigin={{
@@ -150,6 +152,7 @@ const ResponsiveAppBar = ({setSearch}) => {
                             onClose={handleCloseNavMenu}
                             sx={{
                                 display: { xs: 'block', md: 'none' },
+                                
                             }}
                         >
                                 {
@@ -159,7 +162,7 @@ const ResponsiveAppBar = ({setSearch}) => {
                                             <Link style={{ textDecoration: 'none' }} to={`${pageLinks}`}> <Button
                                                 key={page}
                                                 onClick={handleCloseNavMenu}
-                                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                                sx={{ my: 2, color: 'black', display: 'block', }}
                                             >
                                                 {page}
                                             </Button> </Link>
