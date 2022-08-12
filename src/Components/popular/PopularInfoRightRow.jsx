@@ -49,7 +49,7 @@ export default function PopularCategory() {
                             <Link to={`../${movie.first_air_date ? category.tv : category.movie}/${movie.id}`} style={{ textDecoration: 'none', color: 'black'}}>
                                 <Box sx={{ display: 'flex', gap: 1 }}>
                             
-                                    <img style={{ width: '30%' }} src={apiConfig.w300Image(movie.poster_path)} alt="popular movies" />
+                                    <img style={{ width: '30%' }} src={apiConfig.w300Image(movie.poster_path)} alt={movie.title} loading="lazy" />
                               
                                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                         

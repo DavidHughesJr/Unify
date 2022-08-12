@@ -17,6 +17,7 @@ export default function PersonInfoCard({ info }) {
                 height="300"
                 image={apiConfig.w500Image(info.profile_path)}
                 alt={info.name}
+                loading="lazy"
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

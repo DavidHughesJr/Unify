@@ -16,7 +16,7 @@ export default function infoGrid({ data, title }) {
                     <Grid item xs={4} sm={4} md={3} key={data.id}>
                         <Link to={`../${data.first_air_date ? category.tv : category.movie}/${data.id}`} style={{ textDecoration: 'none' }}>
                             <div style={{ width: '100%', height: '100%', }}>
-                                <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={data.poster_path ? apiConfig.w300Image(data.poster_path) : noImgPoster} alt="movies and tvshow images" />
+                                <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={data.poster_path ? apiConfig.w300Image(data.poster_path) : noImgPoster} alt={data.title? data.title : data.name} loading="lazy" />
                             </div>
                         </Link>
                     </Grid>

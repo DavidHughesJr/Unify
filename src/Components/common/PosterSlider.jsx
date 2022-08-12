@@ -5,11 +5,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { apiConfig } from "../../api/apiConfig"
 import noImgPoster from '../../Assets/imgs/no-img-poster.jpg'
 import { category } from "../../api/tmdbApi";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, Scrollbar, A11y, Lazy } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import 'swiper/css/lazy'
 
 
 
@@ -23,10 +24,12 @@ export default function PosterSlider({ data, title }) {
                 <CategoryTypography variant="subtitle2"> {title} </CategoryTypography>
                 <MoviesContainer>
                     <Swiper
-                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        modules={[Navigation, Pagination, Scrollbar, A11y, Lazy]}
                         spaceBetween={10}
                         slidesPerView={5}
                         scrollbar={{ draggable: true }}
+                        preloadImages={false}
+                        lazy={true}
                         breakpoints={{
                             1536: {
                                 width: 1400,
@@ -57,7 +60,7 @@ export default function PosterSlider({ data, title }) {
                                         <SwiperSlide>
                                             <Link to={`../${data.first_air_date ? category.tv : category.movie}/${data.id}`} style={{ textDecoration: 'none' }}>
                                                 <Box key={data.id} style={{ width: '100%' }}>
-                                                    <img style={{ width: '100%', minHeight: '20rem' }} src={data.poster_path ? apiConfig.w500Image(data.poster_path) : noImgPoster} alt="New data" />
+                                                <img style={{ width: '100%', minHeight: '20rem' }} src={data.poster_path ? apiConfig.w500Image(data.poster_path) : noImgPoster} alt={data.title ? data.title : data.name} loading="lazy" />
                                                 </Box>
                                             </Link>
 

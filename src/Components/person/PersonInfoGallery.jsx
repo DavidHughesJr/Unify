@@ -44,10 +44,11 @@ export default function PersonInfoGallery({ images }) {
             >
         {
          images.map((imgs) => {
+            console.log(imgs.name)
             return (
                 <SwiperSlide>
                     <Box sx={{borderRadius: '1rem'}}>
-                        <img style={{borderRadius: '1rem'}}  src={apiConfig.w300Image(imgs.file_path)} alt="person imgs" />
+                        <img style={{ borderRadius: '1rem' }} src={apiConfig.w300Image(imgs.file_path)} alt={imgs.name} loading="lazy" />
                     </Box>
                 </SwiperSlide>
 
