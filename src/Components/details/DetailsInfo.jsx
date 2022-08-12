@@ -184,7 +184,7 @@ export default function DetailsInfo({ saves, setSaves }) {
                                 </Link> : ''
                             }
                             <Bookmarker saves={saves} details={details} setSaves={setSaves} saveData={saveData} />
-                            <Button sx={{ color: Colors.primaryBtn, border: `1px solid ${Colors.primaryBtn}` }} variant="outlined"> <ShareIcon /> </Button>
+                            {/* <Button sx={{ color: Colors.primaryBtn, border: `1px solid ${Colors.primaryBtn}` }} variant="outlined"> <ShareIcon /> </Button> */}
                         </Box>
                     </ButtonsContainer>
                     <Box>
