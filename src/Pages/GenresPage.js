@@ -3,6 +3,7 @@ import VerticalNav from "../Layout/navigation/VerticalNav";
 import Genres from "../Components/genres/Genres";
 import TrendingCategory from "../Components/common/Trending";
 import ResponsiveAppBar from "../Layout/navigation/AppBar";
+import SearchInput from "../Components/common/SearchInput";
 
 function GenresPage({setSearch}) {
     return (
@@ -18,6 +19,7 @@ function GenresPage({setSearch}) {
                     <Genres />
                 </BoardCenter>
                 <BoardRight>
+                    <SearchInput setSearch={setSearch} />
                     <TrendingCategory />
                 </BoardRight>
             </Dashboard>

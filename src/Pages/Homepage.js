@@ -8,7 +8,7 @@ import ResponsiveAppBar from "../Layout/navigation/AppBar"
 
 
 
-function Homepage({ setSearch, search }) {
+function Homepage({ setSearch }) {
 
   return (
     <Board>
@@ -23,7 +23,7 @@ function Homepage({ setSearch, search }) {
           <HomepageTabs />
         </BoardCenter>
         <BoardRight>
-          <SearchInput setSearch={setSearch} search={search} />
+          <SearchInput setSearch={setSearch}/>
           <TrendingCategory />
         </BoardRight>
       </Dashboard>

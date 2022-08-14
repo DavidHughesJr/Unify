@@ -21,7 +21,7 @@ export default function Genres() {
 
     let {  genreName, genreId } = useParams()
 
-
+ console.log(genreName)
     const handleChangePageMovie = (e, value) => {
         setPageNumMovie(value)
     }

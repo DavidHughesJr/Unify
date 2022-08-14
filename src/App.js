@@ -29,13 +29,13 @@ function App() {
 
   return (
       <Routes>
-        <Route path="/" element={<Homepage setSearch={setSearch} search={search} />} />
+        <Route path="/" element={<Homepage setSearch={setSearch}/>} />
         <Route path="/search" element={<Search setSearch={setSearch} search={search} />} />
         <Route path="/popular" element={<PopularPage setSearch={setSearch}/>} />
         <Route path="/:category/:id" element={<DetailsPage saves={saves} setSaves={setSaves} setSearch={setSearch} />} />
         <Route path="/person/:id" element={<PersonPage setSearch={setSearch} />} />
         <Route path="/streaming/:navItems/:navId" element={<StreamMediaPage setSearch={setSearch} />} />
-        <Route path="/genre/:genreName/:genreName" element={<GenresPage setSearch={setSearch} />} />
+        <Route path="/genre/:genreName/:genreId" element={<GenresPage setSearch={setSearch} />} />
         <Route path="/showall" element={<ShowAllPage setSearch={setSearch} />} />
         <Route path="/trending" element={<TrendingPage setSearch={setSearch} />} />
         <Route path="/saves" element={<SavesPage saves={saves} setSaves={setSaves} setSearch={setSearch} />} />

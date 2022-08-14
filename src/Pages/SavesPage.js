@@ -3,6 +3,7 @@ import VerticalNav from "../Layout/navigation/VerticalNav";
 import TrendingCategory from "../Components/common/Trending";
 import SavesList from "../Components/saves/SavesList"
 import ResponsiveAppBar from "../Layout/navigation/AppBar";
+import SearchInput from "../Components/common/SearchInput";
 
 function SavesPage({ saves, setSearch }) {
     return (
@@ -18,6 +19,7 @@ function SavesPage({ saves, setSearch }) {
                     <SavesList saves={saves} />
                 </BoardCenter>
                 <BoardRight>
+                    <SearchInput setSearch={setSearch} />
                     <TrendingCategory />
                 </BoardRight>
             </Dashboard>

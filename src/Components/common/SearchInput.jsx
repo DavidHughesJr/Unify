@@ -73,7 +73,7 @@ export default function SearchInput({ setSearch}) {
         }
     };
     return (
-        <SearchBox sx={{ marginTop: '3rem', padding: '1rem' }}>
+        <SearchBox sx={{ marginTop: '1rem', padding: '1rem' }}>
             <Box sx={{ flexGrow: 1, width: '100%' }}>
                 <Search sx={{ backgroundColor: '#e5eaf5' }}>
                     <SearchIconWrapper >
