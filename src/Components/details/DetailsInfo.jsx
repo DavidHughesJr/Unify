@@ -188,7 +188,7 @@ export default function DetailsInfo({ saves, setSaves }) {
                         </Box>
                     </ButtonsContainer>
                     <Box>
-                        <Box sx={{ display: 'flex', marginTop: '1rem', alignItems: 'center' }}>
+                        <Box sx={{ display: 'flex', marginTop: '1.5rem', alignItems: 'center' }}>
                             {genreNames.map(names => <Box sx={{ border: `1px solid ${Colors.outlineBtn}`, borderRadius: '1rem', marginRight: '1rem', padding: '.5rem', color: Colors.primaryText }}> <Typography variant="subtitle2" > {names} </Typography> </Box>)}
                         </Box>
                     </Box>
@@ -217,6 +217,7 @@ export default function DetailsInfo({ saves, setSaves }) {
                 </Box>
             </DetailsInfoContainer>
             <SliderBox sx={{ margin: '4rem' }}>
+              
                 <Typography variant="subtitle2"> More Like This  </Typography>
                 <DetailsMoreLikeThis />
             </SliderBox>

@@ -18,10 +18,8 @@ export default function DetailsInfoHero() {
 
         const getDetails = async () => {
             try {
-                
                 const res = await tmdbApi.getDetails(category, id)
                 const detailsData = await res.json()
-        
                 setSelectedDetails(detailsData)
                
 
@@ -30,7 +28,7 @@ export default function DetailsInfoHero() {
             }
         }
         getDetails()
-    }, [])
+    }, [id])
 
 
     const styles = {

@@ -2,9 +2,10 @@ import { formatDataDate } from '../../helpers/formatters'
 import { Box, Paper, Typography } from "@mui/material";
 import { apiConfig } from '../../api/apiConfig';
 import Moment from "react-moment"
+import CircularRating from '../common/CircularRating';
 
-export default function DetailsInfoPoster({details}){
-    
+export default function DetailsInfoPoster({ details }) {
+
 
     const detailsReleaseDate = formatDataDate(details.release_date ? details.release_date : details.first_air_date)
     const detailsLastAir = formatDataDate(details.last_air_date)
@@ -20,6 +21,14 @@ export default function DetailsInfoPoster({details}){
             {
                 details.runtime ? <Typography variant="subtitle2"> {detailHrs === 0 ? '' : detailHrs} Hour {detailMins} Min  </Typography> : <Typography variant="subtitle2"> Last Air <Moment date={detailsLastAir} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /></Typography>
             }
+            <Box sx={{display: 'flex', gap: '.5rem'}}>
+                <Typography variant='subtitle2'>
+                    Rating:
+                </Typography>
+                <Typography variant="subtitle2" color="text.secondary">
+                    {details.vote_average === 0 ? 'Not Rated' : (details.vote_average * 1 + '').slice(0, 3) + ' / 10'}
+                </Typography>
+            </Box>
         </Box>
     )
 }

@@ -27,7 +27,7 @@ export default function PosterSlider({ data, title }) {
                         modules={[Navigation, Pagination, Scrollbar, A11y, Lazy]}
                         spaceBetween={10}
                         slidesPerView={5}
-                        scrollbar={{ draggable: true }}
+                        // scrollbar={{ draggable: true }}
                         preloadImages={false}
                         lazy={true}
                         breakpoints={{
@@ -60,7 +60,7 @@ export default function PosterSlider({ data, title }) {
                                         <SwiperSlide>
                                             <Link to={`../${data.first_air_date ? category.tv : category.movie}/${data.id}`} style={{ textDecoration: 'none' }}>
                                                 <Box key={data.id} style={{ width: '100%' }}>
-                                                <img style={{ width: '100%', minHeight: '20rem' }} src={data.poster_path ? apiConfig.w500Image(data.poster_path) : noImgPoster} alt={data.title ? data.title : data.name} loading="lazy" />
+                                                <img style={{ width: '100%' }} src={data.poster_path ? apiConfig.w500Image(data.poster_path) : noImgPoster} alt={data.title ? data.title : data.name} loading="lazy" />
                                                 </Box>
                                             </Link>
 

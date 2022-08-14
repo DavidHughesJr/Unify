@@ -2,6 +2,7 @@ import * as React from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import { Favorite } from "@mui/icons-material";
 import { useState, useEffect } from "react";
+import { Box, Typography, styled } from "@mui/material";
 
 export default function Bookmarker({ saves, setSaves, saveData }) {
   const [selected, setSelected] = useState(false);
@@ -49,17 +50,22 @@ export default function Bookmarker({ saves, setSaves, saveData }) {
   }, [saveData?.id])
 
 
+
   return (
-    <ToggleButton sx={{ borderRadius: '0' }}
-      value="saves"
-      selected={selected}
-      onChange={() => {
-        setSelected(!selected);
-        addSaves(saveData)
-      }}
-    >
-      <Favorite sx={{ zIndex: 10, backgroundColor: "" }} />
-    </ToggleButton>
+    <Box>
+      <ToggleButton className="save-btn" sx={{ borderRadius: '0' }}
+        value="saves"
+        selected={selected}
+        onChange={() => {
+          setSelected(!selected);
+          addSaves(saveData)
+        }}
+      >
+        <Favorite sx={{ zIndex: 10, backgroundColor: "" }} />
+      </ToggleButton>
+      <Typography className="hide" color="text.secondary" variant="subtitle2"> { !selected? 'Save Item' : 'Remove Item'} </Typography>
+    </Box>
+ 
 
   );
 }

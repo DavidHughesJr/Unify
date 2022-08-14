@@ -33,12 +33,12 @@ export default function DetailsMoreLikeThis() {
         getMore()
     }, [])
 
-
     return (
 
         <Box sx={{ width: '100%', height: '100%' }} >
 
             <Box>
+                <Typography> {moreLikeThis.length === 0 ? 'N/a' : ''} </Typography>
                 <Swiper
                     modules={[Lazy]}
                     spaceBetween={10}
@@ -74,7 +74,7 @@ export default function DetailsMoreLikeThis() {
                 >
                     {
                         moreLikeThis.map((details) => {
-                    console.log(details.name)
+        
                             const detailsDate = formatDataDate(details.release_date? details.release_date : details.first_air_date)
                             return (
                                     <SwiperSlide>
@@ -87,6 +87,7 @@ export default function DetailsMoreLikeThis() {
                                             </div>
                                         </div>
                                          </Link>
+                                       
                                     </SwiperSlide>
                             )
                         })

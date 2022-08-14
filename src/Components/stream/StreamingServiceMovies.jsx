@@ -31,10 +31,7 @@ export default function StreamingServiceMovies() {
         }
         getStreamingInfo()
     }, [navId, pageNum])
-
-    console.log(navId)
-
-console.log(navItems)
+    
     return (
         <Box>
             <HeroSlider data={streamInfoByRelease} title={'New Releases'}/> 

@@ -86,8 +86,8 @@ const tmdbApi = {
         const url = `https://api.themoviedb.org/3/discover/movie?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&sort_by=${category}&page=${pageNum}&timezone=America%2FNew_York&&with_genres=${id}&primary_release_date.lte=${date}`
         return fetch(url)
     }),
-    getTvShowGenres: ((category, pageNum, id) => {
-        const url = `https://api.themoviedb.org/3/discover/tv?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&sort_by=${category}&page=${pageNum}&timezone=America%2FNew_York&with_genres=${id}`
+    getTvShowGenres: ((category, pageNum, id, date) => {
+        const url = `https://api.themoviedb.org/3/discover/tv?api_key=e9ad43fd1d98a5d8435f4d49f1ec2644&language=en-US&sort_by=${category}&page=${pageNum}&timezone=America%2FNew_York&with_genres=${id}&primary_release_date.lte=${date}`
         return fetch(url)
     }),
 }

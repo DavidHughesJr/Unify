@@ -156,7 +156,9 @@ export default function VerticalNav() {
       }}
     >
       <Box sx={{ margin: "auto", paddingTop: 1 }}>
-        <img style={{ width: "5rem" }} src={logo} alt="logo" />
+        <Link to='/'>
+          <img style={{ width: "5rem" }} src={logo} alt="logo" />
+        </Link>
       </Box>
       <Tabs
         orientation="vertical"

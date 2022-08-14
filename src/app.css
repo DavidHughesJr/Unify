@@ -53,3 +53,10 @@ body {
 .swiper-slide {
   margin-bottom: 1rem;
 }
+.hide {
+ height: 0;
+ display: none;
+}
+.save-btn:hover + .hide {
+  display: block;
+}

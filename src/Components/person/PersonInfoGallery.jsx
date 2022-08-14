@@ -44,7 +44,7 @@ export default function PersonInfoGallery({ images }) {
             >
         {
          images.map((imgs) => {
-            console.log(imgs.name)
+
             return (
                 <SwiperSlide>
                     <Box sx={{borderRadius: '1rem'}}>

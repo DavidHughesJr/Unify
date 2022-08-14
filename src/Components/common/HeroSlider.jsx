@@ -1,10 +1,12 @@
-import { HeroTypography} from "../../Components/muiStyles/CommonStyles";
-import { styled, Typography, Box, Link } from "@mui/material";
+import { HeroTypography } from "../../Components/muiStyles/CommonStyles";
+import { styled, Typography, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { apiConfig } from "../../api/apiConfig"
+import {category } from "../../api/tmdbApi"
 import Moment from "react-moment"
 import { formatDataDate } from '../../helpers/formatters'
 import noImgPoster from '../../Assets/imgs/no-img-hero.jpg'
+import { Link } from 'react-router-dom'
 // swiper
 import { Autoplay, EffectFade, Lazy } from 'swiper'
 import 'swiper/css/autoplay'
@@ -66,7 +68,6 @@ export default function NewestSubcategory({ data, title }) {
     }));
 
 
-
     return (
         <Box>
             <Box>
@@ -91,12 +92,12 @@ export default function NewestSubcategory({ data, title }) {
                                             style={{ width: "100%", height: "100%", }}
                                             src={data.backdrop_path ? apiConfig.originalImage(data.backdrop_path) : noImgPoster} alt={data.title ? data.title : data.name} loading="lazy"
                                         />
-                                        <HeroTextContainer>
-                                            <Box> <HeroHeadingText variant="h3">  {data.title ? data.title : data.name} </HeroHeadingText>  </Box>
-                                            <Box> <HeroDateText variant="h6">  <Moment date={movieDate} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /> </HeroDateText>  </Box>
-                                            <Link sx={{ textDecoration: 'none' }} href={''}>
-                                            </Link>
+                                        <Link to={`../${data.first_air_date ? category.tv : category.movie}/${data.id}`} style={{ textDecoration: 'none' }}>
+                                        <HeroTextContainer> 
+                                                <Box> <HeroHeadingText variant="h3">  {data.title ? data.title : data.name} </HeroHeadingText>  </Box>
+                                                <Box> <HeroDateText variant="h6">  <Moment date={movieDate} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /> </HeroDateText>  </Box>
                                         </HeroTextContainer>
+                                        </Link>
                                     </SwiperSlide>
                                 )
                             })
