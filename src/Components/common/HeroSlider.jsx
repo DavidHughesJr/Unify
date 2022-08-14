@@ -69,7 +69,7 @@ export default function NewestSubcategory({ data, title }) {
 
 
     return (
-        <Box>
+        <Box className="fade-in">
             <Box>
                 <Box>
                     <HeroTypography variant="subtitle2"> {title} </HeroTypography>

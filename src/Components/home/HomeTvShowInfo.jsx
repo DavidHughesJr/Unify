@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import Box from "@mui/material/Box"
-import tmdbApi, { movieType, category, tvList, tvType } from "../../api/tmdbApi"
+import tmdbApi, { tvType } from "../../api/tmdbApi"
 import HeroSlider from '../common/HeroSlider'
 import PosterSlider from '../common/PosterSlider'
 import BackdropSlider from '../common/BackdropSlider'
+import { LinearProgress, Typography } from "@mui/material"
 
 
 export default function HomeMovieInfo() {
@@ -39,9 +40,16 @@ export default function HomeMovieInfo() {
     return (
 
         <Box>
-            <HeroSlider data={onTheAirShows} title={'Latest Shows'} />
-            <PosterSlider data={airingTodayShows} title={'Now Playing'} />
-            <BackdropSlider data={topRatedShows} title={'Top Rated'} />
+            {
+                isLoading ? <Box>  < LinearProgress sx={{ color: "#e71d60" }} color="inherit" />  <Box sx={{ paddingTop: '1rem' }}> <Typography variant="subtitle">  </Typography> </Box>  </Box> : 
+                 <Box> 
+                        <HeroSlider data={onTheAirShows} title={'Latest Shows'} />
+                        <PosterSlider data={airingTodayShows} title={'Now Playing'} />
+                        <BackdropSlider data={topRatedShows} title={'Top Rated'} />
+                 </Box>
+
+            }
+           
         </Box>
 
     )

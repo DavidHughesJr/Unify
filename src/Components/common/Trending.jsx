@@ -40,10 +40,10 @@ export default function TrendingCategory() {
 
 
     return (
-        <Box sx={{ padding: '1rem' }}>
+        <Box className='fade-in' sx={{ padding: '1rem' }}>
             <CategoryTypography variant="subtitle2"> Trending </CategoryTypography>
             {
-                trending.slice(0, 5).map((movie) => {
+                trending.slice(0, 4).map((movie) => {
                     const genre = formatMergeGenre(movie.genre_ids, movieGenres)
                     return (
                         <div style={{ marginBottom: '1rem' }}>

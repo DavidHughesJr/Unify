@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import Box from "@mui/material/Box"
-import tmdbApi, { movieType, category, tvList } from "../../api/tmdbApi"
+import tmdbApi, { movieType, } from "../../api/tmdbApi"
 import HeroSlider from '../common/HeroSlider'
 import PosterSlider from '../common/PosterSlider'
 import BackdropSlider from '../common/BackdropSlider'
 import InfoGrid from "../common/InfoGrid"
 import { Pagination } from "@mui/material"
+import { LinearProgress, Typography} from "@mui/material"
+
 
 
 export default function HomeMovieInfo() {
@@ -51,13 +53,19 @@ export default function HomeMovieInfo() {
     return (
 
         <Box>
-            <HeroSlider data={upcomingMovies} title={'Upcoming Movies'}/>
-            <PosterSlider data={nowPlayingMovies} title={'Now Playing'} /> 
-            <BackdropSlider data={topRatedMovies} title={'Top Rated'} />
-            <InfoGrid data={popularMovies} title={'Popular'}/>
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}>
-                <Pagination onChange={handleChangePage} count={100} />
-            </Box>
+            { 
+                isLoading ? <Box>  < LinearProgress sx={{ color: "#e71d60" }} color="inherit" />  <Box sx={{ paddingTop: '1rem' }}> <Typography variant="subtitle">  </Typography> </Box>  </Box> : 
+                <Box>
+                    <HeroSlider data={upcomingMovies} title={'Upcoming Movies'} />
+                    <PosterSlider data={nowPlayingMovies} title={'Now Playing'} />
+                    <BackdropSlider data={topRatedMovies} title={'Top Rated'} />
+                    <InfoGrid data={popularMovies} title={'Popular'} />
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}>
+                        <Pagination onChange={handleChangePage} count={100} />
+                    </Box>
+                    </Box>
+               
+            }
         </Box>
 
     )

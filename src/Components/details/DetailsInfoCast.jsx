@@ -24,7 +24,7 @@ export default function CastInfoCard({ cast }) {
 
     return (
 
-        <Box sx={{ display: "flex", width: "100%", minHeight: '22rem' }}>
+        <Box className='fade-in' sx={{ display: "flex", width: "100%", minHeight: '22rem' }}>
             <Typography> {cast.length === 0 ? 'N/a' : ''} </Typography>
             <Swiper
                 spaceBetween={10}

@@ -12,14 +12,26 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Lazy } from 'swiper'
 import 'swiper/css';
 import 'swiper/css/lazy'
+import { useInView } from 'react-intersection-observer';
+
 
 
 export default function BackDropSlider({ data, title }) {
+  
+    const { ref, inView } = useInView({
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.2,
+        triggerOnce: true
+    
+    });
+
+  console.log(inView)
     return (
-        <Box>
+        <Box className={inView? 'fade-in': 'faded'}  ref={ref}>
             <CategoryTypography variant="subtitle2"> {title} </CategoryTypography>
             <div style={{ display: 'flex', width: "100%", height: "100%" }} >
-                <Swiper
+                <Swiper 
                     modules={[Lazy]}
                     spaceBetween={10}
                     preloadImages={false}
@@ -58,10 +70,10 @@ export default function BackDropSlider({ data, title }) {
                             return (
                                 <SwiperSlide>
                                     <Link to={`../${data.first_air_date ? category.tv : category.movie}/${data.id}`} style={{ textDecoration: 'none' }}>
-                                        <div style={{ width: '100%', height: '100%' }}>
+                                        <div  style={{ width: '100%', height: '100%' }}>
                                             <img style={{ objectFit: 'cover', height: '100%', width: '100%' }} src={data.backdrop_path ? apiConfig.originalImage(data.backdrop_path) : noImgPoster} alt={data.title ? data.title : data.name} loading="lazy" /> 
                                             <div style={{ position: 'relative', bottom: '4.4rem', left: '5%' }}>
-                                                <Typography sx={{ color: 'white', fontWeight: 'bold', textShadow: '0 0 5px black' }} variant="subtitle2"> {data.title ? data.title : data.name} </Typography>
+                                                <Typography sx={{ color: 'white', fontWeight: 'bold', textShadow: '0 0 5px black' }} variant="subtitle2"> {data.title ? data.title : data.name}  </Typography>
                                                 <Typography sx={{ color: '#e71d60', fontWeight: 'bold' }} variant="subtitle2"> <Moment date={movieDate} format="MMMM D YYYY" titleFormat="D MMM YYYY" withTitle /> </Typography>
                                             </div>
                                         </div>

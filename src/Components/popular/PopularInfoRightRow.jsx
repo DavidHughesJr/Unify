@@ -42,7 +42,7 @@ export default function PopularCategory() {
         <Box sx={{ padding: '1rem' }}>
             <CategoryTypography variant="subtitle2"> Popular </CategoryTypography>
             {
-                popularMovies.slice(0, 5).map((movie) => {
+                popularMovies.slice(0, 4).map((movie) => {
                     const genre = formatMergeGenre(movie.genre_ids, movieGenres)
                     return (
                             <div style={{ marginBottom: '1rem' }}>

@@ -16,19 +16,18 @@ body {
 .MuiTabs-indicator {
   background-color: #e71d60 !important;
 }
-.Mui-selected	{
-     color: #e71d60  !important;
-     background-color: white !important;
+.Mui-selected {
+  color: #e71d60 !important;
+  background-color: white !important;
 }
-.MuiTab-iconWrapper	{
-    height: 1.2rem !important;
-   
+.MuiTab-iconWrapper {
+  height: 1.2rem !important;
 }
-.MuiButtonBase-root	 {
-    min-height: 3rem !important;
+.MuiButtonBase-root {
+  min-height: 3rem !important;
 }
 .MuiToggleButton-root {
-    background-color: white !important;
+  background-color: white !important;
 }
 .MuiButton-root:hover {
   background-color: #e5eaf5 !important;
@@ -37,7 +36,7 @@ body {
   background: url();
 }
 .swiper-pagination-bullet-active {
- background-color: #e71d60; 
+  background-color: #e71d60;
 }
 .swiper-wrapper {
   min-width: 110rem;
@@ -46,7 +45,7 @@ body {
   opacity: 0;
 }
 .swiper-scrollbar {
-  background-color:  #e5eaf5;
+  background-color: #e5eaf5;
   position: absolute;
   height: 2px !important;
 }
@@ -54,9 +53,25 @@ body {
   margin-bottom: 1rem;
 }
 .hide {
- height: 0;
- display: none;
+  height: 0;
+  display: none;
 }
 .save-btn:hover + .hide {
   display: block;
+}
+.fade-in {
+  display: block;
+  animation-name: fadeInAnimation;
+  animation-duration:  2s;
+}
+.faded {
+  opacity: 0;
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

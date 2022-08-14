@@ -35,7 +35,7 @@ export default function DetailsMoreLikeThis() {
 
     return (
 
-        <Box sx={{ width: '100%', height: '100%' }} >
+        <Box className='fade-in' sx={{ width: '100%', height: '100%' }} >
 
             <Box>
                 <Typography> {moreLikeThis.length === 0 ? 'N/a' : ''} </Typography>

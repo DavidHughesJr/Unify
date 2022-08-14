@@ -19,7 +19,7 @@ import 'swiper/css/lazy'
 export default function PosterSlider({ data, title }) {
 
     return (
-        <Box>
+        <Box className="fade-in">
             <Box>
                 <CategoryTypography variant="subtitle2"> {title} </CategoryTypography>
                 <MoviesContainer>
