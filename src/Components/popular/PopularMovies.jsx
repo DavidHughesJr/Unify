@@ -36,10 +36,10 @@ const PopularMovies = () => {
     }
 
     return (
-        <Box className="fade-in--extend">
+        <Box className="fade-in">
             {
                 isLoading ? < LinearProgress sx={{ color: "#e71d60" }} color="inherit" /> :
-                    <Box className="fade-in">
+                    <Box >
                         <InfoGrid data={popularMovies} />
                         <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}>
                             <Pagination onChange={handleChangePage} count={100}  />

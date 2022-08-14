@@ -9,7 +9,7 @@ export default function infoGrid({ data, title }) {
 
 
     return (
-        <Box>
+        <Box className="fade-in">
             <CategoryTypography variant="subtitle2"> {title} </CategoryTypography>
             <Grid container spacing={{ xs: 2, md: 1 }} columns={{ xs: 8, sm: 8, md: 12, lg: 15 }}>
                 {data.map((data) => (
