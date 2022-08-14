@@ -39,7 +39,7 @@ const PopularMovies = () => {
         <Box className="fade-in">
             {
                 isLoading ? < LinearProgress sx={{ color: "#e71d60" }} color="inherit" /> :
-                    <Box>
+                    <Box className="fade-in">
                         <InfoGrid data={popularMovies} />
                         <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1rem' }}>
                             <Pagination onChange={handleChangePage} count={100}  />
