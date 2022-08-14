@@ -64,6 +64,11 @@ body {
   animation-name: fadeInAnimation;
   animation-duration:  2s;
 }
+.fade-in--extend {
+  display: block;
+  animation-name: fadeInAnimation;
+  animation-duration:  4s;
+}
 .faded {
   opacity: 0;
 }

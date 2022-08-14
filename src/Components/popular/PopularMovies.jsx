@@ -36,7 +36,7 @@ const PopularMovies = () => {
     }
 
     return (
-        <Box className="fade-in">
+        <Box className="fade-in--extend">
             {
                 isLoading ? < LinearProgress sx={{ color: "#e71d60" }} color="inherit" /> :
                     <Box className="fade-in">
