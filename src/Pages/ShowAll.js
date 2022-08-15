@@ -8,10 +8,10 @@ import SearchInput from "../Components/common/SearchInput";
 function ShowAllPage({setSearch}) {
     return (
         <Board>
+            <MobileBoard>
+                <ResponsiveAppBar setSearch={setSearch} />
+            </MobileBoard>
             <Dashboard>
-                <MobileBoard>
-                    <ResponsiveAppBar setSearch={setSearch} /> 
-                </MobileBoard>
                 <BoardLeft>
                     <VerticalNav />
                 </BoardLeft>

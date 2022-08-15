@@ -105,7 +105,8 @@ const ResponsiveAppBar = ({setSearch}) => {
             <AppBar position="static" sx={{ backgroundColor: '#e71d60'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Typography
+                 <Link style={{textDecoration: 'none', color: 'white'}} to='/'>
+                   <Typography
                         variant="h6"
                         noWrap
                         component="a"
@@ -122,7 +123,7 @@ const ResponsiveAppBar = ({setSearch}) => {
                     >
                             UNIFY
                     </Typography>
-
+                        </Link> 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -172,7 +173,7 @@ const ResponsiveAppBar = ({setSearch}) => {
                          
                         </Menu>
                     </Box>
-                    
+                    <Link to="/" style={{textDecoration: 'none', color: "white"}}> 
                     <Typography
                         variant="h5"
                         noWrap
@@ -191,6 +192,7 @@ const ResponsiveAppBar = ({setSearch}) => {
                     >
                         UNIFY
                     </Typography>
+                    </Link> 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {
                             pages.map((page, i) => {
